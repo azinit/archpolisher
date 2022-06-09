@@ -61,12 +61,9 @@ export function getStructure(imports: ImportsGraph) {
     return structure;
 }
 
-export function includesPartial(text: string, partial: string) {
-    return text.indexOf(partial) > -1;
-}
 // FIXME: refine impl?
 export function asModule(imp: Module, modules: Module[]): Module {
-    const module = modules.find((m) => includesPartial(imp, m));
+    const module = modules.find((m) => imp.includes(m));
     return module || imp
 }
 
@@ -88,7 +85,7 @@ export function getModGraph(imports: ImportsGraph, modules: Module[]): ModulesGr
     // }, {})
     // FIXME: optimize! (O(n^2)!!!)
     const modGraph = modules.reduce((acc: ModulesGraph, module) => {
-        const moduleFiles = Object.keys(imports).filter(im => includesPartial(im, module));
+        const moduleFiles = Object.keys(imports).filter(im => im.includes(module));
         const moduleOutImports = moduleFiles.map(mf => imports[mf]).flat();
         const moduleOutDeps = _.uniq(
             moduleOutImports

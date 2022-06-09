@@ -53,5 +53,5 @@ function debug(imports: ImportsGraph) {
 }
 
 
-// main(_GH_FDD.imports);
-debug(_GH_FDD.imports);
+main(_GH_FDD.imports);
+// debug(_GH_FDD.imports);
