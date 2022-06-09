@@ -76,10 +76,9 @@ export class Project {
         }, {});
     }
 
-    // FIXME: refine impl?
-    public asModule(file: TFile): Module | TFile {
-        const module = this.modules.find((m) => file.includes(m));
-        return module || file;
+    // Предполагается, что для любого файла есть верхнеуровневый модуль (иначе все крашнется сразу)
+    public asModule(file: TFile): Module {
+        return this.modules.find((m) => file.includes(m))!;
     }
 };
 
