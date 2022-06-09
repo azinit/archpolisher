@@ -3,7 +3,6 @@
 // }
 // type Fun<K = any, R = any> = (k: K) => R;
 
-// // FIXME: refine types and impl!
 // // https://stackoverflow.com/questions/47245774/write-a-function-groupbyarray-callback
 // function groupBy<T = any, K = any>(list: T[], Fn: Fun, Pn: Fun = identity) {
 //     // @ts-ignore

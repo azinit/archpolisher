@@ -74,7 +74,6 @@ _.groupBy(ml, (it) => weights[it])
 //     return {};
 // }
 
-// TODO: impl?
 // function extendDeps(deps: ModuleDeps, module: Module, depth = 1): ModuleDeps {
 //     if (depth === 0) return deps;
 //     if (depth === 1) {

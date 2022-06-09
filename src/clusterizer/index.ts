@@ -28,7 +28,7 @@ type ClustersResult = {
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
 
 export function prepareDataset(project: TProject) {
-    // FIXME: for styles/{...scss} { Nan, -1 };
+    // !!! FIXME: for styles/{...scss} { Nan, -1 };
     return project.files.map((file) => [
         analyzer.metrics.calcInstability(file, project),
         analyzer.metrics.calcAbstractness(file, project)
@@ -37,7 +37,7 @@ export function prepareDataset(project: TProject) {
 
 /**
  * Clustering
- * FIXME: Add custumizing of algo?
+ * NOTE: Add custumizing of algo?
  */
 export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTIONS): ClustersResult {
     const dbscan = new mlClustering.DBSCAN();
@@ -54,7 +54,7 @@ export function render(project: TProject, dataset: Dataset, clustering: Clusters
     const labels = project.files.map((file) => file.split("/").slice(0, 3).join("/"));
 
     // noise в начало, чтобы сначало отрендерились серые
-    // FIXME: неочевидно что gray первым
+    // NOTE: неочевидно что gray первым
     const clusters = [clustering.noise, ...clustering.clusters];
     const clustersFiles = clusters.map(cluster => cluster.map(idx => project.files[idx]));
     const datasets = clusters.map((group, idx) => ({

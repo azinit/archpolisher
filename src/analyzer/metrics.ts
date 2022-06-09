@@ -2,10 +2,10 @@ import _ from "lodash";
 
 export function calcAbstractness(file: TFile, project: TProject): number {
     const maxWeight = _.max(Object.values(project.modulesWeights)) as number;
-    // FIXME: add eps? (+- 0.05 * idx);
-    // FIXME: Учитывать двухсторонние связи для вычитания абстрактности? Или забить на цикличность? (app <=> features)
+    // NOTE: add eps? (+- 0.05 * idx);
+    // NOTE: Учитывать двухсторонние связи для вычитания абстрактности? Или забить на цикличность? (app <=> features)
     const moduleWeight = project.modulesWeights[project.asModule(file)];
-    if (moduleWeight === undefined) return -1; // FIXME: 0.5?
+    if (moduleWeight === undefined) return -1; // NOTE: 0.5?
     return 1 - (moduleWeight / maxWeight);
 }
 

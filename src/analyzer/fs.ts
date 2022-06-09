@@ -38,7 +38,7 @@ export class Project {
 
     /** Упрощаем граф зависимостей до уровня модулей */
     private getModulesGraph(): ModulesGraph {
-        // NOTE: optimize! (O(n^2)!!!) // iter-by-files with uniqSet
+        // NOTE: optimize! (O(n^2)!) // iter-by-files with uniqSet
         return this.modules.reduce((acc: ModulesGraph, module) => {
             /** Файлы-содержимое (модуля) */
             const moduleChildren = this.files.filter(file => file.includes(module));
@@ -46,7 +46,7 @@ export class Project {
             const moduleOutDeps = moduleChildren
                 .map(oFile => this.imports[oFile]).flat()
                 .map(oFile => this.asModule(oFile))
-                // FIXME: Учитывать в будущем и кросс-импорты!
+                // NOTE: Учитывать в будущем и кросс-импорты!
                 .filter(oModule => oModule !== module);
             return { ...acc, [module]: _.uniq(moduleOutDeps) };
         }, {});
@@ -69,7 +69,7 @@ export class Project {
             const deps3 = deps2.map(dep => this.modulesGraph[dep]).flat(); // depth=3
             const deps4 = deps3.map(dep => this.modulesGraph[dep]).flat(); // depth=4
             const deps5 = deps4.map(dep => this.modulesGraph[dep]).flat(); // depth=5
-            // FIXME: refine depth iterating!
+            // NOTE: refine depth iterating!
             const totalDeps = [deps1, deps2, deps3, deps4, deps5];
             const deps = _.uniq(totalDeps.slice(0, depth).flat())
             return { ...acc, [module]: deps.length };
@@ -82,7 +82,7 @@ export class Project {
     }
 };
 
-// // FIXME: specify index.ts files
+// // TODO: specify index.ts files
 // export function getFSDist(file1: TFile, file2: TFile): number {
 //     const aFile1 = asAbsFile(file1);
 //     const aFile2 = asAbsFile(file2);

@@ -5,14 +5,13 @@ import PRESET_GH_FDD from "./imports.gh-fdd.json";
 // }, {})
 
 function __asAbsFile(file: TFile): TFile {
-    // FIXME: normalize truncating
+    // NOTE: normalize truncating
     // const files = Object.keys(importsBaseGraph).map((file) => file.replaceAll("../", "").replace("./", ""));
     return file.replace("../", "");
 }
 
-// FIXME: Починить парсинг импортов, вместо клина
-// FIXME: "../" truncating is redundant?
-// FIXME: replace to native replaceAll
+// !!! FIXME: Починить парсинг импортов, вместо клина
+// NOTE: replace to native replaceAll
 function __cleanImports(imports: ImportsGraph): ImportsGraph {
     return Object.entries(imports).reduce((acc, [file, fileDeps]) => {
         return { ...acc, [__asAbsFile(file)]: fileDeps.map(__asAbsFile) };
