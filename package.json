@@ -7,7 +7,7 @@
     "noderun": "cross-env NODE_PATH=./src ts-node",
     "start": "yarn noderun src/index.ts",
     "start:ml": "yarn noderun src/clusterize/index.ts",
-    "start:analyzer:abstr": "yarn noderun src/analyzer/abstractness.ts"
+    "start:fixtures": "yarn noderun src/shared/fixtures/index.ts"
   },
   "dependencies": {
     "cross-env": "^7.0.3",

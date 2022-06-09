@@ -76,11 +76,8 @@ export function getModGraph(imports: ImportsGraph, modules: Module[]): ModulesGr
     // imports //?
     // modules //?
     // const modGraph = Object.entries(imports).reduce((acc: ModulesGraph, [iFrom, iDeps]) => {
-    //     // FIXME: костыль!!!
-    //     if (iFrom === "default") return acc;
     //     const mFrom = asModule(iFrom, modules); //?
     //     const mDeps = iDeps.map(id => asModule(id, modules));
-
     //     return {...acc, [mFrom]: mDeps};
     // }, {})
     // FIXME: optimize! (O(n^2)!!!)
@@ -100,9 +97,6 @@ export function getModGraph(imports: ImportsGraph, modules: Module[]): ModulesGr
 
 // FIXME: Рекурсию опасно, т.к. могут быть цикл. зависимости (но как-то все равно придется прорабатывать!)
 // FIXME: refine impl!
-export function orderModules(modules: Module[], mg: ModulesGraph): Module[][] {
-    return [[]];
-}
 export function getModGraphOrdered(mg: ModulesGraph) {
     const processed = [];
     const modules = Object.keys(mg);
@@ -159,10 +153,3 @@ export function getModGraphOrdered(mg: ModulesGraph) {
 
 //     return -1;
 // }
-
-export function getProjFiles(imports: ImportsGraph): TFile[] {
-    return Object.keys(imports)
-        // FIXME: fix hack with default?
-        .filter((f) => f !== "default");
-
-}

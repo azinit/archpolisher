@@ -20,7 +20,6 @@ import { _GH_FDD } from "shared/fixtures";
 // TODO: Импорты хорошо, но нужно учитывать юниты! (особенно с подставами как с PublicAPI у фичей и пейджей)
 // !!! FIXME: naming! (file vs module vs component?)
 // FIXME: Оччч много биндингов к функциям... Нужно причесать, а то прокидывать пропсы такое себе (modules/structure/vector/...)
-// FIXME: МНого где при Object iter выстреливает "default" - надо убрать и пофиксить глобально
 // console.log("StructureGraph: ", structureMap);
 // !!! FIXME: Project with DI? (without passing as param)
 

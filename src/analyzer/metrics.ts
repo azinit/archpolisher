@@ -22,9 +22,6 @@ export function calcInstability(file: Module, project: Project): number {
     const inDeps = Object.entries(project.imports).filter(([gModule, gDeps]) => {
         // FIXME: redundant?
         if (gModule === file) return false;
-        // FIXME: what the "default"?
-        if (gModule === "default") return false;
-        // console.log(idx, gModule, gDeps);
         const gResult = gDeps.includes(file);
         return gResult;
     }).length;

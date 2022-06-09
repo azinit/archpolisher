@@ -2,7 +2,7 @@ import * as fs from "./fs";
 
 // FIXME: merge with fs?
 export function buildProject(imports: ImportsGraph): Project {
-    const files = fs.getProjFiles(imports);
+    const files = Object.keys(imports);
     const structure = fs.getStructure(imports);
     // FIXME: refine options
     const modules = fs.getModules(structure, [], 1);

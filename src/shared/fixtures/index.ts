@@ -1,4 +1,4 @@
-import * as PRESET_GH_FDD from "./imports.gh-fdd.json";
+import PRESET_GH_FDD from "./imports.gh-fdd.json";
 
 // const FIXTURES_CUTS = Object.entries(FIXTURES).reduce((acc, [fKey, fImp]) => {
 //     return { ...acc, [fKey]: asAbsFile(fImp).split("/")};
@@ -15,11 +15,10 @@ function __asAbsFile(file: Module): Module {
 // FIXME: replace to native replaceAll
 function __cleanImports(imports: ImportsGraph): ImportsGraph {
     return Object.entries(imports).reduce((acc, [file, fileDeps]) => {
-        // FIXME: Object.entries / default!
-        if (file === "default") return acc;
         return { ...acc, [__asAbsFile(file)]: fileDeps.map(__asAbsFile) };
     }, {});
 }
+
 export const _GH_FDD = {
     imports: __cleanImports(PRESET_GH_FDD) as ImportsGraph,
     files: {
