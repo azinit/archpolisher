@@ -27,7 +27,7 @@ type ClustersResult = {
 
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
 
-export function prepareDataset(project: Project) {
+export function prepareDataset(project: TProject) {
     // FIXME: for styles/{...scss} { Nan, -1 };
     return project.files.map((file) => [
         analyzer.metrics.calcInstability(file, project),
@@ -50,7 +50,7 @@ export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTI
     return { clusters, noise };
 }
 
-export function render(project: Project, dataset: Dataset, clustering: ClustersResult) {
+export function render(project: TProject, dataset: Dataset, clustering: ClustersResult) {
     const labels = project.files.map((file) => file.split("/").slice(0, 3).join("/"));
 
     // noise в начало, чтобы сначало отрендерились серые

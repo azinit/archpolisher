@@ -6,19 +6,11 @@ declare type ImportsGraph = Record<Module, ImportsDeps>;
 declare type ModulesGraph = Record<Module, ImportsDeps>;
 
 // FIXME: refine type
-declare type FSGraph = Record<string, any>;
+declare type Structure = Record<string, any>;
 
 declare type ModulesWeight = {
     name: string;
     order: number;
 };
-declare type Project = {
-    imports: ImportsGraph;
-    structure: FSGraph;
-    files: TFile[];
-    modules: Module[];
-    modulesGraph: ModulesGraph;
-    modulesGraphInv: {};
-    modulesOrder: Module[][];
-    modulesWeights: ModuleWeight[];
-}
+
+declare type TProject = import("./analyzer/project").IProject;

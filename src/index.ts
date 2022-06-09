@@ -2,6 +2,8 @@ import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import { _GH_FDD } from "shared/fixtures";
 
+const { Project } = analyzer.project;
+
 // TODO: add "index" resolution aliases for modules (shared/ui, not only shared/ui/button)
 // FIXME: resolve for .scss
 // FIXME: I: (A>B>C - более устойчивый/неустойчивый? не всегда!)
@@ -19,7 +21,7 @@ import { _GH_FDD } from "shared/fixtures";
 // !!! FIXME: Project with DI? (without passing as param)
 
 function main(imports: ImportsGraph) {
-    const project = analyzer.project.buildProject(imports);
+    const project = new Project(imports);
     const dataset = clusterizer.prepareDataset(project); //?
     // FIXME: specify neigh options
     const clustering = clusterizer.cluster(dataset); //?
@@ -27,7 +29,7 @@ function main(imports: ImportsGraph) {
 }
 
 function debug(imports: ImportsGraph) {
-    const project = analyzer.project.buildProject(imports);
+    const project = new Project(imports);
 
     // === INSTABILITY
     analyzer.metrics.calcInstability(_GH_FDD.files.SH_GET_ENV, project); //? 0

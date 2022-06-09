@@ -1,17 +1,16 @@
 // import { modGraphOrder, modulesList, FIXTURES } from "shared/fixtures";
-import { asModule } from "./fs";
 
 // FIXME: Учесть любую глубину! (возможно тогда нужна другая структура данных)
-export function calcAbstractness(file: TFile, project: Project): number {
+export function calcAbstractness(file: TFile, project: TProject): number {
     // TODO: calc weights of abstractness for graph
     // FIXME: calc with overcalcing with considering of abstractness current module (shared > entities > ...)
     const maxOrder = project.modulesOrder.length - 1;
-    const abstraItem = project.modulesWeights.find((module) => asModule(file, project.modules) === module.name);
+    const abstraItem = project.modulesWeights.find((module) => project.asModule(file) === module.name);
     if (!abstraItem) return -1;
     return abstraItem.order / maxOrder;
 }
 
-export function calcInstability(file: TFile, project: Project): number {
+export function calcInstability(file: TFile, project: TProject): number {
     // const inDeps = 4;
     // const outDeps = 0;
 
