@@ -31,8 +31,8 @@ export class Project {
         this.modulesWeights = this.getModulesWeights(options.abstractnessDepth);
     }
 
-    // FIXME: replace by actual fs structure?
     private getStructure(): Structure {
+        // NOTE: replace by actual fs structure?
         const fsCuts = this.files.map((f) => f.split("/"));
         const structure = fsGroupBy(fsCuts);
         return structure;
@@ -99,20 +99,13 @@ export class Project {
 //     return -1;
 // }
 
-// FIXME: optimize algo?
-// FIXME: optimize structure? (Array<string | Array>[]?)
-export function fsGroupBy(cuts: string[][], idx = 0): Structure {
-    const graph = _.groupBy(cuts, (cut) => cut[idx]);
-    const recCuts = Object.entries(graph).reduce((acc: Structure, [gDir, gCuts]) => {
-        // if (gDir.includes("get-env")) {
-        //     console.log("Chirik!");
-        // }
-        // FIXME: (get-env) Почему то выскакивает true, хотя должен false. Почему-то считает длину общего кортежа а не частного
-        const isFile = gCuts.length < idx + 1; // FIXME: refine
-        // if (isFile) return [...acc, gCuts[idx - 1]];
-        // return [...acc, {[gDir]: fsGroupBy(gCuts, idx + 1)}];
-        const gRecCuts = isFile ? gCuts[idx] : fsGroupBy(gCuts, idx + 1);
-        // return { ...acc,  {[gDir]: gRecCuts}  };
+// NOTE: optimize algo?
+// NOTE: optimize structure? (Array<string | Array>[]?)
+export function fsGroupBy(cuts: string[][], depth = 0): Structure {
+    const graph = _.groupBy(cuts, (cut) => cut[depth]);
+    const recCuts = Object.entries(graph).reduce((acc: Structure, [gDir, gCuts], idx) => {
+        const isFile = gCuts[0].length < depth + 2; // NOTE: why 2?
+        const gRecCuts = isFile ? undefined : fsGroupBy(gCuts, depth + 1);
         return { ...acc, [gDir]: gRecCuts };
     }, {});
     return recCuts;
@@ -139,7 +132,8 @@ function getModules(structure: Structure, root: string[] = [], minDepth = 2): Mo
         const hasIndex = dirFiles.some((df) => /index.(ts|tsx|jsx|js)/.test(df));
         // const __indexed = hasIndex || hadIndex; // FIXME: Костыль!!
         const __limit = root.includes("shared") ? minDepth : minDepth - 1; // FIXME: Костыль!!!
-        if (hasIndex && depth >= __limit) {
+        const isBoundary = hasIndex && depth >= __limit
+        if (isBoundary) {
             // return [path.join(...root, dirName)];
             // return dirFiles.map((df) => path.join(root, dirName, df));
             return nextRoot.join("/")
