@@ -3,6 +3,8 @@ import * as fs from "./fs";
 // FIXME: merge with fs?
 export function buildProject(imports: ImportsGraph): Project {
     const files = fs.getProjFiles(imports);
+    // FIXME: костыль!
+    const filesAbs = files.map(fs.asAbsFile);
     const structure = fs.getStructure(imports);
     // FIXME: refine options
     const modules = fs.getModules(structure, [], 1);
@@ -34,6 +36,7 @@ export function buildProject(imports: ImportsGraph): Project {
 
     return {
         files,
+        filesAbs,
         structure,
         modules,
         imports,

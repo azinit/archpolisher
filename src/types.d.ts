@@ -16,6 +16,7 @@ declare type Project = {
     imports: ImportsGraph;
     structure: FSGraph;
     files: TFile[];
+    filesAbs: TFile[];
     modules: Module[];
     modulesGraph: ModulesGraph;
     modulesGraphInv: {};
