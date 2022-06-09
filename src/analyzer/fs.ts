@@ -52,16 +52,9 @@ export function getModules(fsGraph: FSGraph, root: string[] = [], minDepth = 2):
     return modules;
 }
 
-// FIXME: normalize truncating
-export function asAbsFile(file: Module): Module {
-    // const files = Object.keys(importsBaseGraph).map((file) => file.replaceAll("../", "").replace("./", ""));
-    return file.replace("../", "");
-}
 // FIXME: replace by actual fs structure?
 export function getStructure(imports: ImportsGraph) {
-    // FIXME: "../" truncating is redundant?
-    // FIXME: replace to native replaceAll
-    const files = Object.keys(imports).map(asAbsFile);
+    const files = Object.keys(imports);
     const fsCuts = files.map((f) => f.split("/"));
     console.log(fsCuts.slice(100))
     const structure = fsGroupBy(fsCuts);
@@ -162,16 +155,15 @@ export function getModGraphOrdered(mg: ModulesGraph) {
 
 // export const modulesList = getModules(structureMap["shared"], ["shared"], 1); //?
 
-// FIXME: specify index.ts files
-export function getFSDist(file1: Module, file2: Module): number {
-    const aFile1 = asAbsFile(file1);
-    const aFile2 = asAbsFile(file2);
+// // FIXME: specify index.ts files
+// export function getFSDist(file1: Module, file2: Module): number {
+//     const aFile1 = asAbsFile(file1);
+//     const aFile2 = asAbsFile(file2);
 
-    return -1;
-}
+//     return -1;
+// }
 
 export function getProjFiles(imports: ImportsGraph): TFile[] {
-    // FIXME: export const projFiles = Object.keys(importsGraph).map(asAbsFile); //?
     return Object.keys(imports)
         // FIXME: fix hack with default?
         .filter((f) => f !== "default");
