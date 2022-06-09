@@ -55,8 +55,11 @@ export function render(project: TProject, dataset: Dataset, clustering: Clusters
 
     // noise в начало, чтобы сначало отрендерились серые
     // FIXME: неочевидно что gray первым
-    const datasets = [clustering.noise, ...clustering.clusters].map((group, idx) => ({
-        label: `Group#${idx}`,
+    const clusters = [clustering.noise, ...clustering.clusters];
+    const clustersFiles = clusters.map(cluster => cluster.map(idx => project.files[idx]));
+    const datasets = clusters.map((group, idx) => ({
+        // label: `Group#${idx}`,
+        label: unifyGroup(clustersFiles[idx]),
         backgroundColor: COLORS[idx],
         data: group.map(fIdx => {
             const [x, y] = dataset[fIdx];
@@ -68,3 +71,77 @@ export function render(project: TProject, dataset: Dataset, clustering: Clusters
     const dsFileContent = `var datasets = ${dsJSON};`
     fs.writeFileSync("src/clusterizer/ui/ds.js", dsFileContent); //?
 }
+
+const GROUPS = {
+    single: [
+        "features/search/results/queries.gen.ts",
+        "features/search/results/toolbar/index.scss",
+        "features/search/results/toolbar/index.tsx",
+        "features/search/results/toolbar/sort-select.tsx",
+        "features/user-info/hooks.ts",
+        "features/user-info/index.scss",
+        "features/user-info/index.tsx",
+        "features/user-info/queries.gen.ts",
+    ],
+    multiple: [
+        "features/user-info/hooks.ts",
+        "features/user-info/index.scss",
+        "features/user-info/index.tsx",
+        "features/user-info/queries.gen.ts",
+        "models.gen.ts",
+        "models.ts",
+        "pages/auth/index.scss",
+        "pages/auth/index.tsx",
+    ],
+    shared: [
+        "shared/components/card/index.scss",
+        "shared/components/card/index.tsx",
+        "shared/components/card/skeleton-group/index.tsx",
+        "shared/components/card/skeleton/index.scss",
+        "shared/components/card/skeleton/index.tsx",
+        "shared/components/index.ts",
+        "shared/components/org/index.scss",
+        "shared/components/org/index.tsx",
+        "shared/components/repo/index.scss",
+        "shared/components/repo/index.tsx",
+        "shared/components/repo/lang.tsx",
+        "shared/components/simple-pagination/index.scss",
+        "shared/components/simple-pagination/index.tsx",
+        "shared/components/tabs/index.tsx",
+        "shared/components/tabs/item/index.scss",
+        "shared/components/tabs/item/index.tsx",
+        "shared/components/user/index.tsx",
+    ],
+}
+
+function unifyGroup(group: TFile[]) {
+    const cuts = group.map((f) => f.split("/"));
+    const structure = analyzer.project.fsGroupBy(cuts);
+    const root = [];
+    let children: TFile[] = [];
+    let cursor: Structure | null = structure;
+    while (cursor) {
+        children = Object.keys(cursor);
+        if (children.length === 1) {
+            const nextRoot = children[0];
+            root.push(nextRoot);
+            cursor = cursor[nextRoot];
+            continue;
+        }
+        // Different dirs
+        cursor = null;
+    }
+
+    const rootLabel = root.join("/");
+    const childrenLabel = children.length > 4
+        ? "{*}"
+        : children.length > 0
+            ? `{${children.join("|")}}`
+            : undefined
+    if (!rootLabel) return childrenLabel;
+    return `${rootLabel}/${childrenLabel}`;
+}
+
+unifyGroup(GROUPS.single) //?
+unifyGroup(GROUPS.multiple) //?
+unifyGroup(GROUPS.shared) //?

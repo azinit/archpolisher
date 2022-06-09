@@ -101,7 +101,7 @@ export class Project {
 
 // FIXME: optimize algo?
 // FIXME: optimize structure? (Array<string | Array>[]?)
-function fsGroupBy(cuts: string[][], idx = 0): Structure {
+export function fsGroupBy(cuts: string[][], idx = 0): Structure {
     const graph = _.groupBy(cuts, (cut) => cut[idx]);
     const recCuts = Object.entries(graph).reduce((acc: Structure, [gDir, gCuts]) => {
         // if (gDir.includes("get-env")) {

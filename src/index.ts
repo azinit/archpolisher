@@ -24,7 +24,7 @@ function main(imports: ImportsGraph) {
     const project = new Project(imports);
     const dataset = clusterizer.prepareDataset(project); //?
     // FIXME: specify neigh options
-    const clustering = clusterizer.cluster(dataset); //?
+    const clustering = clusterizer.cluster(dataset, { neighNum: 10, neighRadius: 0.15 }); //?
     clusterizer.render(project, dataset, clustering); //?
 }
 

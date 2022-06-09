@@ -7,7 +7,8 @@
     "noderun": "cross-env NODE_PATH=./src ts-node",
     "start": "yarn noderun src/index.ts",
     "start:ml": "yarn noderun src/clusterize/index.ts",
-    "start:fixtures": "yarn noderun src/shared/fixtures/index.ts"
+    "start:fixtures": "yarn noderun src/shared/fixtures/index.ts",
+    "start:clust": "yarn noderun src/clusterizer/index.ts"
   },
   "dependencies": {
     "@partial-order/poset": "^6.0.0",

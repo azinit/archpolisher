@@ -1,8 +1,63 @@
 var datasets = [
 	{
-		"label": "Group#0",
+		"label": "{shared|app|styles}",
 		"backgroundColor": "gray",
 		"data": [
+			{
+				"x": 0.42857142857142855,
+				"y": 0.75,
+				"label": "shared/components/card"
+			},
+			{
+				"x": 0.5,
+				"y": 0.75,
+				"label": "shared/components/card"
+			},
+			{
+				"x": 0.3333333333333333,
+				"y": 0.75,
+				"label": "shared/components/card"
+			},
+			{
+				"x": 0.5454545454545454,
+				"y": 0.75,
+				"label": "shared/components/index.ts"
+			},
+			{
+				"x": 0.75,
+				"y": 0.75,
+				"label": "shared/components/org"
+			},
+			{
+				"x": 0.8,
+				"y": 0.75,
+				"label": "shared/components/repo"
+			},
+			{
+				"x": 0.5,
+				"y": 0.75,
+				"label": "shared/components/repo"
+			},
+			{
+				"x": 0.5,
+				"y": 0.75,
+				"label": "shared/components/simple-pagination"
+			},
+			{
+				"x": 0.5,
+				"y": 0.75,
+				"label": "shared/components/tabs"
+			},
+			{
+				"x": 0.5,
+				"y": 0.75,
+				"label": "shared/components/tabs"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.75,
+				"label": "shared/components/user"
+			},
 			{
 				"x": 0.36363636363636365,
 				"y": 1,
@@ -12,6 +67,16 @@ var datasets = [
 				"x": 0.5,
 				"y": 1,
 				"label": "shared/hooks/index.ts"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "app/header/index.tsx"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "app/hocs/index.ts"
 			},
 			{
 				"x": null,
@@ -32,11 +97,16 @@ var datasets = [
 				"x": null,
 				"y": -1,
 				"label": "styles/vars.scss"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "app/index.tsx"
 			}
 		]
 	},
 	{
-		"label": "Group#1",
+		"label": "features/{*}",
 		"backgroundColor": "red",
 		"data": [
 			{
@@ -98,6 +168,157 @@ var datasets = [
 				"x": 0.3333333333333333,
 				"y": 0.25,
 				"label": "features/user-info/queries.gen.ts"
+			}
+		]
+	},
+	{
+		"label": "{features|pages}",
+		"backgroundColor": "green",
+		"data": [
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/auth/firebase"
+			},
+			{
+				"x": 0.6,
+				"y": 0.25,
+				"label": "features/auth/hooks.ts"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/auth/index.ts"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/auth/user"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/error/catcher.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/error/helpers.ts"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/error/index.ts"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/hero-sheet/index.tsx"
+			},
+			{
+				"x": 0.5555555555555556,
+				"y": 0.25,
+				"label": "features/index.ts"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/repo-details/card-collaborators"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/repo-details/card-common"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/repo-explorer/hooks.ts"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-list/items"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/repo-list/pagination"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-list/tabs"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-stat/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/search/index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/search/results"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.25,
+				"label": "features/search/results"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/user-info/hooks.ts"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/user-info/index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.125,
+				"label": "pages/home/index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.125,
+				"label": "pages/search/index.tsx"
 			},
 			{
 				"x": 0.5,
@@ -135,117 +356,17 @@ var datasets = [
 				"label": "features/search/results"
 			},
 			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/auth/firebase"
-			},
-			{
-				"x": 0.6,
-				"y": 0.25,
-				"label": "features/auth/hooks.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/auth/user"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/error/helpers.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/error/index.ts"
-			},
-			{
-				"x": 0.5555555555555556,
-				"y": 0.25,
-				"label": "features/index.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/repo-details/card-collaborators"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/repo-explorer/hooks.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.25,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.8,
-				"y": 0.25,
-				"label": "features/auth/index.ts"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/error/catcher.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/hero-sheet/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/repo-details/card-common"
-			},
-			{
 				"x": 0.8333333333333334,
 				"y": 0.25,
 				"label": "features/repo-details/index.tsx"
 			},
 			{
-				"x": 0.8,
-				"y": 0.25,
-				"label": "features/repo-explorer/components"
-			},
-			{
 				"x": 0.8571428571428571,
 				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
 				"x": 0.8571428571428571,
-				"y": 0.25,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.8,
 				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
@@ -255,36 +376,11 @@ var datasets = [
 				"label": "features/repo-list/index.tsx"
 			},
 			{
-				"x": 0.8,
-				"y": 0.25,
-				"label": "features/repo-list/items"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/repo-list/pagination"
-			},
-			{
-				"x": 0.8,
-				"y": 0.25,
-				"label": "features/repo-list/tabs"
-			},
-			{
-				"x": 0.8,
-				"y": 0.25,
-				"label": "features/repo-stat/index.tsx"
-			},
-			{
 				"x": 0.8333333333333334,
 				"y": 0.25,
 				"label": "features/search/filters"
 			},
 			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/search/index.tsx"
-			},
-			{
 				"x": 0.8333333333333334,
 				"y": 0.25,
 				"label": "features/search/results"
@@ -293,16 +389,6 @@ var datasets = [
 				"x": 0.8333333333333334,
 				"y": 0.25,
 				"label": "features/search/results"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/user-info/hooks.ts"
-			},
-			{
-				"x": 0.75,
-				"y": 0.25,
-				"label": "features/user-info/index.tsx"
 			},
 			{
 				"x": 0.8,
@@ -310,9 +396,9 @@ var datasets = [
 				"label": "pages/auth/index.tsx"
 			},
 			{
-				"x": 0.6666666666666666,
+				"x": 0.875,
 				"y": 0.125,
-				"label": "pages/home/index.tsx"
+				"label": "pages/index.tsx"
 			},
 			{
 				"x": 0.8,
@@ -320,45 +406,20 @@ var datasets = [
 				"label": "pages/repository/index.tsx"
 			},
 			{
-				"x": 0.6666666666666666,
-				"y": 0.125,
-				"label": "pages/search/index.tsx"
-			},
-			{
 				"x": 0.75,
 				"y": 0.125,
 				"label": "pages/user/index.tsx"
 			},
 			{
-				"x": 0.875,
-				"y": 0.125,
-				"label": "pages/index.tsx"
-			},
-			{
 				"x": 1,
 				"y": 0.125,
 				"label": "pages/error/index.tsx"
-			},
-			{
-				"x": 1,
-				"y": 0,
-				"label": "app/header/index.tsx"
-			},
-			{
-				"x": 1,
-				"y": 0,
-				"label": "app/hocs/index.ts"
-			},
-			{
-				"x": 1,
-				"y": 0,
-				"label": "app/index.tsx"
 			}
 		]
 	},
 	{
-		"label": "Group#2",
-		"backgroundColor": "green",
+		"label": "{features|pages|app}",
+		"backgroundColor": "blue",
 		"data": [
 			{
 				"x": 0,
@@ -518,8 +579,8 @@ var datasets = [
 		]
 	},
 	{
-		"label": "Group#3",
-		"backgroundColor": "blue",
+		"label": "{models.gen.ts|models.ts|shared}",
+		"backgroundColor": "pink",
 		"data": [
 			{
 				"x": 0,
@@ -600,67 +661,6 @@ var datasets = [
 				"x": 0,
 				"y": 0.75,
 				"label": "shared/components/tabs"
-			}
-		]
-	},
-	{
-		"label": "Group#4",
-		"backgroundColor": "pink",
-		"data": [
-			{
-				"x": 0.42857142857142855,
-				"y": 0.75,
-				"label": "shared/components/card"
-			},
-			{
-				"x": 0.5,
-				"y": 0.75,
-				"label": "shared/components/card"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0.75,
-				"label": "shared/components/card"
-			},
-			{
-				"x": 0.5454545454545454,
-				"y": 0.75,
-				"label": "shared/components/index.ts"
-			},
-			{
-				"x": 0.5,
-				"y": 0.75,
-				"label": "shared/components/repo"
-			},
-			{
-				"x": 0.5,
-				"y": 0.75,
-				"label": "shared/components/simple-pagination"
-			},
-			{
-				"x": 0.5,
-				"y": 0.75,
-				"label": "shared/components/tabs"
-			},
-			{
-				"x": 0.5,
-				"y": 0.75,
-				"label": "shared/components/tabs"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.75,
-				"label": "shared/components/user"
-			},
-			{
-				"x": 0.75,
-				"y": 0.75,
-				"label": "shared/components/org"
-			},
-			{
-				"x": 0.8,
-				"y": 0.75,
-				"label": "shared/components/repo"
 			}
 		]
 	}
