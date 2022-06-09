@@ -1,6 +1,6 @@
 var datasets = [
 	{
-		"label": "{shared|app|styles}",
+		"label": "{shared|app}",
 		"backgroundColor": "gray",
 		"data": [
 			{
@@ -80,23 +80,23 @@ var datasets = [
 			},
 			{
 				"x": null,
-				"y": -1,
-				"label": "styles/normalize-antd.scss"
+				"y": 0,
+				"label": "app/styles/normalize-antd.scss"
 			},
 			{
 				"x": null,
-				"y": -1,
-				"label": "styles/normalize.scss"
+				"y": 0,
+				"label": "app/styles/normalize.scss"
 			},
 			{
 				"x": null,
-				"y": -1,
-				"label": "styles/utils.scss"
+				"y": 0,
+				"label": "app/styles/utils.scss"
 			},
 			{
 				"x": null,
-				"y": -1,
-				"label": "styles/vars.scss"
+				"y": 0,
+				"label": "app/styles/vars.scss"
 			},
 			{
 				"x": 1,

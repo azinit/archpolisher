@@ -18,7 +18,9 @@ const { Project } = analyzer.fs;
 // TODO: С ориентированным графом модулей все +- понятно, но что делать если он еще циклический? Как определять основное направление графа? (для распределения абстрактности)
 // TODO: shared/compoonents зависит от models.ts / shared/lib - как быть? (один же слой, какая разница? Како бозначить такие шареды которых будет дохуища в проектах?)
 // TODO: Импорты хорошо, но нужно учитывать юниты! (особенно с подставами как с PublicAPI у фичей и пейджей)
-// !!! FIXME: Project with DI? (without passing as param)
+// !!! FIXME: Project instance with DI? (without passing as param)
+// !!! Находятся почему-то не все связи (app/hocs#withApollo > features#Auth)
+// !!! TODO: only for different specific extensions (tsx, ts, js, jsx)
 
 function main(imports: ImportsGraph) {
     const project = new Project(imports);

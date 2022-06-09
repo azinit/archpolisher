@@ -21,11 +21,9 @@ export class Project {
         this.files = Object.keys(imports);
         this.structure = this.getStructure();
         // FIXME: refine options
+        // NOTE: Если сделать 2 (для специфичных слоев), то это не меняет фактических импортов (в итоге все поломается)
+        // NOTE: (NonActual?) app/hocs, app в modulesList - твои действия?
         this.modules = getModules(this.structure, [], 1);
-        // !!! FIXME: Костыль! Найти все в модулях и структуре!
-        // !!! Находятся почему-то не все связи (app/hocs#withApollo > features#Auth)
-        this.modules.push("shared/get-env", "models.gen.ts", "models.ts"); // + app/hocs?
-        // FIXME: app/hocs, app в modulesList - твои действия?
         // Modules graph
         this.modulesGraph = this.getModulesGraph();
         this.modulesWeights = this.getModulesWeights(options.abstractnessDepth);
@@ -38,7 +36,7 @@ export class Project {
         return structure;
     }
 
-    // Вытягиваем и упрощаем граф
+    /** Упрощаем граф зависимостей до уровня модулей */
     private getModulesGraph(): ModulesGraph {
         // const modGraph = Object.entries(imports).reduce((acc: ModulesGraph, [iFrom, iDeps]) => {
         //     const mFrom = asModule(iFrom, modules); //?
@@ -111,33 +109,25 @@ export function fsGroupBy(cuts: string[][], depth = 0): Structure {
     return recCuts;
 }
 
-// FIXME: refine strategy (by User / by general-deep-dir / by has-files / by has-index / ...)
-// FIXME: refine algo?
-// FIXME: minDepth crutch
-// FIXME: detect button/button.tsx case
-// FIXME: remove hadIndex crutch (need?)
+// NOTE: refine strategy, not only by hasIndex (by User / by general-deep-dir / by has-files / by has-index / ...)
+// NOTE: refine algo?
+// NOTE: detect button/button.tsx case
+// NOTE: root convert to string?
 // FIXME: detect shared/components/button && shared/helpers
 function getModules(structure: Structure, root: string[] = [], minDepth = 2): Module[] {
-    // TODO: for simple modules (index.tsx)
-    // TODO: for complex modules ({... index.tsx})
-    // TODO: for different extensions (tsx, ts, js, jsx)
-    // TODO: for header and etc...
-    // const depth = root.split("/").length; //? // FIXME:
     const depth = root.length;
     const modules = Object.entries(structure).map(([dirName, dirTree]) => {
-        if (!dirTree) return [];
+        // NOTE: (&& !root.length) ? // Только для одиночных файлов
+        if (!dirTree) return dirName;
         // Has index inner check
         const dirFiles = Object.keys(dirTree);
         const nextRoot = [...root, dirName];
         const hasIndex = dirFiles.some((df) => /index.(ts|tsx|jsx|js)/.test(df));
-        // const __indexed = hasIndex || hadIndex; // FIXME: Костыль!!
-        const __limit = root.includes("shared") ? minDepth : minDepth - 1; // FIXME: Костыль!!!
-        const isBoundary = hasIndex && depth >= __limit
-        if (isBoundary) {
-            // return [path.join(...root, dirName)];
-            // return dirFiles.map((df) => path.join(root, dirName, df));
-            return nextRoot.join("/")
-        }
+        // !!! FIXME: Один большой костыль для нестинга! (+minDepth)
+        const __limit = root.includes("shared") ? minDepth : minDepth - 1;
+        const __isDepthLimited = depth >= __limit;
+        const isBoundary = hasIndex && __isDepthLimited;
+        if (isBoundary) return nextRoot.join("/")
         // Continue recursion
         const dirModules = getModules(dirTree, nextRoot, minDepth);
         return dirModules;

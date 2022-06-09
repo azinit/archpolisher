@@ -326,9 +326,9 @@
     "../app/hocs/with-error-handling.tsx",
     "../app/hocs/with-router.tsx"
   ],
-  "styles/normalize-antd.scss": [],
-  "styles/normalize.scss": [],
-  "styles/utils.scss": [],
-  "styles/vars.scss": [],
+  "../app/styles/normalize-antd.scss": [],
+  "../app/styles/normalize.scss": [],
+  "../app/styles/utils.scss": [],
+  "../app/styles/vars.scss": [],
   "../app/index.tsx": ["../pages/index.tsx"]
 }
