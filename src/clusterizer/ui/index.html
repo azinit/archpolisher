@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Clusterizing</title>
+</head>
+
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="ds.js"></script>
+    <script>
+        // Register the plugin to all charts:
+        // Chart.register(ChartDataLabels);
+
+        console.log(datasets);
+        // const data = {
+        //     datasets: [{
+        //         label: 'Scatter Dataset',
+        //         data: [{
+        //             x: -10,
+        //             y: 0,
+        //             backgroundColor: 'green',
+        //         }, {
+        //             x: 0,
+        //             y: 10
+        //         }, {
+        //             x: 10,
+        //             y: 5
+        //         }, {
+        //             x: 0.5,
+        //             y: 5.5
+        //         }],
+        //         // backgroundColor: 'rgb(255, 99, 132)'
+        //     }],
+        // };
+        const data = { datasets };
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        text: 'Instability',
+                    },
+                    y: {
+                        text: 'Abstractness',
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        // enabled: false,
+                        callbacks: {
+                            label: function (ctx) {
+                                // console.log("HOVER: ctx=", ctx);
+                                // let label = ctx.dataset.label || '';
+                                return ctx.raw.label;
+                                // if (label) {
+                                //     label += ': ';
+                                // }
+                                // if (ctx.parsed.y !== null) {
+                                //     label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ctx.parsed.y);
+                                // }
+                                // return label;
+                            }
+                        }
+                    },
+                },
+            }
+        };
+    </script>
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+</body>
+
+</html>
