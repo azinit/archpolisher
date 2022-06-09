@@ -2,7 +2,7 @@
 import { asModule } from "./fs";
 
 // FIXME: Учесть любую глубину! (возможно тогда нужна другая структура данных)
-export function calcAbstractness(file: Module, project: Project): number {
+export function calcAbstractness(file: TFile, project: Project): number {
     // TODO: calc weights of abstractness for graph
     // FIXME: calc with overcalcing with considering of abstractness current module (shared > entities > ...)
     const maxOrder = project.modulesOrder.length - 1;
@@ -11,7 +11,7 @@ export function calcAbstractness(file: Module, project: Project): number {
     return abstraItem.order / maxOrder;
 }
 
-export function calcInstability(file: Module, project: Project): number {
+export function calcInstability(file: TFile, project: Project): number {
     // const inDeps = 4;
     // const outDeps = 0;
 

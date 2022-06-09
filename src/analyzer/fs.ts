@@ -62,7 +62,7 @@ export function getStructure(imports: ImportsGraph) {
 }
 
 // FIXME: refine impl?
-export function asModule(imp: Module, modules: Module[]): Module {
+export function asModule(imp: TFile, modules: Module[]): Module {
     const module = modules.find((m) => imp.includes(m));
     return module || imp
 }
@@ -147,7 +147,7 @@ export function getModGraphOrdered(mg: ModulesGraph) {
 // export const modulesList = getModules(structureMap["shared"], ["shared"], 1); //?
 
 // // FIXME: specify index.ts files
-// export function getFSDist(file1: Module, file2: Module): number {
+// export function getFSDist(file1: TFile, file2: TFile): number {
 //     const aFile1 = asAbsFile(file1);
 //     const aFile2 = asAbsFile(file2);
 

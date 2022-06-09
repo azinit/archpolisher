@@ -4,7 +4,7 @@ import PRESET_GH_FDD from "./imports.gh-fdd.json";
 //     return { ...acc, [fKey]: asAbsFile(fImp).split("/")};
 // }, {})
 
-function __asAbsFile(file: Module): Module {
+function __asAbsFile(file: TFile): TFile {
     // FIXME: normalize truncating
     // const files = Object.keys(importsBaseGraph).map((file) => file.replaceAll("../", "").replace("./", ""));
     return file.replace("../", "");
