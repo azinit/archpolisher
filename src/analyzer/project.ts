@@ -16,21 +16,10 @@ export function buildProject(imports: ImportsGraph): Project {
         const outDeps = modules.filter((it) => modulesGraph[it].includes(module));
         return { ...acc, [module]: outDeps };
     }, {}) //?
-    // const modulesOrder = fs.getModGraphOrdered(modGraph);
-    const modulesOrder = [
-        ["app"],
-        ["pages"],
-        ["features"],
-        ["shared/get-env", "shared/hooks", "shared/helpers", "shared/components"],
-        ["models.ts", "models.gen.ts"],
-    ]
-    const modulesWeights: ModulesWeight[] = modulesOrder.map((mgIt, idx) => {
-        // if (typeof mgIt === "string") {
-        //     return { name: mgIt, order: idx };
-        // };
-        // // FIXME: isArray?
-        return mgIt.map(it => ({ name: it, order: idx }));
-    }).flat(); //?
+    const modulesOrder = fs.getModGraphOrdered(modulesGraph);
+    const modulesWeights: ModulesWeight[] = modulesOrder.map((mgIt, idx) => (
+        mgIt.map(it => ({ name: it, order: idx }))
+    )).flat(); //?
 
     return {
         files,

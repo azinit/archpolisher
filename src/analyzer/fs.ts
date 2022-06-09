@@ -97,12 +97,21 @@ export function getModGraph(imports: ImportsGraph, modules: Module[]): ModulesGr
 
 // FIXME: Рекурсию опасно, т.к. могут быть цикл. зависимости (но как-то все равно придется прорабатывать!)
 // FIXME: refine impl!
-export function getModGraphOrdered(mg: ModulesGraph) {
+export function getModGraphOrdered(mg: ModulesGraph): Module[][] {
     const processed = [];
     const modules = Object.keys(mg);
     const result = [];
 
     // modules.forEach(callbackfn)
+
+    // FIXME: mock!
+    return [
+        ["app"],
+        ["pages"],
+        ["features"],
+        ["shared/get-env", "shared/hooks", "shared/helpers", "shared/components"],
+        ["models.ts", "models.gen.ts"],
+    ]
 }
 
 /* 
