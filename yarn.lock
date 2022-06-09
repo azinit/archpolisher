@@ -27,6 +27,16 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@partial-order/poset@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@partial-order/poset/-/poset-6.0.0.tgz#50e2c49459c27e4473e036413156a20f1f3d8b0c"
+  integrity sha512-c8Jkz/2XgKxRA2X4WNgCgGp1m1ZVN8/7bvR1gqT3prKBDp2cHNPNRL7TLiUdpkK7a25ziyM1x17D8eTZ29gMkw==
+
+"@total-order/primitive@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@total-order/primitive/-/primitive-1.0.1.tgz#7e409d303a2a3b24ed2af30bd9068027d6a4a326"
+  integrity sha512-BXCXyXoQIpdwFkplPRTuxFB0I1GHHia4t22bLAEqjdk48DFwQMwSbHq1EdLA81X/eFC/b6RdVxG4Q+WEcfs0aA==
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.8.tgz#c1e4e80d6f964fbecb3359c43bd48b40f7cadad9"
@@ -107,6 +117,11 @@ diff@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
+
+husky@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
+  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
 
 isexe@^2.0.0:
   version "2.0.0"

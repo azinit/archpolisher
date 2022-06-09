@@ -1,16 +1,13 @@
 declare type Module = string;
 // FIXME: resole collisions!
 declare type TFile = string;
-declare type ImportsDeps = Module[];
-declare type ImportsGraph = Record<Module, ImportsDeps>;
-declare type ModulesGraph = Record<Module, ImportsDeps>;
 
+declare type ModuleDeps = Module[];
+declare type ModulesWeights = Record<Module, number>;
+
+declare type ImportsGraph = Record<Module, ModuleDeps>;
+declare type ModulesGraph = Record<Module, ModuleDeps>;
 // FIXME: refine type
 declare type Structure = Record<string, any>;
-
-declare type ModulesWeight = {
-    name: string;
-    order: number;
-};
 
 declare type TProject = import("./analyzer/project").IProject;

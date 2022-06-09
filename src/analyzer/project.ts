@@ -1,18 +1,22 @@
 import _ from "lodash";
+type Options = {
+    abstractnessDepth: number;
+};
 
-// FIXME: merge with fs?
+const DEFAULT_OPTIONS: Options = {
+    abstractnessDepth: 3,
+};
+
+
 export class Project {
-    // FIXME: resolve duplicates types?
     imports: ImportsGraph;
     structure: Structure;
     files: TFile[];
     modules: Module[];
     modulesGraph: ModulesGraph;
-    modulesGraphInv: {};
-    modulesOrder: Module[][];
-    modulesWeights: { name: string; order: number; }[];
+    modulesWeights: ModulesWeights;
 
-    constructor(imports: ImportsGraph) {
+    constructor(imports: ImportsGraph, options = DEFAULT_OPTIONS) {
         this.imports = imports;
         this.files = Object.keys(imports);
         this.structure = this.getStructure();
@@ -24,16 +28,7 @@ export class Project {
         // FIXME: app/hocs, app в modulesList - твои действия?
         // Modules graph
         this.modulesGraph = this.getModulesGraph();
-        // FIXME: Дорого проходить N^2 граф! Придумать способ изящнее!
-        this.modulesGraphInv = this.modules.reduce((acc, module) => {
-            const outDeps = this.modules.filter((it) => this.modulesGraph[it].includes(module));
-            return { ...acc, [module]: outDeps };
-        }, {}) //?
-        // Abstractness
-        this.modulesOrder = this.getModulesOrder();
-        this.modulesWeights = this.modulesOrder.map((mgIt, idx) => (
-            mgIt.map(it => ({ name: it, order: idx }))
-        )).flat(); //?
+        this.modulesWeights = this.getModulesWeights(options.abstractnessDepth);
     }
 
     // FIXME: replace by actual fs structure?
@@ -65,21 +60,28 @@ export class Project {
         return modGraph;
     }
 
-    // FIXME: Рекурсию опасно, т.к. могут быть цикл. зависимости (но как-то все равно придется прорабатывать!)
-    // FIXME: refine impl!
-    private getModulesOrder(): Module[][] {
-        // const processed = [];
-        // const modules = this.modules;
-        // const result = [];
-        // modules.forEach(callbackfn)
-        // !!! FIXME: mock!
-        return [
-            ["app"],
-            ["pages"],
-            ["features"],
-            ["shared/get-env", "shared/hooks", "shared/helpers", "shared/components"],
-            ["models.ts", "models.gen.ts"],
-        ]
+    /**
+     * 
+     * @param depth (max=5)
+     * @example
+     *  ["app"],
+     *  ["pages"],
+     *  ["features"],
+     *  ["shared/get-env", "shared/hooks", "shared/helpers", "shared/components"],
+     *  ["models.ts", "models.gen.ts"],
+     */
+    private getModulesWeights(depth = 5): ModulesWeights {
+        return this.modules.reduce((acc, module) => {
+            const deps1 = this.modulesGraph[module]; // depth=1
+            const deps2 = deps1.map(dep => this.modulesGraph[dep]).flat(); // depth=2
+            const deps3 = deps2.map(dep => this.modulesGraph[dep]).flat(); // depth=3
+            const deps4 = deps3.map(dep => this.modulesGraph[dep]).flat(); // depth=4
+            const deps5 = deps4.map(dep => this.modulesGraph[dep]).flat(); // depth=5
+            // FIXME: refine depth iterating!
+            const totalDeps = [deps1, deps2, deps3, deps4, deps5];
+            const deps = _.uniq(totalDeps.slice(0, depth).flat())
+            return { ...acc, [module]: deps.length };
+        }, {});
     }
 
     // FIXME: refine impl?
@@ -87,7 +89,6 @@ export class Project {
         const module = this.modules.find((m) => file.includes(m));
         return module || file;
     }
-
 };
 
 // // FIXME: specify index.ts files
@@ -149,44 +150,5 @@ function getModules(structure: Structure, root: string[] = [], minDepth = 2): Mo
     }).flat();
     return modules;
 }
-
-
-/*
-> [features] [s/env, s/hooks, models, models.gen, s/help, s/comp]
-> [features] [s/hooks, models, models.gen, s/help, s/comp] [s/env]
-> [features] [models, models.gen, s/help, s/comp] [s/env, s/hooks]
-> [features] [models, models.gen, s/help, s/comp] [s/env, s/hooks]
-*/
-
-
-/**
- * > [features] [s/env, s/hooks, models, models.gen, s/help, s/comp]
- * > [pages] [features] [s/env, s/hooks, models, models.gen, s/help, s/comp]
- * > [pages] [features] [s/comp] [s/env, s/hooks, models, models.gen, s/help, s/comp]
- * > ...
- * // NOTE: Группировать похожие?
- * > [app] [pages] [features] [s/comp] [models, models.gen]
- */
-
-/**
- * Смотрим родителя и выносим вбок
- * !!! Проблема, что надо возможно смотреть еще надродителя (mod.g < mod < s/comp)
- * !!! Проблема, что нет складирования в одинаковые коробки, помимо "общих предков"
- * $ [features, pages, s/comp, s/help, s/hooks, app, s/env, mod.g, mod]
- * > [pages, app] [<features>, s/comp, s/help, s/hooks, s/env, mod.g, mod]
- * > [app] [<pages>] [features, s/comp, s/help, s/hooks, s/env, mod.g, mod]
- * > [app] [pages] [features] [<s/comp>, s/help, s/hooks, s/env, mod.g, mod]
- * > [app] [pages] [features] [s/comp, <s/help>, s/hooks, s/env, mod.g, mod]
- * > [app] [pages] [features] [s/comp, s/help, <s/hooks>, s/env, mod.g, mod]
- * > [app] [pages] [features] [s/comp, s/help, s/hooks, <s/env>, mod.g, mod]
- * > [app] [pages] [features] [s/comp, s/help, s/hooks, s/env, <mod.g>, mod]
- */
-
-
-/**
- * Смотрим от "абстрактных" и до конкретных
- * $ [s/help, s/hooks, s/env, mod.g]
- * > [s/help, s/hooks, s/env, mod.g]
- */
 
 export interface IProject extends Project {};
