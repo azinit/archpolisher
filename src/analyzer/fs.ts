@@ -38,24 +38,18 @@ export class Project {
 
     /** Упрощаем граф зависимостей до уровня модулей */
     private getModulesGraph(): ModulesGraph {
-        // const modGraph = Object.entries(imports).reduce((acc: ModulesGraph, [iFrom, iDeps]) => {
-        //     const mFrom = asModule(iFrom, modules); //?
-        //     const mDeps = iDeps.map(id => asModule(id, modules));
-        //     return {...acc, [mFrom]: mDeps};
-        // }, {})
-        // FIXME: optimize! (O(n^2)!!!)
-        const modGraph = this.modules.reduce((acc: ModulesGraph, module) => {
-            const moduleFiles = Object.keys(this.imports).filter(im => im.includes(module));
-            const moduleOutImports = moduleFiles.map(mf => this.imports[mf]).flat();
-            const moduleOutDeps = _.uniq(
-                moduleOutImports
-                    .map(moi => this.asModule(moi))
-                    // FIXME: Учитывать в будущем и кросс-импорты!
-                    .filter(moi => moi !== module)
-            );
-            return { ...acc, [module]: moduleOutDeps };
+        // NOTE: optimize! (O(n^2)!!!) // iter-by-files with uniqSet
+        return this.modules.reduce((acc: ModulesGraph, module) => {
+            /** Файлы-содержимое (модуля) */
+            const moduleChildren = this.files.filter(file => file.includes(module));
+            /** Внешние модули-пользователи (модуля) */
+            const moduleOutDeps = moduleChildren
+                .map(oFile => this.imports[oFile]).flat()
+                .map(oFile => this.asModule(oFile))
+                // FIXME: Учитывать в будущем и кросс-импорты!
+                .filter(oModule => oModule !== module);
+            return { ...acc, [module]: _.uniq(moduleOutDeps) };
         }, {});
-        return modGraph;
     }
 
     /**
