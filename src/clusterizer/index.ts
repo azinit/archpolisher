@@ -116,7 +116,7 @@ const GROUPS = {
 
 function unifyGroup(group: TFile[]) {
     const cuts = group.map((f) => f.split("/"));
-    const structure = analyzer.project.fsGroupBy(cuts);
+    const structure = analyzer.fs.fsGroupBy(cuts);
     const root = [];
     let children: TFile[] = [];
     let cursor: Structure | null = structure;

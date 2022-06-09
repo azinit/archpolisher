@@ -10,4 +10,4 @@ declare type ModulesGraph = Record<Module, ModuleDeps>;
 // FIXME: refine type
 declare type Structure = Record<string, any>;
 
-declare type TProject = import("./analyzer/project").IProject;
+declare type TProject = import("./analyzer/fs").IProject;

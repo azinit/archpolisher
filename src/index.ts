@@ -2,7 +2,7 @@ import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import { _GH_FDD } from "shared/fixtures";
 
-const { Project } = analyzer.project;
+const { Project } = analyzer.fs;
 
 // TODO: add "index" resolution aliases for modules (shared/ui, not only shared/ui/button)
 // FIXME: resolve for .scss
