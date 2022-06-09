@@ -1,3 +1,3 @@
-export { calcAbstractness } from "./abstractness";
-export { calcInstability } from "./instability";
-export * as moduleLib from "./module";
+export * as metrics from "./metrics";
+export * as fs from "./fs";
+export * as project from "./project";

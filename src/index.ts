@@ -1,5 +1,6 @@
+import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
-import { structureMap } from "shared/fixtures";
+import { importsGraph, FIXTURES } from "shared/fixtures";
 
 // TODO: add "index" resolution aliases for modules (shared/ui, not only shared/ui/button)
 // TODO: calc Instability for all graph
@@ -20,5 +21,37 @@ import { structureMap } from "shared/fixtures";
 // !!! FIXME: naming! (file vs module vs component?)
 // FIXME: Оччч много биндингов к функциям... Нужно причесать, а то прокидывать пропсы такое себе (modules/structure/vector/...)
 // FIXME: МНого где при Object iter выстреливает "default" - надо убрать и пофиксить глобально
-console.log("StructureGraph: ", structureMap);
+// console.log("StructureGraph: ", structureMap);
+// !!! FIXME: Project with DI? (without passing as param)
 
+function main(imports: ImportsGraph) {
+    const project = analyzer.project.buildProject(imports);
+    const dataset = clusterizer.prepareDataset(project); //?
+    // FIXME: specify neigh options
+    const clustering = clusterizer.cluster(dataset); //?
+    clusterizer.render(project, dataset, clustering); //?
+}
+
+function debug(imports: ImportsGraph) {
+    const project = analyzer.project.buildProject(imports);
+
+    // === INSTABILITY
+    analyzer.metrics.calcInstability(FIXTURES.SH_GET_ENV, project); //? 0
+    analyzer.metrics.calcInstability(FIXTURES.FE_AUTH_HOOKS, project); //? 0.6
+    analyzer.metrics.calcInstability(FIXTURES.PG_AUTH_UI, project); //? 0.8
+    // FIXME: in[header] == 0? failed resolution?
+    analyzer.metrics.calcInstability(FIXTURES.HEADER, project); //? 1
+    const __totalInstability = project.files.reduce((acc, file, idx) => {
+        const fileI = analyzer.metrics.calcInstability(file, project);
+        return { ...acc, [file]: fileI }
+    }, {}) //?
+    // === ABSTRACTNESS
+    analyzer.metrics.calcAbstractness(FIXTURES.HEADER, project); //? 0.00
+    analyzer.metrics.calcAbstractness(FIXTURES.PG_AUTH_UI, project); //? 0.25
+    analyzer.metrics.calcAbstractness(FIXTURES.FE_AUTH_HOOKS, project); //? 0.50
+    analyzer.metrics.calcAbstractness(FIXTURES.SH_GET_ENV, project); //? 0.75
+}
+
+
+main(importsGraph);
+// debug(importsGraph);

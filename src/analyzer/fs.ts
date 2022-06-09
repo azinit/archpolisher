@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 // FIXME: optimize algo?
 // FIXME: optimize structure? (Array<string | Array>[]?)
 export function fsGroupBy(cuts: string[][], idx = 0): FSGraph {
@@ -12,7 +14,7 @@ export function fsGroupBy(cuts: string[][], idx = 0): FSGraph {
         // return [...acc, {[gDir]: fsGroupBy(gCuts, idx + 1)}];
         const gRecCuts = isFile ? gCuts[idx] : fsGroupBy(gCuts, idx + 1);
         // return { ...acc,  {[gDir]: gRecCuts}  };
-        return {...acc, [gDir]: gRecCuts};
+        return { ...acc, [gDir]: gRecCuts };
     }, {});
     return recCuts;
 }
@@ -115,7 +117,7 @@ export function getModGraphOrdered(mg: ModulesGraph) {
     const processed = [];
     const modules = Object.keys(mg);
     const result = [];
-    
+
     // modules.forEach(callbackfn)
 }
 
@@ -166,4 +168,12 @@ export function getFSDist(file1: Module, file2: Module): number {
     const aFile2 = asAbsFile(file2);
 
     return -1;
+}
+
+export function getProjFiles(imports: ImportsGraph): TFile[] {
+    // FIXME: export const projFiles = Object.keys(importsGraph).map(asAbsFile); //?
+    return Object.keys(imports)
+        // FIXME: fix hack with default?
+        .filter((f) => f !== "default");
+
 }

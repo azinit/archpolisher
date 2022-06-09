@@ -4,10 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "start:ml": "ts-node src/clusterize/index.ts"
+    "noderun": "cross-env NODE_PATH=./src ts-node",
+    "start": "yarn noderun src/index.ts",
+    "start:ml": "yarn noderun src/clusterize/index.ts",
+    "start:analyzer:abstr": "yarn noderun src/analyzer/abstractness.ts"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "density-clustering": "^1.3.0",
     "lodash": "^4.17.21",
     "ts-node": "^10.8.1",
