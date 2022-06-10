@@ -24,14 +24,16 @@ const CLUST_OPTIONS = {
     modules: { neighNum: 1, neighRadius: 0.15 },
     files: { neighNum: 10, neighRadius: 0.15 },
 }
-const __userStrategy: DatasetStrategy = "modules";
+const __userStrategy: DatasetStrategy = "files";
 
 function main(imports: ImportsGraph) {
 
     const project = new Project(imports); //?
     const dataset = clusterizer.prepareDataset(project, __userStrategy); //?
     const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS[__userStrategy]); //?
-    clusterizer.render(project, clustering, dataset); //?
+    const issues = clusterizer.findProjectIssues(project, clustering);
+    clusterizer.render(project, clustering, dataset, issues); //?
+    return issues;
 }
 
-main(_GH_FSD.imports);
+main(_FAVEIN.imports); //?

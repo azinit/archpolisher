@@ -1,8 +1,140 @@
 var datasets = [
 	{
+		"label": "{*}",
 		"backgroundColor": "gray",
 		"pointRadius": 10,
-		"data": []
+		"data": [
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/dashboard.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/faves.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/labels.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/markdown-compability.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/materials.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/tooltips.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/userpage.png"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "assets/users.png"
+			},
+			{
+				"x": 0.75,
+				"y": 0.8666666666666667,
+				"label": "components/card/add"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.9,
+				"label": "components/card/form"
+			},
+			{
+				"x": 0.5,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.5,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.5,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.3333333333333333,
+				"y": 0.9333333333333333,
+				"label": "components/label/index.tsx"
+			},
+			{
+				"x": 0.3333333333333333,
+				"y": 0.9666666666666667,
+				"label": "components/markdown/index.tsx"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "index.tsx"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/admin/index.tsx"
+			},
+			{
+				"x": 0,
+				"y": -1,
+				"label": "pages/app.scss"
+			},
+			{
+				"x": 0.9333333333333333,
+				"y": -1,
+				"label": "pages/app.tsx"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/card/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/dashboard/index.scss"
+			},
+			{
+				"x": 0.4,
+				"y": 0,
+				"label": "pages/errors/404"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/home/index.scss"
+			},
+			{
+				"x": 0.5,
+				"y": 0,
+				"label": "pages/home/screen"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/user/index.scss"
+			},
+			{
+				"x": 0.4,
+				"y": 0.9666666666666667,
+				"label": "store/auth/service.ts"
+			}
+		]
 	},
 	{
 		"label": "{*}",
@@ -10,64 +142,89 @@ var datasets = [
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.5,
-				"y": 0.9444444444444444,
-				"label": ".deploy"
+				"x": 0,
+				"y": 1,
+				"label": "api/helpers/index.ts"
 			},
 			{
-				"x": 0.5,
-				"y": 0.9444444444444444,
-				"label": "features/oauth-form"
+				"x": 0.14285714285714285,
+				"y": 1,
+				"label": "api/index.tsx"
 			},
 			{
-				"x": 0.5,
-				"y": 0.9444444444444444,
-				"label": "features/repo-actions"
-			},
-			{
-				"x": 0.42857142857142855,
-				"y": 0.9166666666666666,
-				"label": "features/repo-star"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0.9722222222222222,
-				"label": "features/repo-branches"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0.9722222222222222,
-				"label": "features/repo-clone"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0.9722222222222222,
-				"label": "widgets/org-details"
-			},
-			{
-				"x": 0.25,
-				"y": 0.9722222222222222,
-				"label": "features/repo-search"
-			},
-			{
-				"x": 0.25,
-				"y": 0.9722222222222222,
-				"label": "widgets/error"
-			},
-			{
-				"x": 0.125,
-				"y": 0.9722222222222222,
-				"label": "entities/auth"
+				"x": 0,
+				"y": 0.8666666666666667,
+				"label": "components/card/item-compact"
 			},
 			{
 				"x": 0,
 				"y": 1,
-				"label": "features/origin"
+				"label": "components/code-renderer/index.tsx"
+			},
+			{
+				"x": 0,
+				"y": 0.8666666666666667,
+				"label": "components/comment/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.9333333333333333,
+				"label": "components/header/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.9333333333333333,
+				"label": "components/label/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.9333333333333333,
+				"label": "components/label/mutable"
 			},
 			{
 				"x": 0,
 				"y": 1,
-				"label": "features/search"
+				"label": "components/loader/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/rate/index.tsx"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/text-field/index.scss"
+			},
+			{
+				"x": 0.1111111111111111,
+				"y": 1,
+				"label": "components/text-field/index.tsx"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/user/index.tsx"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "index.css"
+			},
+			{
+				"x": 0,
+				"y": 0.8666666666666667,
+				"label": "pages/auth/sign-in"
+			},
+			{
+				"x": 0,
+				"y": 0.8666666666666667,
+				"label": "pages/auth/sign-up"
+			},
+			{
+				"x": 0,
+				"y": 0.9,
+				"label": "pages/errors/404"
 			},
 			{
 				"x": 0,
@@ -76,134 +233,247 @@ var datasets = [
 			},
 			{
 				"x": 0,
-				"y": 1,
-				"label": "shared/api"
+				"y": 0.9666666666666667,
+				"label": "store/auth/slice.tsx"
+			},
+			{
+				"x": 0.08,
+				"y": 0.9666666666666667,
+				"label": "store/entities/service.ts"
 			},
 			{
 				"x": 0,
+				"y": 0.9666666666666667,
+				"label": "store/helpers/index.ts"
+			},
+			{
+				"x": 0.15384615384615385,
+				"y": 0.9333333333333333,
+				"label": "components/header/index.tsx"
+			},
+			{
+				"x": 0.2,
 				"y": 1,
-				"label": "shared/config"
+				"label": "components/loader/index.tsx"
+			},
+			{
+				"x": 0.25,
+				"y": 0.9666666666666667,
+				"label": "store/entities/index.ts"
 			},
 			{
 				"x": 0,
-				"y": 1,
-				"label": "shared/lib/browser"
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
 			},
 			{
 				"x": 0,
-				"y": 1,
-				"label": "shared/lib/fp"
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
 			},
 			{
 				"x": 0,
-				"y": 1,
-				"label": "shared/lib/string"
+				"y": 0.7333333333333334,
+				"label": "components/list/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.8,
+				"label": "pages/faves/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.8,
+				"label": "pages/user-cards/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.7,
+				"label": "components/dashboard/add"
+			},
+			{
+				"x": 0,
+				"y": 0.7,
+				"label": "components/dashboard/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0.7,
+				"label": "components/dashboard/item"
+			},
+			{
+				"x": 0,
+				"y": 0.7,
+				"label": "components/dashboard/item"
 			}
 		]
 	},
 	{
-		"label": "{*}",
+		"label": "{components|store}",
 		"backgroundColor": "green",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.875,
-				"y": 0,
-				"label": "app"
+				"x": 0.625,
+				"y": 0.8666666666666667,
+				"label": "components/card/item-compact"
 			},
 			{
-				"x": 0.7857142857142857,
-				"y": 0,
-				"label": "index.tsx"
+				"x": 0.75,
+				"y": 0.8666666666666667,
+				"label": "components/card/add"
 			},
 			{
-				"x": 0.9047619047619048,
-				"y": 0,
-				"label": "pages"
+				"x": 0.6666666666666666,
+				"y": 0.9,
+				"label": "components/card/form"
 			},
 			{
-				"x": 0.8333333333333334,
-				"y": 0.05555555555555558,
-				"label": "widgets/header"
+				"x": 0.6666666666666666,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.75,
+				"y": 0.8666666666666667,
+				"label": "components/comment/index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.9333333333333333,
+				"label": "components/label/mutable"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.7333333333333334,
+				"label": "components/list/form"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.9666666666666667,
+				"label": "store/index.ts"
+			},
+			{
+				"x": 0.75,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.75,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
+			},
+			{
+				"x": 0.75,
+				"y": 0.7,
+				"label": "components/dashboard/add"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.7,
+				"label": "components/dashboard/form"
 			},
 			{
 				"x": 0.8,
-				"y": 0,
-				"label": "widgets/repo-explorer"
+				"y": 0.7,
+				"label": "components/dashboard/index.tsx"
 			},
 			{
-				"x": 0.7777777777777778,
-				"y": 0,
-				"label": "widgets/repo-list"
+				"x": 0.8,
+				"y": 0.7,
+				"label": "components/dashboard/item"
 			},
 			{
-				"x": 0.7777777777777778,
-				"y": 0,
-				"label": "widgets/search"
+				"x": 0.8,
+				"y": 0.7333333333333334,
+				"label": "components/list/index.tsx"
 			},
 			{
-				"x": 0.6666666666666666,
-				"y": 0.02777777777777779,
-				"label": "widgets/org-repo-list"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "widgets/repo-details"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "widgets/user-info"
-			},
-			{
-				"x": 0.6,
-				"y": 0.02777777777777779,
-				"label": "widgets/org-pinned"
-			},
-			{
-				"x": 0.6,
-				"y": 0.02777777777777779,
-				"label": "widgets/org-popular"
-			},
-			{
-				"x": 0.5,
-				"y": 0.05555555555555558,
-				"label": "entities/org"
-			},
-			{
-				"x": 0.5,
-				"y": 0.05555555555555558,
-				"label": "entities/user"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/auth-toolbar"
+				"x": 0.875,
+				"y": 0.7333333333333334,
+				"label": "components/card/sheet"
 			}
 		]
 	},
 	{
-		"label": "entities/repo/{repo}",
+		"label": "{pages|index.tsx}",
 		"backgroundColor": "blue",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.3076923076923077,
+				"x": 0.8333333333333334,
 				"y": 0,
-				"label": "entities/repo"
-			}
-		]
-	},
-	{
-		"label": "shared/ui/{ui}",
-		"backgroundColor": "pink",
-		"pointRadius": 10,
-		"data": [
+				"label": "pages/auth/sign-in"
+			},
 			{
-				"x": 0.07692307692307693,
+				"x": 0.8333333333333334,
 				"y": 0,
-				"label": "shared/ui"
+				"label": "pages/auth/sign-up"
+			},
+			{
+				"x": 0.8571428571428571,
+				"y": 0,
+				"label": "pages/card/index.tsx"
+			},
+			{
+				"x": 0.8571428571428571,
+				"y": 0,
+				"label": "pages/dashboard/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0,
+				"label": "pages/faves/index.tsx"
+			},
+			{
+				"x": 0.8888888888888888,
+				"y": 0,
+				"label": "pages/home/fixtures.ts"
+			},
+			{
+				"x": 0.8,
+				"y": 0,
+				"label": "pages/home/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0,
+				"label": "pages/labels/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0,
+				"label": "pages/user-cards/index.tsx"
+			},
+			{
+				"x": 0.875,
+				"y": 0,
+				"label": "pages/user/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "pages/users/index.tsx"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0,
+				"label": "pages/labels/form"
 			}
 		]
 	}

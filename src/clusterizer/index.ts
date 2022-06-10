@@ -64,7 +64,7 @@ export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTI
     return { clusters, noise, strategy: dataset.strategy };
 }
 
-export function render(project: TProject, clustering: ClustersResult, dataset: Dataset) {
+export function render(project: TProject, clustering: ClustersResult, dataset: Dataset, issues: FSResult) {
     const labels = dataset.strategy === "modules"
         ? project.modules
         : project.files.map((file) => file.split("/").slice(0, 3).join("/"));
@@ -85,9 +85,10 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
         })
     }))
 
-    const dsJSON = JSON.stringify(datasets, null, "\t");
-    const dsFileContent = `var datasets = ${dsJSON};`
-    fs.writeFileSync("src/clusterizer/ui/ds.js", dsFileContent); //?
+    const dsContent = JSON.stringify(datasets, null, "\t");
+    fs.writeFileSync("src/clusterizer/ui/ds.js", `var datasets = ${dsContent};`); //?
+    const issuesContent = JSON.stringify(issues, null, "\t");
+    fs.writeFileSync("src/clusterizer/ui/issues.js", `var issues = ${issuesContent};`); //?
 }
 
 const GROUPS = {
@@ -176,6 +177,7 @@ type FSIssue = {
 type FSResult = {
     date: Datetime;
     description: string;
+    strategy: DatasetStrategy;
     issues: FSIssue[];
     noise: FSUnit[];
 };
@@ -205,6 +207,7 @@ const MAX_FS_DIST = 3;
 export function findProjectIssues(project: TProject, clustering: ClustersResult): FSResult {
     return {
         date: new Date().toISOString(),
+        strategy: clustering.strategy,
         description: "Some modules should be transferred, according to Instability&Abstractness modules clustering",
         issues: clustering.clusters.map((cluster) => {
             const units = cluster.map(idx => project[clustering.strategy][idx]);
@@ -214,6 +217,7 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult)
     }
 }
 
+// !!! FIXME: one unit cluster exception
 export function findClusterIssues(units: FSUnit[]): FSIssue[] {
     // Считаем сумму расстояний до всех соседей в кластере
     const dists: number[] = units.map((u1) => (
@@ -226,7 +230,7 @@ export function findClusterIssues(units: FSUnit[]): FSIssue[] {
     return issuesUnits.map((iu) => ({
         module: iu,
         similar: neighUnits,
-        __dists: dists,
-        __units: units,
+        // __dists: dists,
+        // __units: units,
     }))
 };
