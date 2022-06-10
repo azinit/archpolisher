@@ -1,6 +1,6 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
-import { _GH_FDD } from "shared/fixtures";
+import { _GH_FDD, _FAVEIN } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
@@ -25,9 +25,11 @@ const CLUST_OPTIONS = {
     modules: { neighNum: 1, neighRadius: 0.15 },
     files: { neighNum: 10, neighRadius: 0.15 },
 }
+const __userStrategy: DatasetStrategy = "files";
+
 function main(imports: ImportsGraph) {
+
     const project = new Project(imports); //?
-    const __userStrategy: DatasetStrategy = "files"
     const dataset = clusterizer.prepareDataset(project, __userStrategy); //?
     const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS[__userStrategy]); //?
     clusterizer.render(project, dataset, clustering); //?
