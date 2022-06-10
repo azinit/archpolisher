@@ -23,7 +23,7 @@ export class Project {
         // FIXME: refine options
         // NOTE: Если сделать 2 (для специфичных слоев), то это не меняет фактических импортов (в итоге все поломается)
         // NOTE: (NonActual?) app/hocs, app в modulesList - твои действия?
-        this.modules = getModules(this.structure, [], 1);
+        this.modules = getModules(this.structure);
         // Modules graph
         this.modulesGraph = this.getModulesGraph();
         this.modulesWeights = this.getModulesWeights(options.abstractnessDepth);
@@ -107,22 +107,18 @@ export function fsGroupBy(cuts: string[][], depth = 0): Structure {
 // NOTE: detect button/button.tsx case
 // NOTE: root convert to string?
 // FIXME: detect shared/components/button && shared/helpers
-function getModules(structure: Structure, root: string[] = [], minDepth = 2): Module[] {
-    const depth = root.length;
+function getModules(structure: Structure, root: string[] = []): Module[] {
     const modules = Object.entries(structure).map(([dirName, dirTree]) => {
-        // NOTE: (&& !root.length) ? // Только для одиночных файлов
-        if (!dirTree) return dirName;
+        if (!dirTree && !root.length) return dirName;
+        if (!dirTree) return [];
         // Has index inner check
         const dirFiles = Object.keys(dirTree);
         const nextRoot = [...root, dirName];
         const hasIndex = dirFiles.some((df) => /index.(ts|tsx|jsx|js)/.test(df));
-        // !!! FIXME: Один большой костыль для нестинга! (+minDepth)
-        const __limit = root.includes("shared") ? minDepth : minDepth - 1;
-        const __isDepthLimited = depth >= __limit;
-        const isBoundary = hasIndex && __isDepthLimited;
+        const isBoundary = hasIndex; // NOTE: add yet more!
         if (isBoundary) return nextRoot.join("/")
         // Continue recursion
-        const dirModules = getModules(dirTree, nextRoot, minDepth);
+        const dirModules = getModules(dirTree, nextRoot);
         return dirModules;
     }).flat();
     return modules;
