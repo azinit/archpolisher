@@ -1,5 +1,6 @@
 import PRESET_GH_FDD from "./gh-fdd.imports.json";
-import PRESET_GH_FDD_APP from "./gh-fdd.imports-app.json";
+import PRESET_GH_FDD_SPEC from "./gh-fdd-spec.imports.json";
+import PRESET_GH_FDD_APP from "./gh-fdd-app.imports.json";
 import PRESET_FAVEIN from "./favein.imports.json";
 
 export const _GH_FDD = {
@@ -17,6 +18,11 @@ export const _GH_FDD = {
 
 export const _GH_FDD__APP = {
     imports: PRESET_GH_FDD_APP as ImportsGraph,
+    files: _GH_FDD.files,
+} //?
+
+export const _GH_FDD__SPEC = {
+    imports: PRESET_GH_FDD_SPEC as ImportsGraph,
     files: _GH_FDD.files,
 } //?
 
