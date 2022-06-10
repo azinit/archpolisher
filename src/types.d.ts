@@ -1,6 +1,7 @@
 declare type Module = string;
 // NOTE: resole collisions!
 declare type TFile = string;
+declare type FSUnit = Module | TFile;
 
 declare type ModuleDeps = Module[];
 declare type ModulesWeights = Record<Module, number>;

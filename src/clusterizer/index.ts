@@ -13,8 +13,12 @@ type UnitFeatures = number[];
  *  [10,10],[10,13],[13,13],
  *  [54,54],[55,55],[89,89],[57,55]]
  */
-type Dataset = UnitFeatures[];
-type ClusterOptions = {
+type Dataset = {
+    data: UnitFeatures[],
+    strategy: DatasetStrategy,
+};
+
+export type ClusterOptions = {
     /** neighborhood radius */
     neighRadius: number;
     /** number of points in neighborhood to form a cluster */
@@ -27,12 +31,21 @@ type ClustersResult = {
 
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
 
-export function prepareDataset(project: TProject) {
+type DatasetStrategy = "modules" | "files";
+
+export function prepareDataset(project: TProject, strategy: DatasetStrategy = "modules") {
     // !!! FIXME: for styles/{...scss} { Nan, -1 };
-    return project.files.map((file) => [
-        analyzer.metrics.calcInstability(file, project),
-        analyzer.metrics.calcAbstractness(file, project)
-    ]);
+    // NOTE: simplify?
+    const data = strategy === "modules"
+        ? project.modules.map((unit) => [
+            analyzer.metrics.calcInstability(unit, project),
+            analyzer.metrics.calcAbstractness(unit, project)
+        ])
+        : project.files.map((unit) => [
+            analyzer.metrics.calcInstabilityFile(unit, project),
+            analyzer.metrics.calcAbstractnessFile(unit, project)
+        ])
+    return { data, strategy };
 }
 
 /**
@@ -41,7 +54,7 @@ export function prepareDataset(project: TProject) {
  */
 export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTIONS): ClustersResult {
     const dbscan = new mlClustering.DBSCAN();
-    const clusters = dbscan.run(dataset, options.neighRadius, options.neighNum); //?
+    const clusters = dbscan.run(dataset.data, options.neighRadius, options.neighNum); //?
     const noise = dbscan.noise; //?
 
     // const clustFiles = clustIndices.map(clustGroup => clustGroup.map((cIdx) => projFiles[cIdx])); //?
@@ -51,18 +64,21 @@ export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTI
 }
 
 export function render(project: TProject, dataset: Dataset, clustering: ClustersResult) {
-    const labels = project.files.map((file) => file.split("/").slice(0, 3).join("/"));
+    const labels = dataset.strategy === "modules"
+        ? project.modules
+        : project.files.map((file) => file.split("/").slice(0, 3).join("/"));
 
     // noise в начало, чтобы сначало отрендерились серые
     // NOTE: неочевидно что gray первым
     const clusters = [clustering.noise, ...clustering.clusters];
-    const clustersFiles = clusters.map(cluster => cluster.map(idx => project.files[idx]));
+    // FIXME: modules (clust: 10, 0.15)
+    const clustersUnits = clusters.map(cluster => cluster.map(idx => project[dataset.strategy][idx]));
     const datasets = clusters.map((group, idx) => ({
-        // label: `Group#${idx}`,
-        label: unifyGroup(clustersFiles[idx]),
+        // label: `Group#${idx}`
+        label: unifyGroup(clustersUnits[idx]),
         backgroundColor: COLORS[idx],
         data: group.map(fIdx => {
-            const [x, y] = dataset[fIdx];
+            const [x, y] = dataset.data[fIdx];
             return { x, y, label: labels[fIdx] };
         })
     }))
@@ -112,13 +128,17 @@ const GROUPS = {
         "shared/components/tabs/item/index.tsx",
         "shared/components/user/index.tsx",
     ],
+    modules: [
+        "shared/get-env",
+        "shared/helpers",
+    ]
 }
 
-function unifyGroup(group: TFile[]) {
+function unifyGroup(group: FSUnit[], maxSiblings = 4) {
     const cuts = group.map((f) => f.split("/"));
     const structure = analyzer.fs.fsGroupBy(cuts);
     const root = [];
-    let children: TFile[] = [];
+    let children: FSUnit[] = [];
     let cursor: Structure | null = structure;
     while (cursor) {
         children = Object.keys(cursor);
@@ -133,15 +153,16 @@ function unifyGroup(group: TFile[]) {
     }
 
     const rootLabel = root.join("/");
-    const childrenLabel = children.length > 4
+    const childrenLabel = children.length > maxSiblings
         ? "{*}"
         : children.length > 0
             ? `{${children.join("|")}}`
-            : undefined
+            : undefined;
     if (!rootLabel) return childrenLabel;
     return `${rootLabel}/${childrenLabel}`;
 }
 
-unifyGroup(GROUPS.single) //?
-unifyGroup(GROUPS.multiple) //?
-unifyGroup(GROUPS.shared) //?
+// unifyGroup(GROUPS.single) //?
+// unifyGroup(GROUPS.multiple) //?
+// unifyGroup(GROUPS.shared) //?
+unifyGroup(GROUPS.modules) //?

@@ -9,6 +9,7 @@ const DEFAULT_OPTIONS: Options = {
 
 
 export class Project {
+    // !!! FIXME: rename with grouping (files**, modules** [filesImports, modulesImports]) + rename at metrics
     imports: ImportsGraph;
     structure: Structure;
     files: TFile[];

@@ -20,11 +20,15 @@ const { Project } = analyzer.fs;
 // NOTE: (UnitsGraph)Импорты хорошо, но нужно учитывать юниты! (особенно с подставами как с PublicAPI у фичей и пейджей)
 // NOTE: Project instance with DI? (without passing as param)
 
+// NOTE: specify/refine neigh options values
+const CLUST_OPTIONS = {
+    modules: { neighNum: 1, neighRadius: 0.15 },
+    files: { neighNum: 10, neighRadius: 0.15 },
+}
 function main(imports: ImportsGraph) {
-    const project = new Project(imports);
-    const dataset = clusterizer.prepareDataset(project); //?
-    // NOTE: specify/refine neigh options values
-    const clustering = clusterizer.cluster(dataset, { neighNum: 10, neighRadius: 0.15 }); //?
+    const project = new Project(imports); //?
+    const dataset = clusterizer.prepareDataset(project, "modules"); //?
+    const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS.modules); //?
     clusterizer.render(project, dataset, clustering); //?
 }
 
