@@ -5,6 +5,8 @@ const { Project } = analyzer.fs;
 
 const imports: ImportsGraph = _GH_FDD.imports;
 const project = new Project(imports, { abstractnessDepth: 3 });
+const dataset = clusterizer.prepareDataset(project, "files"); //?
+const clustering = clusterizer.cluster(dataset); //?
 
 // === INSTABILITY (0, 0.6, 0.8, 1)
 analyzer.metrics.calcInstabilityFile(_GH_FDD.files.SH_GET_ENV, project); //?
@@ -23,8 +25,17 @@ analyzer.metrics.calcAbstractnessFile(_GH_FDD.files.FE_AUTH_HOOKS, project); //?
 analyzer.metrics.calcAbstractnessFile(_GH_FDD.files.SH_GET_ENV, project); //?
 project.modules.reduce((acc, m) => ({ ...acc, [m]: analyzer.metrics.calcAbstractnessFile(m, project) }), {}) //?
 // === FS (1, 0, 4, 2, 1)
+// FIXME: analyzer.fs.getFSDist("features/repo-search", "features/repo-search") //?
 analyzer.fs.getFSDist("features/repo-search/smth", "features/repo-filter") //?
 analyzer.fs.getFSDist("features/auth/session.ts", "features/auth/firebase.ts") //?
 analyzer.fs.getFSDist("features/auth/session.ts", "entities/viewer/index.ts") //?
 analyzer.fs.getFSDist("features/foo/auth", "features/auth/bar") //?
 analyzer.fs.getFSDist("lib", "shared/lib") //? 
+// === CLUSTERING ()
+clusterizer.findClusterIssues([
+    "shared/lib/dom.ts",
+    "shared/lib/compose.ts",
+    // "shared/components/card.tsx",
+    "helpers/index.ts",
+]) //?
+clusterizer.findProjectIssues(project, clustering); //?

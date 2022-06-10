@@ -31,7 +31,7 @@ function main(imports: ImportsGraph) {
     const project = new Project(imports); //?
     const dataset = clusterizer.prepareDataset(project, __userStrategy); //?
     const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS[__userStrategy]); //?
-    clusterizer.render(project, dataset, clustering); //?
+    clusterizer.render(project, clustering, dataset); //?
 }
 
 main(_GH_FSD.imports);

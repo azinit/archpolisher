@@ -1,9 +1,11 @@
-import mlClustering from "density-clustering";
 import fs from "fs";
+import mlClustering from "density-clustering";
 import * as analyzer from "analyzer";
 import { COLORS } from "shared/lib";
+import _ from "lodash";
 
-type Cluster = number[];
+type FSUnitIdx = number;
+type Cluster = FSUnitIdx[];
 type UnitFeatures = number[];
 
 /**
@@ -27,6 +29,7 @@ export type ClusterOptions = {
 type ClustersResult = {
     clusters: Cluster[];
     noise: Cluster;
+    strategy: DatasetStrategy;
 };
 
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
@@ -58,10 +61,10 @@ export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTI
     // const clustFiles = clustIndices.map(clustGroup => clustGroup.map((cIdx) => projFiles[cIdx])); //?
     // const noiseFiles = noiseIndices.map(nIdx => projFiles[nIdx]); //?
     // const noiseDS = noiseIndices.map(nIdx => dataset[nIdx]); //?
-    return { clusters, noise };
+    return { clusters, noise, strategy: dataset.strategy };
 }
 
-export function render(project: TProject, dataset: Dataset, clustering: ClustersResult) {
+export function render(project: TProject, clustering: ClustersResult, dataset: Dataset) {
     const labels = dataset.strategy === "modules"
         ? project.modules
         : project.files.map((file) => file.split("/").slice(0, 3).join("/"));
@@ -70,7 +73,7 @@ export function render(project: TProject, dataset: Dataset, clustering: Clusters
     // NOTE: неочевидно что gray первым
     const clusters = [clustering.noise, ...clustering.clusters];
     // FIXME: modules (clust: 10, 0.15)
-    const clustersUnits = clusters.map(cluster => cluster.map(idx => project[dataset.strategy][idx]));
+    const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
     const datasets = clusters.map((group, idx) => ({
         // label: `Group#${idx}`
         label: unifyGroup(clustersUnits[idx]),
@@ -165,3 +168,65 @@ function unifyGroup(group: FSUnit[], maxSiblings = 4) {
 // unifyGroup(GROUPS.multiple) //?
 // unifyGroup(GROUPS.shared) //?
 unifyGroup(GROUPS.modules) //?
+
+type FSIssue = {
+    module: FSUnit;
+    similar: FSUnit[];
+};
+type FSResult = {
+    date: Datetime;
+    description: string;
+    issues: FSIssue[];
+    noise: FSUnit[];
+};
+
+const MAX_FS_DIST = 3;
+
+/**
+ * Find clustering issues for file-structure of project
+ * @example
+ * Response:
+ * {
+ *  date: "2022-06-10T03:59:50",
+ *  description: "Some modules should be transferred, according to Instability&Abstractness modules clustering",
+ *  amount: 3,
+ *  issues: [
+ *      {
+ *         from: "lib",
+ *         to: "shared/{hooks, helpers}",
+ *      },
+ *      {
+ *         from: "MODULE_FROM",
+ *         to: "MODULES_TO",
+ *      },
+ *  ]
+ * }
+ */
+export function findProjectIssues(project: TProject, clustering: ClustersResult): FSResult {
+    return {
+        date: new Date().toISOString(),
+        description: "Some modules should be transferred, according to Instability&Abstractness modules clustering",
+        issues: clustering.clusters.map((cluster) => {
+            const units = cluster.map(idx => project[clustering.strategy][idx]);
+            return findClusterIssues(units);
+        }).flat(),
+        noise: clustering.noise.map(idx => project[clustering.strategy][idx]),
+    }
+}
+
+export function findClusterIssues(units: FSUnit[]): FSIssue[] {
+    // Считаем сумму расстояний до всех соседей в кластере
+    const dists: number[] = units.map((u1) => (
+        // NOTE: consider use "minDist" for summarizing
+        _.sum(units.map((u2) => analyzer.fs.getFSDist(u1, u2))
+        )));
+    const maxDist = _.max(dists);
+    const issuesUnits = units.filter((_, idx) => dists[idx] === maxDist);
+    const neighUnits = units.filter((_, idx) => dists[idx] !== maxDist);
+    return issuesUnits.map((iu) => ({
+        module: iu,
+        similar: neighUnits,
+        __dists: dists,
+        __units: units,
+    }))
+};

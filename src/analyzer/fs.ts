@@ -83,9 +83,10 @@ export class Project {
     }
 };
 
-// TODO: specify index.ts files
+// NOTE: specify index.ts files
 // NOTE: Simplify algo?
 export function getFSDist(unit1: FSUnit, unit2: FSUnit): number {
+    if (unit1 === unit2) return 0;
     const tokens1 = unit1.split("/");
     const tokens2 = unit2.split("/");
     const minLength = Math.min(tokens1.length, tokens2.length);
