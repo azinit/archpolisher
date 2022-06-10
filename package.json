@@ -6,6 +6,7 @@
   "scripts": {
     "noderun": "cross-env NODE_PATH=./src ts-node",
     "start": "yarn noderun src/index.ts",
+    "start:debug": "yarn noderun src/debug.ts",
     "start:ml": "yarn noderun src/clusterize/index.ts",
     "start:fixtures": "yarn noderun src/shared/fixtures/index.ts",
     "start:clust": "yarn noderun src/clusterizer/index.ts"
