@@ -4,7 +4,6 @@ import { _GH_FDD, _FAVEIN } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
-// !!! (Imports) Находятся почему-то не все связи (app/hocs#withApollo > features#Auth)
 // !!! (Imports) only for different specific extensions (tsx, ts, js, jsx) | scss/css later
 // NOTE: (Modules) Улучшить анализ boundaries для модулей (shared/ui? shared/ui/button? shared/ui/button/index.tsx?)
 // NOTE: (PublicAPI) add "index" resolution aliases for modules (shared/ui, not only shared/ui/button)
