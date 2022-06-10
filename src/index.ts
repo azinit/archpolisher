@@ -1,6 +1,6 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
-import { _GH_FDD, _FAVEIN, _GH_FDD__SPEC, _GH_FDD__APP } from "shared/fixtures";
+import { _GH_FDD, _FAVEIN, _GH_FDD__SPEC, _GH_FDD__APP, _GH_FSD } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
@@ -56,5 +56,5 @@ function debug(imports: ImportsGraph) {
 }
 
 
-main(_GH_FDD__SPEC.imports);
+main(_GH_FSD.imports);
 // debug(_GH_FDD.imports);

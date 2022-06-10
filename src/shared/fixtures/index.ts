@@ -1,3 +1,4 @@
+import PRESET_GH_FSD from "./gh-fsd.imports.json";
 import PRESET_GH_FDD from "./gh-fdd.imports.json";
 import PRESET_GH_FDD_SPEC from "./gh-fdd-spec.imports.json";
 import PRESET_GH_FDD_APP from "./gh-fdd-app.imports.json";
@@ -28,5 +29,10 @@ export const _GH_FDD__SPEC = {
 
 export const _FAVEIN = {
     imports: PRESET_FAVEIN as ImportsGraph,
+    files: {},
+} //?
+
+export const _GH_FSD = {
+    imports: PRESET_GH_FSD as ImportsGraph,
     files: {},
 } //?
