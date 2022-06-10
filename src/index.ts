@@ -24,7 +24,7 @@ const CLUST_OPTIONS = {
     modules: { neighNum: 1, neighRadius: 0.15 },
     files: { neighNum: 10, neighRadius: 0.15 },
 }
-const __userStrategy: DatasetStrategy = "files";
+const __userStrategy: DatasetStrategy = "modules";
 
 function main(imports: ImportsGraph) {
 
