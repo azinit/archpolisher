@@ -3,7 +3,7 @@
 		".deploy/temp-stand.ts"
 	],
 	".deploy/temp-stand.ts": [
-		"features/index.ts"
+		"features/auth/index.ts"
 	],
 	"app/header/hooks.ts": [],
 	"app/header/index.scss": [],
@@ -11,7 +11,7 @@
 		"app/header/hooks.ts",
 		"app/header/index.scss",
 		"app/header/logo.svg",
-		"features/index.ts",
+		"features/auth/index.ts",
 		"shared/get-env/index.ts"
 	],
 	"app/header/logo.svg": [],
@@ -24,11 +24,11 @@
 	],
 	"app/hocs/with-antd.tsx": [],
 	"app/hocs/with-apollo.tsx": [
-		"features/index.ts",
+		"features/auth/index.ts",
 		"shared/get-env/index.ts"
 	],
 	"app/hocs/with-error-handling.tsx": [
-		"features/index.ts",
+		"features/error/index.ts",
 		"models.ts",
 		"pages/error/index.tsx",
 		"shared/helpers/index.ts"
@@ -102,18 +102,6 @@
 		"features/hero-sheet/assets/github-icon-sad.svg",
 		"features/hero-sheet/assets/github-icon.svg",
 		"features/hero-sheet/index.scss"
-	],
-	"features/index.ts": [
-		"features/auth/index.ts",
-		"features/error/index.ts",
-		"features/hero-sheet/index.tsx",
-		"features/origin/index.tsx",
-		"features/repo-details/index.tsx",
-		"features/repo-explorer/index.ts",
-		"features/repo-list/index.tsx",
-		"features/repo-stat/index.tsx",
-		"features/search/index.tsx",
-		"features/user-info/index.tsx"
 	],
 	"features/origin/index.scss": [],
 	"features/origin/index.tsx": [
@@ -234,12 +222,13 @@
 		"features/repo-list/hooks.ts",
 		"features/repo-list/queries.gen.ts",
 		"models.ts",
-		"shared/components/index.ts"
+		"shared/components/card/index.tsx",
+		"shared/components/repo/index.tsx"
 	],
 	"features/repo-list/pagination/index.tsx": [
 		"features/repo-list/hooks.ts",
 		"features/repo-list/queries.gen.ts",
-		"shared/components/index.ts"
+		"shared/components/simple-pagination/index.tsx"
 	],
 	"features/repo-list/params.ts": [
 		"models.ts"
@@ -250,26 +239,15 @@
 	"features/repo-list/tabs/index.tsx": [
 		"features/repo-list/hooks.ts",
 		"features/repo-list/params.ts",
-		"shared/components/index.ts",
+		"shared/components/tabs/index.tsx",
 		"shared/helpers/index.ts"
-	],
-	"features/repo-stat/fixtures.tsx": [],
-	"features/repo-stat/index.scss": [],
-	"features/repo-stat/index.tsx": [
-		"features/repo-stat/fixtures.tsx",
-		"features/repo-stat/index.scss",
-		"features/repo-stat/queries.gen.ts",
-		"models.ts"
-	],
-	"features/repo-stat/queries.gen.ts": [
-		"models.gen.ts"
 	],
 	"features/search/filters/index.scss": [],
 	"features/search/filters/index.tsx": [
 		"features/search/filters/index.scss",
 		"features/search/hooks.ts",
 		"features/search/params.ts",
-		"shared/components/index.ts",
+		"shared/components/tabs/index.tsx",
 		"shared/helpers/index.ts"
 	],
 	"features/search/hooks.ts": [
@@ -297,7 +275,10 @@
 		"features/search/results/list/index.scss",
 		"features/search/results/queries.gen.ts",
 		"models.ts",
-		"shared/components/index.ts"
+		"shared/components/card/index.tsx",
+		"shared/components/org/index.tsx",
+		"shared/components/repo/index.tsx",
+		"shared/components/user/index.tsx"
 	],
 	"features/search/results/pagination/index.tsx": [
 		"features/search/hooks.ts"
@@ -339,23 +320,26 @@
 	],
 	"pages/auth/index.scss": [],
 	"pages/auth/index.tsx": [
-		"features/index.ts",
+		"features/auth/index.ts",
 		"pages/auth/index.scss",
 		"pages/helpers.ts",
 		"shared/helpers/index.ts"
 	],
 	"pages/error/index.tsx": [
-		"features/index.ts",
+		"features/auth/index.ts",
+		"features/error/index.ts",
+		"features/hero-sheet/index.tsx",
 		"models.ts",
 		"pages/helpers.ts"
 	],
 	"pages/helpers.ts": [],
 	"pages/home/index.tsx": [
-		"features/index.ts",
+		"features/hero-sheet/index.tsx",
 		"pages/helpers.ts"
 	],
 	"pages/index.tsx": [
-		"features/index.ts",
+		"features/auth/index.ts",
+		"features/origin/index.tsx",
 		"pages/auth/index.tsx",
 		"pages/home/index.tsx",
 		"pages/repository/index.tsx",
@@ -365,18 +349,20 @@
 	],
 	"pages/repository/index.scss": [],
 	"pages/repository/index.tsx": [
-		"features/index.ts",
+		"features/repo-details/index.tsx",
+		"features/repo-explorer/index.ts",
 		"models.ts",
 		"pages/helpers.ts",
 		"pages/repository/index.scss"
 	],
 	"pages/search/index.tsx": [
-		"features/index.ts",
+		"features/search/index.tsx",
 		"pages/helpers.ts"
 	],
 	"pages/user/index.scss": [],
 	"pages/user/index.tsx": [
-		"features/index.ts",
+		"features/repo-list/index.tsx",
+		"features/user-info/index.tsx",
 		"pages/helpers.ts",
 		"pages/user/index.scss"
 	],
@@ -393,14 +379,6 @@
 	"shared/components/card/skeleton/index.scss": [],
 	"shared/components/card/skeleton/index.tsx": [
 		"shared/components/card/skeleton/index.scss"
-	],
-	"shared/components/index.ts": [
-		"shared/components/card/index.tsx",
-		"shared/components/org/index.tsx",
-		"shared/components/repo/index.tsx",
-		"shared/components/simple-pagination/index.tsx",
-		"shared/components/tabs/index.tsx",
-		"shared/components/user/index.tsx"
 	],
 	"shared/components/org/index.scss": [],
 	"shared/components/org/index.tsx": [
