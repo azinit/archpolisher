@@ -85,35 +85,9 @@
     <script src="ds.js"></script>
     <script src="issues.js"></script>
     <script>
-        // Register the plugin to all charts:
-        // Chart.register(ChartDataLabels);
-
-        console.log(datasets);
-        // const data = {
-        //     datasets: [{
-        //         label: 'Scatter Dataset',
-        //         data: [{
-        //             x: -10,
-        //             y: 0,
-        //             backgroundColor: 'green',
-        //         }, {
-        //             x: 0,
-        //             y: 10
-        //         }, {
-        //             x: 10,
-        //             y: 5
-        //         }, {
-        //             x: 0.5,
-        //             y: 5.5
-        //         }],
-        //         // backgroundColor: 'rgb(255, 99, 132)'
-        //     }],
-        // };
-        const data = { datasets };
-
         const config = {
             type: 'scatter',
-            data: data,
+            data: { datasets },
             options: {
                 scales: {
                     x: {
@@ -153,7 +127,7 @@
             config
         );
 
-        console.log("Project Issues", issues);
+        console.log("Project", { issues, data });
         document.getElementById('date').innerHTML = new Date(issues.date);
         document.getElementById('description').innerHTML = issues.description;
         document.getElementById('strategy').innerHTML = issues.strategy;
