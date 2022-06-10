@@ -1,0 +1,284 @@
+{
+	"api/helpers/index.ts": [],
+	"api/index.tsx": [
+		"api/helpers/index.ts"
+	],
+	"assets/dashboard.png": [],
+	"assets/faves.png": [],
+	"assets/labels.png": [],
+	"assets/markdown-compability.png": [],
+	"assets/materials.png": [],
+	"assets/tooltips.png": [],
+	"assets/userpage.png": [],
+	"assets/users.png": [],
+	"components/card/add/index.tsx": [
+		"components/card/form/index.tsx",
+		"store/entities/index.ts",
+		"store/entities/service.ts"
+	],
+	"components/card/form/index.tsx": [
+		"components/text-field/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/card/item-compact/index.scss": [],
+	"components/card/item-compact/index.tsx": [
+		"api/index.tsx",
+		"components/card/item-compact/index.scss",
+		"components/label/index.tsx",
+		"components/rate/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/card/sheet/actions/index.scss": [],
+	"components/card/sheet/actions/index.tsx": [
+		"components/card/sheet/actions/index.scss",
+		"store/auth/service.ts",
+		"store/entities/service.ts"
+	],
+	"components/card/sheet/comments/comment-form/index.tsx": [
+		"components/text-field/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/card/sheet/comments/index.tsx": [
+		"components/card/sheet/comments/comment-form/index.tsx",
+		"components/comment/index.tsx"
+	],
+	"components/card/sheet/content/editor/index.tsx": [
+		"store/entities/service.ts"
+	],
+	"components/card/sheet/content/index.tsx": [
+		"components/card/sheet/content/editor/index.tsx",
+		"components/markdown/index.tsx"
+	],
+	"components/card/sheet/header/index.tsx": [
+		"api/index.tsx",
+		"components/card/sheet/labels/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/card/sheet/index.scss": [],
+	"components/card/sheet/index.tsx": [
+		"components/card/sheet/actions/index.tsx",
+		"components/card/sheet/comments/index.tsx",
+		"components/card/sheet/content/index.tsx",
+		"components/card/sheet/header/index.tsx",
+		"components/card/sheet/index.scss",
+		"components/card/sheet/rates/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/card/sheet/labels/index.tsx": [
+		"components/label/mutable/index.tsx"
+	],
+	"components/card/sheet/rates/index.tsx": [
+		"components/rate/index.tsx"
+	],
+	"components/code-renderer/index.tsx": [],
+	"components/comment/index.scss": [],
+	"components/comment/index.tsx": [
+		"components/comment/index.scss",
+		"components/markdown/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/dashboard/add/index.scss": [],
+	"components/dashboard/add/index.tsx": [
+		"components/dashboard/add/index.scss",
+		"components/dashboard/form/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/dashboard/form/index.tsx": [
+		"components/text-field/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/dashboard/index.scss": [],
+	"components/dashboard/index.tsx": [
+		"components/dashboard/index.scss",
+		"components/list/form/index.tsx",
+		"components/list/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/dashboard/item/dashboard-actions/index.tsx": [],
+	"components/dashboard/item/index.scss": [],
+	"components/dashboard/item/index.tsx": [
+		"components/dashboard/item/dashboard-actions/index.tsx",
+		"components/dashboard/item/index.scss",
+		"components/text-field/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/header/index.scss": [],
+	"components/header/index.tsx": [
+		"components/header/index.scss",
+		"store/auth/slice.tsx"
+	],
+	"components/label/index.scss": [],
+	"components/label/index.tsx": [
+		"components/label/index.scss"
+	],
+	"components/label/mutable/index.scss": [],
+	"components/label/mutable/index.tsx": [
+		"components/label/mutable/index.scss",
+		"store/entities/service.ts"
+	],
+	"components/list/form/index.tsx": [
+		"components/text-field/index.tsx",
+		"store/entities/service.ts"
+	],
+	"components/list/index.scss": [],
+	"components/list/index.tsx": [
+		"components/card/add/index.tsx",
+		"components/card/item-compact/index.tsx",
+		"components/list/index.scss",
+		"store/entities/service.ts"
+	],
+	"components/loader/index.scss": [],
+	"components/loader/index.tsx": [
+		"components/loader/index.scss"
+	],
+	"components/markdown/index.tsx": [
+		"components/code-renderer/index.tsx"
+	],
+	"components/rate/index.tsx": [],
+	"components/text-field/index.scss": [],
+	"components/text-field/index.tsx": [
+		"components/text-field/index.scss"
+	],
+	"components/user/index.tsx": [],
+	"index.css": [],
+	"index.tsx": [
+		"index.css",
+		"pages/app.tsx",
+		"serviceWorker.ts",
+		"store/index.ts"
+	],
+	"pages/admin/index.tsx": [],
+	"pages/app.scss": [],
+	"pages/app.tsx": [
+		"api/index.tsx",
+		"components/loader/index.tsx",
+		"pages/admin/index.tsx",
+		"pages/app.scss",
+		"pages/auth/sign-in/index.tsx",
+		"pages/auth/sign-up/index.tsx",
+		"pages/card/index.tsx",
+		"pages/dashboard/index.tsx",
+		"pages/faves/index.tsx",
+		"pages/home/index.tsx",
+		"pages/labels/index.tsx",
+		"pages/user-cards/index.tsx",
+		"pages/user/index.tsx",
+		"pages/users/index.tsx"
+	],
+	"pages/auth/sign-in/index.scss": [],
+	"pages/auth/sign-in/index.tsx": [
+		"components/header/index.tsx",
+		"components/text-field/index.tsx",
+		"pages/auth/sign-in/index.scss",
+		"store/auth/service.ts",
+		"store/auth/slice.tsx"
+	],
+	"pages/auth/sign-up/index.scss": [],
+	"pages/auth/sign-up/index.tsx": [
+		"components/header/index.tsx",
+		"components/text-field/index.tsx",
+		"pages/auth/sign-up/index.scss",
+		"store/auth/service.ts",
+		"store/auth/slice.tsx"
+	],
+	"pages/card/index.scss": [],
+	"pages/card/index.tsx": [
+		"components/card/sheet/index.tsx",
+		"components/header/index.tsx",
+		"components/loader/index.tsx",
+		"pages/card/index.scss",
+		"pages/errors/404/index.tsx",
+		"store/entities/service.ts"
+	],
+	"pages/dashboard/index.scss": [],
+	"pages/dashboard/index.tsx": [
+		"components/dashboard/index.tsx",
+		"components/header/index.tsx",
+		"components/loader/index.tsx",
+		"pages/dashboard/index.scss",
+		"pages/errors/404/index.tsx",
+		"store/entities/service.ts"
+	],
+	"pages/errors/404/index.scss": [],
+	"pages/errors/404/index.tsx": [
+		"components/header/index.tsx",
+		"pages/errors/404/index.scss"
+	],
+	"pages/faves/index.scss": [],
+	"pages/faves/index.tsx": [
+		"components/card/item-compact/index.tsx",
+		"components/header/index.tsx",
+		"pages/faves/index.scss",
+		"store/entities/service.ts"
+	],
+	"pages/home/fixtures.ts": [
+		"assets/dashboard.png",
+		"assets/faves.png",
+		"assets/labels.png",
+		"assets/markdown-compability.png",
+		"assets/materials.png",
+		"assets/tooltips.png",
+		"assets/userpage.png",
+		"assets/users.png"
+	],
+	"pages/home/index.scss": [],
+	"pages/home/index.tsx": [
+		"components/header/index.tsx",
+		"pages/home/fixtures.ts",
+		"pages/home/index.scss",
+		"pages/home/screen/index.tsx"
+	],
+	"pages/home/screen/index.tsx": [
+		"assets/userpage.png"
+	],
+	"pages/labels/form/index.tsx": [
+		"components/text-field/index.tsx",
+		"store/entities/service.ts"
+	],
+	"pages/labels/index.tsx": [
+		"components/header/index.tsx",
+		"components/label/index.tsx",
+		"pages/labels/form/index.tsx",
+		"store/entities/service.ts"
+	],
+	"pages/user-cards/index.scss": [],
+	"pages/user-cards/index.tsx": [
+		"components/card/item-compact/index.tsx",
+		"components/header/index.tsx",
+		"pages/user-cards/index.scss",
+		"store/entities/service.ts"
+	],
+	"pages/user/index.scss": [],
+	"pages/user/index.tsx": [
+		"components/dashboard/add/index.tsx",
+		"components/dashboard/item/index.tsx",
+		"components/header/index.tsx",
+		"components/loader/index.tsx",
+		"pages/errors/404/index.tsx",
+		"pages/user/index.scss",
+		"store/entities/service.ts"
+	],
+	"pages/users/index.tsx": [
+		"api/index.tsx",
+		"components/header/index.tsx",
+		"components/user/index.tsx"
+	],
+	"serviceWorker.ts": [],
+	"store/auth/service.ts": [
+		"api/index.tsx",
+		"store/auth/slice.tsx"
+	],
+	"store/auth/slice.tsx": [],
+	"store/entities/index.ts": [
+		"store/helpers/index.ts"
+	],
+	"store/entities/service.ts": [
+		"api/index.tsx",
+		"store/entities/index.ts"
+	],
+	"store/helpers/index.ts": [],
+	"store/index.ts": [
+		"store/auth/slice.tsx",
+		"store/entities/index.ts"
+	]
+}
