@@ -83,13 +83,19 @@ export class Project {
     }
 };
 
-// // TODO: specify index.ts files
-// export function getFSDist(file1: TFile, file2: TFile): number {
-//     const aFile1 = asAbsFile(file1);
-//     const aFile2 = asAbsFile(file2);
-
-//     return -1;
-// }
+// TODO: specify index.ts files
+// NOTE: Simplify algo?
+export function getFSDist(unit1: FSUnit, unit2: FSUnit): number {
+    const tokens1 = unit1.split("/");
+    const tokens2 = unit2.split("/");
+    const minLength = Math.min(tokens1.length, tokens2.length);
+    const intersection = [];
+    for (let i = 0; i < minLength; i++) {
+        if (tokens1[i] !== tokens2[i]) break;
+        intersection.push(tokens1[i]);
+    }
+    return tokens1.length + tokens2.length - intersection.length * 2 - 2;
+}
 
 // NOTE: optimize algo?
 // NOTE: optimize structure? (Array<string | Array>[]?)
