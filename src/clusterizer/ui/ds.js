@@ -2,6 +2,7 @@ var datasets = [
 	{
 		"label": "{shared|app}",
 		"backgroundColor": "gray",
+		"pointRadius": 10,
 		"data": [
 			{
 				"x": 0.42857142857142855,
@@ -108,6 +109,7 @@ var datasets = [
 	{
 		"label": "features/{*}",
 		"backgroundColor": "red",
+		"pointRadius": 10,
 		"data": [
 			{
 				"x": 0.25,
@@ -174,6 +176,7 @@ var datasets = [
 	{
 		"label": "{features|pages}",
 		"backgroundColor": "green",
+		"pointRadius": 10,
 		"data": [
 			{
 				"x": 0.6666666666666666,
@@ -420,6 +423,7 @@ var datasets = [
 	{
 		"label": "{features|pages|app}",
 		"backgroundColor": "blue",
+		"pointRadius": 10,
 		"data": [
 			{
 				"x": 0,
@@ -581,6 +585,7 @@ var datasets = [
 	{
 		"label": "{models.gen.ts|models.ts|shared}",
 		"backgroundColor": "pink",
+		"pointRadius": 10,
 		"data": [
 			{
 				"x": 0,

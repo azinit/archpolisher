@@ -31,8 +31,6 @@ type ClustersResult = {
 
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
 
-type DatasetStrategy = "modules" | "files";
-
 export function prepareDataset(project: TProject, strategy: DatasetStrategy = "modules") {
     // !!! FIXME: for styles/{...scss} { Nan, -1 };
     // NOTE: simplify?
@@ -77,6 +75,7 @@ export function render(project: TProject, dataset: Dataset, clustering: Clusters
         // label: `Group#${idx}`
         label: unifyGroup(clustersUnits[idx]),
         backgroundColor: COLORS[idx],
+        pointRadius: 10,
         data: group.map(fIdx => {
             const [x, y] = dataset.data[fIdx];
             return { x, y, label: labels[fIdx] };

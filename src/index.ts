@@ -27,8 +27,9 @@ const CLUST_OPTIONS = {
 }
 function main(imports: ImportsGraph) {
     const project = new Project(imports); //?
-    const dataset = clusterizer.prepareDataset(project, "modules"); //?
-    const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS.modules); //?
+    const __userStrategy: DatasetStrategy = "files"
+    const dataset = clusterizer.prepareDataset(project, __userStrategy); //?
+    const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS[__userStrategy]); //?
     clusterizer.render(project, dataset, clustering); //?
 }
 

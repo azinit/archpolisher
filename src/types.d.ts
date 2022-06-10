@@ -12,3 +12,4 @@ declare type ModulesGraph = Record<Module, ModuleDeps>;
 declare type Structure = Record<string, any>;
 
 declare type TProject = import("./analyzer/fs").IProject;
+declare type DatasetStrategy = "modules" | "files";
