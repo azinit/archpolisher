@@ -3,7 +3,7 @@ import mlClustering from "density-clustering";
 import * as analyzer from "analyzer";
 import { COLORS } from "shared/lib";
 import _ from "lodash";
-import userConfig from "../config.json";
+import userConfig from "../config";
 
 type FSUnitIdx = number;
 type Cluster = FSUnitIdx[];
@@ -35,17 +35,20 @@ type ClustersResult = {
 
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
 
+// default eps = 0.02
+const __getEps = (eps = 0.00) => _.random(-eps, eps, true);
+
 export function prepareDataset(project: TProject, strategy: DatasetStrategy = "modules") {
     // !!! FIXME: for styles/{...scss} { Nan, -1 };
     // NOTE: simplify?
     const data = strategy === "modules"
         ? project.modules.map((unit) => [
-            analyzer.metrics.calcInstability(unit, project),
-            analyzer.metrics.calcAbstractness(unit, project)
+            analyzer.metrics.calcInstability(unit, project) + __getEps(),
+            analyzer.metrics.calcAbstractness(unit, project) + __getEps(),
         ])
         : project.files.map((unit) => [
-            analyzer.metrics.calcInstabilityFile(unit, project),
-            analyzer.metrics.calcAbstractnessFile(unit, project)
+            analyzer.metrics.calcInstabilityFile(unit, project) + __getEps(),
+            analyzer.metrics.calcAbstractnessFile(unit, project) + __getEps(),
         ])
     return { data, strategy };
 }

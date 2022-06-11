@@ -2,7 +2,7 @@
 
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
-import config from "./config.json";
+import config from "./config";
 import { __FIXTURES } from "shared/fixtures";
 
 const { Project } = analyzer.fs;

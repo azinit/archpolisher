@@ -1,8 +1,0 @@
-{
-    "fixtures": "GH_FSD",
-    "strategy": "files",
-    "clustering": {
-        "neighNum": 0.2,
-        "neighRadius": 0.15
-    }
-}
