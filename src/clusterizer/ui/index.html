@@ -132,9 +132,9 @@
         );
     </script>
     <script>
-        console.log("Data", { issues, datasets, userConfig });
+        console.log("Data", { issues, datasets, userConfig, files, modules });
         document.getElementById('date').innerHTML = new Date(issues.date);
-        document.getElementById('project').innerText = userConfig.fixtures;
+        document.getElementById('project').innerText = `${userConfig.fixtures} (${files.length} files, ${modules.length} modules)`;
         document.getElementById('description').innerText = issues.description;
         document.getElementById('config').innerText = `${userConfig.strategy} (${JSON.stringify(userConfig.clustering)})`;
         document.getElementById('noise').innerText = JSON.stringify(issues.noise, null, "\t");

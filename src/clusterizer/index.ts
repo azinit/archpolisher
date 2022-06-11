@@ -86,6 +86,8 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
 var userConfig = ${JSON.stringify(userConfig, null, "\t")};
 var issues = ${JSON.stringify(issues, null, "\t")};
 var datasets = ${JSON.stringify(datasets, null, "\t")};
+var files = ${JSON.stringify(project.files, null, "\t")};
+var modules = ${JSON.stringify(project.modules, null, "\t")};
     `;
     fs.writeFileSync("src/clusterizer/ui/data.js", dataContent); //?
 }
