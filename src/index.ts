@@ -3,7 +3,7 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import config from "./config.json";
-import * as fixtures from "shared/fixtures";
+import { __FIXTURES } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
@@ -24,7 +24,7 @@ const { Project } = analyzer.fs;
 
 // NOTE: specify/refine neigh options values
 type Config = {
-    fixtures: keyof typeof fixtures,
+    fixtures: keyof typeof __FIXTURES,
     strategy: DatasetStrategy,
     clustering: clusterizer.ClusterOptions,
 }
@@ -42,4 +42,4 @@ function main(imports: ImportsGraph) {
     return issues;
 }
 
-main(fixtures[userConfig.fixtures].imports); //?
+main(__FIXTURES[userConfig.fixtures].imports); //?

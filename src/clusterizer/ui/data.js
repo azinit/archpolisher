@@ -1,6 +1,6 @@
 
 var userConfig = {
-	"fixtures": "_FAVEIN",
+	"fixtures": "FAVEIN",
 	"strategy": "modules",
 	"clustering": {
 		"neighNum": 10,
@@ -8,7 +8,7 @@ var userConfig = {
 	}
 };
 var issues = {
-	"date": "2022-06-11T14:16:47.739Z",
+	"date": "2022-06-11T14:35:11.748Z",
 	"strategy": "modules",
 	"description": "Some modules should be transferred, according to Instability&Abstractness modules clustering",
 	"issues": [

@@ -4,7 +4,7 @@ import PRESET_GH_FDD_SPEC from "./gh-fdd-spec.imports.json";
 import PRESET_GH_FDD_APP from "./gh-fdd-app.imports.json";
 import PRESET_FAVEIN from "./favein.imports.json";
 
-export const _GH_FDD = {
+const GH_FDD = {
     imports: PRESET_GH_FDD as ImportsGraph,
     files: {
         SH_GET_ENV: "shared/get-env/index.ts",
@@ -15,7 +15,18 @@ export const _GH_FDD = {
         // FIXME: feature/auth#useAuth usage detecting 
         HEADER: "app/header/index.tsx",
     }
-} //?
+}
+const GH_FDD_APP = { imports: PRESET_GH_FDD_APP as ImportsGraph, files: GH_FDD.files }
+const GH_FDD__SPEC = { imports: PRESET_GH_FDD_SPEC as ImportsGraph, files: GH_FDD.files }
+const FAVEIN = { imports: PRESET_FAVEIN as ImportsGraph, files: {} }
+const GH_FSD = { imports: PRESET_GH_FSD as ImportsGraph, files: {} }
+export const __FIXTURES = {
+    GH_FDD,
+    GH_FDD_APP,
+    GH_FDD__SPEC,
+    GH_FSD,
+    FAVEIN,
+}
 
 export const clustersFiles = {
     single: [
@@ -62,23 +73,3 @@ export const clustersFiles = {
         "shared/helpers",
     ]
 }
-
-export const _GH_FDD__APP = {
-    imports: PRESET_GH_FDD_APP as ImportsGraph,
-    files: _GH_FDD.files,
-} //?
-
-export const _GH_FDD__SPEC = {
-    imports: PRESET_GH_FDD_SPEC as ImportsGraph,
-    files: _GH_FDD.files,
-} //?
-
-export const _FAVEIN = {
-    imports: PRESET_FAVEIN as ImportsGraph,
-    files: {},
-} //?
-
-export const _GH_FSD = {
-    imports: PRESET_GH_FSD as ImportsGraph,
-    files: {},
-} //?
