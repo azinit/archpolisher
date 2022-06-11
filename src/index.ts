@@ -2,7 +2,8 @@
 
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
-import { _GH_FDD, _FAVEIN, _GH_FDD__SPEC, _GH_FDD__APP, _GH_FSD } from "shared/fixtures";
+import config from "./config.json";
+import * as fixtures from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
@@ -22,20 +23,23 @@ const { Project } = analyzer.fs;
 // NOTE: Project instance with DI? (without passing as param)
 
 // NOTE: specify/refine neigh options values
-const CLUST_OPTIONS = {
-    modules: { neighNum: 1, neighRadius: 0.15 },
-    files: { neighNum: 10, neighRadius: 0.15 },
+type Config = {
+    fixtures: keyof typeof fixtures,
+    strategy: DatasetStrategy,
+    clustering: clusterizer.ClusterOptions,
 }
-const __userStrategy: DatasetStrategy = "files";
 
+const userConfig = config as unknown as Config;
+
+// const config = 
 function main(imports: ImportsGraph) {
 
     const project = new Project(imports); //?
-    const dataset = clusterizer.prepareDataset(project, __userStrategy); //?
-    const clustering = clusterizer.cluster(dataset, CLUST_OPTIONS[__userStrategy]); //?
+    const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
+    const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
     const issues = clusterizer.findProjectIssues(project, clustering);
     clusterizer.render(project, clustering, dataset, issues); //?
     return issues;
 }
 
-main(_FAVEIN.imports); //?
+main(fixtures[userConfig.fixtures].imports); //?

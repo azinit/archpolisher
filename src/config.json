@@ -1,0 +1,8 @@
+{
+    "fixtures": "_FAVEIN",
+    "strategy": "modules",
+    "clustering": {
+        "neighNum": 10,
+        "neihRadius": 0.15
+    }
+}
