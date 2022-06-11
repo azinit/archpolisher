@@ -1,6 +1,7 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import { __FIXTURES as F, clustersFiles } from "shared/fixtures";
+import glob2reg from "glob-to-regexp";
 const { Project } = analyzer.fs;
 
 const imports: ImportsGraph = F.GH_FDD.imports;
@@ -45,3 +46,13 @@ clusterizer.findProjectIssues(project, clustering); //?
 // clusterizer.unifyGroup(clustersFiles.multiple) //?
 // clusterizer.unifyGroup(clustersFiles.shared) //?
 clusterizer.unifyGroup(clustersFiles.modules) //?
+
+// const imBefore = imports;
+// const imAfter = cleanImports(imports)
+// console.log("before: ", Object.keys(imBefore).length, "| after: ", Object.keys(imAfter).length);
+// const filesMask = glob2reg("**/*/.{ts,tsx,js,jsx}");
+// const filesMask = /.*\.(tsx|ts|jsx|js)/;
+// filesMask.test("features/auth/firebase/auth-github.ts") //?
+// filesMask.test("features/origin/index.scss") //?
+// filesMask.test("styles/normalize-antd.scss") //?
+// filesMask.test("app/index.tsx") //?

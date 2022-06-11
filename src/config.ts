@@ -2,8 +2,11 @@ export default {
     // [GH_] files: [num=1, rad=0.05]
     // [FSD] files: [num=1, rad=0.06]
     // [FSD] modules: [num=1, rad=0.06+]
-    "fixtures": "GH_FDD__SPEC",
-    "strategy": "modules",
+    // NOTE: custom filter for files? (regeexp)
+    "fixtures": "GH_FDD",
+    "strategy": "files",
+    "extensions": ["tsx", "ts", "jsx", "js"],
+    // "extensions": ["ts"],
     "clustering": {
         "neighNum": 1,
         "neighRadius": 0.05

@@ -62,6 +62,11 @@
   resolved "https://registry.yarnpkg.com/@types/density-clustering/-/density-clustering-1.3.0.tgz#43788f753498cc1912619bbaa942b8f68a06f244"
   integrity sha512-3dBJlxpR8vHFSA4C0JDruxl2UqdSVoP3shJdqWctaXhS+pli6NeQB2zweoRyO/QIYxgwYaAuqGTb/Henq6mvcA==
 
+"@types/glob-to-regexp@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@types/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#f684bc7b9a24691f1f80d045dbb7260bf9cc415b"
+  integrity sha512-S0mIukll6fbF0tvrKic/jj+jI8SHoSvGU+Cs95b/jzZEnBYCbj+7aJtQ9yeABuK3xP1okwA3jEH9qIRayijnvQ==
+
 "@types/lodash@^4.14.182":
   version "4.14.182"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.182.tgz#05301a4d5e62963227eaafe0ce04dd77c54ea5c2"
@@ -221,6 +226,11 @@ glob-parent@~5.1.2:
   integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
+
+glob-to-regexp@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
+  integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
 glob@^7.1.3:
   version "7.2.3"

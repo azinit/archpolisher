@@ -1,10 +1,12 @@
 import _ from "lodash";
 type Options = {
-    abstractnessDepth: number;
+    abstractnessDepth?: number;
+    exts?: string[];
 };
 
-const DEFAULT_OPTIONS: Options = {
+const DEFAULT_OPTIONS = {
     abstractnessDepth: 3,
+    exts: ["tsx", "ts", "jsx", "js"],
 };
 
 
@@ -17,9 +19,10 @@ export class Project {
     modulesGraph: ModulesGraph;
     modulesWeights: ModulesWeights;
 
-    constructor(imports: ImportsGraph, options = DEFAULT_OPTIONS) {
-        this.imports = imports;
-        this.files = Object.keys(imports);
+    constructor(imports: ImportsGraph, options: Options = DEFAULT_OPTIONS) {
+        const inOptions = { ...DEFAULT_OPTIONS, ...options, }
+        this.imports = this.cleanImports(imports, inOptions.exts);
+        this.files = Object.keys(this.imports);
         this.structure = this.getStructure();
         // FIXME: refine options
         // NOTE: Если сделать 2 (для специфичных слоев), то это не меняет фактических импортов (в итоге все поломается)
@@ -27,7 +30,20 @@ export class Project {
         this.modules = getModules(this.structure);
         // Modules graph
         this.modulesGraph = this.getModulesGraph();
-        this.modulesWeights = this.getModulesWeights(options.abstractnessDepth);
+        this.modulesWeights = this.getModulesWeights(inOptions.abstractnessDepth);
+    }
+
+    /**
+     * Отфильтровываем лишние файлы (например scss/css)
+     */
+    private cleanImports(imports: ImportsGraph, exts: string[]): ImportsGraph {
+        const filesMask = new RegExp(`.*\.(${exts.join("|")})`);
+        return Object.entries(imports).reduce((acc: ImportsGraph, [file, deps]) => {
+            const isAllowed = filesMask.test(file);
+            if (!isAllowed) return acc;
+            const filteredDeps = deps.filter(d => filesMask.test(d));
+            return { ...acc, [file]: filteredDeps };
+        }, {});
     }
 
     private getStructure(): Structure {
@@ -132,4 +148,4 @@ function getModules(structure: Structure, root: string[] = []): Module[] {
     return modules;
 }
 
-export interface IProject extends Project {};
+export interface IProject extends Project { };

@@ -26,6 +26,7 @@ const { Project } = analyzer.fs;
 type Config = {
     fixtures: keyof typeof __FIXTURES,
     strategy: DatasetStrategy,
+    extensions: string[],
     clustering: clusterizer.ClusterOptions,
 }
 
@@ -34,7 +35,7 @@ const userConfig = config as unknown as Config;
 // const config = 
 function main(imports: ImportsGraph) {
 
-    const project = new Project(imports); //?
+    const project = new Project(imports, { exts: userConfig.extensions }); //?
     const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
     const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
     const issues = clusterizer.findProjectIssues(project, clustering);
