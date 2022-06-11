@@ -56,12 +56,8 @@ export function prepareDataset(project: TProject, strategy: DatasetStrategy = "m
  */
 export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTIONS): ClustersResult {
     const dbscan = new mlClustering.DBSCAN();
-    const clusters = dbscan.run(dataset.data, options.neighRadius, options.neighNum); //?
-    const noise = dbscan.noise; //?
-
-    // const clustFiles = clustIndices.map(clustGroup => clustGroup.map((cIdx) => projFiles[cIdx])); //?
-    // const noiseFiles = noiseIndices.map(nIdx => projFiles[nIdx]); //?
-    // const noiseDS = noiseIndices.map(nIdx => dataset[nIdx]); //?
+    const clusters = dbscan.run(dataset.data, options.neighRadius, options.neighNum);
+    const noise = dbscan.noise;
     return { clusters, noise, strategy: dataset.strategy };
 }
 
@@ -94,53 +90,7 @@ var datasets = ${JSON.stringify(datasets, null, "\t")};
     fs.writeFileSync("src/clusterizer/ui/data.js", dataContent); //?
 }
 
-const GROUPS = {
-    single: [
-        "features/search/results/queries.gen.ts",
-        "features/search/results/toolbar/index.scss",
-        "features/search/results/toolbar/index.tsx",
-        "features/search/results/toolbar/sort-select.tsx",
-        "features/user-info/hooks.ts",
-        "features/user-info/index.scss",
-        "features/user-info/index.tsx",
-        "features/user-info/queries.gen.ts",
-    ],
-    multiple: [
-        "features/user-info/hooks.ts",
-        "features/user-info/index.scss",
-        "features/user-info/index.tsx",
-        "features/user-info/queries.gen.ts",
-        "models.gen.ts",
-        "models.ts",
-        "pages/auth/index.scss",
-        "pages/auth/index.tsx",
-    ],
-    shared: [
-        "shared/components/card/index.scss",
-        "shared/components/card/index.tsx",
-        "shared/components/card/skeleton-group/index.tsx",
-        "shared/components/card/skeleton/index.scss",
-        "shared/components/card/skeleton/index.tsx",
-        "shared/components/index.ts",
-        "shared/components/org/index.scss",
-        "shared/components/org/index.tsx",
-        "shared/components/repo/index.scss",
-        "shared/components/repo/index.tsx",
-        "shared/components/repo/lang.tsx",
-        "shared/components/simple-pagination/index.scss",
-        "shared/components/simple-pagination/index.tsx",
-        "shared/components/tabs/index.tsx",
-        "shared/components/tabs/item/index.scss",
-        "shared/components/tabs/item/index.tsx",
-        "shared/components/user/index.tsx",
-    ],
-    modules: [
-        "shared/get-env",
-        "shared/helpers",
-    ]
-}
-
-function unifyGroup(group: FSUnit[], maxSiblings = 4) {
+export function unifyGroup(group: FSUnit[], maxSiblings = 4) {
     const cuts = group.map((f) => f.split("/"));
     const structure = analyzer.fs.fsGroupBy(cuts);
     const root = [];
@@ -167,23 +117,6 @@ function unifyGroup(group: FSUnit[], maxSiblings = 4) {
     if (!rootLabel) return childrenLabel;
     return `${rootLabel}/${childrenLabel}`;
 }
-
-// unifyGroup(GROUPS.single) //?
-// unifyGroup(GROUPS.multiple) //?
-// unifyGroup(GROUPS.shared) //?
-unifyGroup(GROUPS.modules) //?
-
-type FSIssue = {
-    module: FSUnit;
-    similar: FSUnit[];
-};
-type FSResult = {
-    date: Datetime;
-    description: string;
-    strategy: DatasetStrategy;
-    issues: FSIssue[];
-    noise: FSUnit[];
-};
 
 const MAX_FS_DIST = 3;
 

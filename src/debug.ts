@@ -1,6 +1,6 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
-import { _GH_FDD, _FAVEIN, _GH_FDD__SPEC, _GH_FDD__APP, _GH_FSD } from "shared/fixtures";
+import { _GH_FDD, _FAVEIN, _GH_FDD__SPEC, _GH_FDD__APP, _GH_FSD, clustersFiles } from "shared/fixtures";
 const { Project } = analyzer.fs;
 
 const imports: ImportsGraph = _GH_FDD.imports;
@@ -31,7 +31,8 @@ analyzer.fs.getFSDist("features/auth/session.ts", "features/auth/firebase.ts") /
 analyzer.fs.getFSDist("features/auth/session.ts", "entities/viewer/index.ts") //?
 analyzer.fs.getFSDist("features/foo/auth", "features/auth/bar") //?
 analyzer.fs.getFSDist("lib", "shared/lib") //? 
-// === CLUSTERING ()
+
+// === CLUSTERING#Issues ()
 clusterizer.findClusterIssues([
     "shared/lib/dom.ts",
     "shared/lib/compose.ts",
@@ -39,3 +40,8 @@ clusterizer.findClusterIssues([
     "helpers/index.ts",
 ]) //?
 clusterizer.findProjectIssues(project, clustering); //?
+// === CLUSTERING
+// clusterizer.unifyGroup(clustersFiles.single) //?
+// clusterizer.unifyGroup(clustersFiles.multiple) //?
+// clusterizer.unifyGroup(clustersFiles.shared) //?
+clusterizer.unifyGroup(clustersFiles.modules) //?

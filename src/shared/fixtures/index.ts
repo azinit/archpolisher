@@ -17,6 +17,52 @@ export const _GH_FDD = {
     }
 } //?
 
+export const clustersFiles = {
+    single: [
+        "features/search/results/queries.gen.ts",
+        "features/search/results/toolbar/index.scss",
+        "features/search/results/toolbar/index.tsx",
+        "features/search/results/toolbar/sort-select.tsx",
+        "features/user-info/hooks.ts",
+        "features/user-info/index.scss",
+        "features/user-info/index.tsx",
+        "features/user-info/queries.gen.ts",
+    ],
+    multiple: [
+        "features/user-info/hooks.ts",
+        "features/user-info/index.scss",
+        "features/user-info/index.tsx",
+        "features/user-info/queries.gen.ts",
+        "models.gen.ts",
+        "models.ts",
+        "pages/auth/index.scss",
+        "pages/auth/index.tsx",
+    ],
+    shared: [
+        "shared/components/card/index.scss",
+        "shared/components/card/index.tsx",
+        "shared/components/card/skeleton-group/index.tsx",
+        "shared/components/card/skeleton/index.scss",
+        "shared/components/card/skeleton/index.tsx",
+        "shared/components/index.ts",
+        "shared/components/org/index.scss",
+        "shared/components/org/index.tsx",
+        "shared/components/repo/index.scss",
+        "shared/components/repo/index.tsx",
+        "shared/components/repo/lang.tsx",
+        "shared/components/simple-pagination/index.scss",
+        "shared/components/simple-pagination/index.tsx",
+        "shared/components/tabs/index.tsx",
+        "shared/components/tabs/item/index.scss",
+        "shared/components/tabs/item/index.tsx",
+        "shared/components/user/index.tsx",
+    ],
+    modules: [
+        "shared/get-env",
+        "shared/helpers",
+    ]
+}
+
 export const _GH_FDD__APP = {
     imports: PRESET_GH_FDD_APP as ImportsGraph,
     files: _GH_FDD.files,

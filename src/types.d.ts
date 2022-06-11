@@ -15,3 +15,15 @@ declare type TProject = import("./analyzer/fs").IProject;
 declare type DatasetStrategy = "modules" | "files";
 
 declare type Datetime = string;
+
+declare type FSIssue = {
+    module: FSUnit;
+    similar: FSUnit[];
+};
+declare type FSResult = {
+    date: Datetime;
+    description: string;
+    strategy: DatasetStrategy;
+    issues: FSIssue[];
+    noise: FSUnit[];
+};
