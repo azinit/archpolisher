@@ -99,25 +99,6 @@
                         text: 'Abstractness',
                     }
                 },
-                plugins: {
-                    tooltip: {
-                        // enabled: false,
-                        callbacks: {
-                            label: function (ctx) {
-                                // console.log("HOVER: ctx=", ctx);
-                                // let label = ctx.dataset.label || '';
-                                return ctx.raw.label;
-                                // if (label) {
-                                //     label += ': ';
-                                // }
-                                // if (ctx.parsed.y !== null) {
-                                //     label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(ctx.parsed.y);
-                                // }
-                                // return label;
-                            }
-                        }
-                    },
-                },
             }
         };
     </script>
@@ -127,7 +108,7 @@
             config
         );
 
-        console.log("Project", { issues, data });
+        console.log("Project", { issues, datasets });
         document.getElementById('date').innerHTML = new Date(issues.date);
         document.getElementById('description').innerHTML = issues.description;
         document.getElementById('strategy').innerHTML = issues.strategy;
