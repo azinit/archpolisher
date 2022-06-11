@@ -1,6 +1,6 @@
 {
-    "fixtures": "FAVEIN",
-    "strategy": "modules",
+    "fixtures": "GH_FDD",
+    "strategy": "files",
     "clustering": {
         "neighNum": 1,
         "neihRadius": 0.1

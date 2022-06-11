@@ -50,14 +50,35 @@
         background: rgb(31, 31, 31);
         color: white;
         font-size: 0.8rem;
+        /* white-space: nowrap; */
         overflow: auto;
         max-height: 300px;
+        max-width: 500px;
     }
 
     code {
         display: block;
         padding: 0px 20px;
         margin: -25px 0;
+    }
+    /* scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #474d55;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background-color: #ffffff;
     }
 </style>
 <body>
@@ -113,11 +134,11 @@
     <script>
         console.log("Data", { issues, datasets, userConfig });
         document.getElementById('date').innerHTML = new Date(issues.date);
-        document.getElementById('project').innerHTML = userConfig.fixtures;
-        document.getElementById('description').innerHTML = issues.description;
-        document.getElementById('config').innerHTML = `${userConfig.strategy} (${JSON.stringify(userConfig.clustering)})`;
-        document.getElementById('noise').innerHTML = JSON.stringify(issues.noise, null, "\t");
-        document.getElementById('issues').innerHTML = JSON.stringify(issues.issues, null, "\t");
+        document.getElementById('project').innerText = userConfig.fixtures;
+        document.getElementById('description').innerText = issues.description;
+        document.getElementById('config').innerText = `${userConfig.strategy} (${JSON.stringify(userConfig.clustering)})`;
+        document.getElementById('noise').innerText = JSON.stringify(issues.noise, null, "\t");
+        document.getElementById('issues').innerText = JSON.stringify(issues.issues, null, "\t");
     </script>
 </body>
 
