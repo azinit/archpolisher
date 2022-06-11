@@ -3,6 +3,7 @@ import mlClustering from "density-clustering";
 import * as analyzer from "analyzer";
 import { COLORS } from "shared/lib";
 import _ from "lodash";
+import userConfig from "../config.json";
 
 type FSUnitIdx = number;
 type Cluster = FSUnitIdx[];
@@ -85,10 +86,12 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
         })
     }))
 
-    const dsContent = JSON.stringify(datasets, null, "\t");
-    fs.writeFileSync("src/clusterizer/ui/ds.js", `var datasets = ${dsContent};`); //?
-    const issuesContent = JSON.stringify(issues, null, "\t");
-    fs.writeFileSync("src/clusterizer/ui/issues.js", `var issues = ${issuesContent};`); //?
+    const dataContent = `
+var userConfig = ${JSON.stringify(userConfig, null, "\t")};
+var issues = ${JSON.stringify(issues, null, "\t")};
+var datasets = ${JSON.stringify(datasets, null, "\t")};
+    `;
+    fs.writeFileSync("src/clusterizer/ui/data.js", dataContent); //?
 }
 
 const GROUPS = {

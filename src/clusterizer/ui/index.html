@@ -19,6 +19,9 @@
         list-style: none;
         margin-top: -40px;
     }
+    .li-code {
+        margin-bottom: -40px;
+    }
 
     b + .code {
         margin-top: -20px;
@@ -65,14 +68,16 @@
         <aside>
             <ul>
                 <li><b>Date:</b> <div id="date"></div></li>
+                <li><b>Project:</b> <div id="project"></div></li>
+                <li><b>Config:</b> <div id="config"></div></li>
+                <br/>
                 <li><b>Description:</b> <div id="description"></div></li>
-                <li><b>Strategy:</b> <div id="strategy"></div></li>
-                <li><b>Noise:</b>
+                <li class="li-code"><b>Noise:</b>
                     <div class="code">
                         <code id="noise"></code>
                     </div>
                 </li>
-                <li><b>Issues:</b>
+                <li class="li-code"><b>Issues:</b>
                     <div class="code">
                         <code id="issues"></code>
                     </div>
@@ -82,8 +87,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-    <script src="ds.js"></script>
-    <script src="issues.js"></script>
+    <script src="data.js"></script>
     <script>
         const config = {
             type: 'scatter',
@@ -108,10 +112,11 @@
             config
         );
 
-        console.log("Project", { issues, datasets });
+        console.log("Data", { issues, datasets, userConfig });
         document.getElementById('date').innerHTML = new Date(issues.date);
+        document.getElementById('project').innerHTML = userConfig.fixtures;
         document.getElementById('description').innerHTML = issues.description;
-        document.getElementById('strategy').innerHTML = issues.strategy;
+        document.getElementById('config').innerHTML = `${userConfig.strategy} (${JSON.stringify(userConfig.clustering)})`;
         document.getElementById('noise').innerHTML = JSON.stringify(issues.noise, null, "\t");
         document.getElementById('issues').innerHTML = JSON.stringify(issues.issues, null, "\t");
     </script>
