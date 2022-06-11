@@ -73,7 +73,7 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
     const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
     const datasets = clusters.map((group, idx) => ({
         // label: `Group#${idx}`
-        label: unifyGroup(clustersUnits[idx]),
+        label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx]),
         backgroundColor: COLORS[idx],
         pointRadius: 10,
         data: group.map(fIdx => {

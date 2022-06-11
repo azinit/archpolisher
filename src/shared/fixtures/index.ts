@@ -16,13 +16,13 @@ const GH_FDD = {
         HEADER: "app/header/index.tsx",
     }
 }
-const GH_FDD_APP = { imports: PRESET_GH_FDD_APP as ImportsGraph, files: GH_FDD.files }
+const GH_FDD__APP = { imports: PRESET_GH_FDD_APP as ImportsGraph, files: GH_FDD.files }
 const GH_FDD__SPEC = { imports: PRESET_GH_FDD_SPEC as ImportsGraph, files: GH_FDD.files }
 const FAVEIN = { imports: PRESET_FAVEIN as ImportsGraph, files: {} }
 const GH_FSD = { imports: PRESET_GH_FSD as ImportsGraph, files: {} }
 export const __FIXTURES = {
     GH_FDD,
-    GH_FDD_APP,
+    GH_FDD__APP,
     GH_FDD__SPEC,
     GH_FSD,
     FAVEIN,
