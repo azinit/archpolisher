@@ -2,6 +2,9 @@
   "ts-node": {
     "files": true
   },
+  "ts-node-dev": {
+    "files": true
+  },
   // "files": [
   //   "src/**",
   // ],

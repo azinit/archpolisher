@@ -1,3 +1,5 @@
+/// <reference path="./types.d.ts" />
+
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import { _GH_FDD, _FAVEIN, _GH_FDD__SPEC, _GH_FDD__APP, _GH_FSD } from "shared/fixtures";
