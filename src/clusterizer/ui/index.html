@@ -89,29 +89,28 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="data.js"></script>
     <script>
-        const config = {
+        const chartConfig = {
             type: 'scatter',
             data: { datasets },
             options: {
                 scales: {
-                    x: {
-                        type: 'linear',
-                        position: 'bottom',
-                        text: 'Instability',
-                    },
-                    y: {
-                        text: 'Abstractness',
+                    x: { type: 'linear', position: 'bottom', text: 'Instability' },
+                    y: { text: 'Abstractness' },
+                },
+                plugins: {
+                    tooltip: {
+                        // enabled: false,
+                        callbacks: { label: ({ raw }) => `i=${raw.x.toFixed(2)} a=${raw.y.toFixed(2)} | ${raw.label}` }
                     }
                 },
-            }
+            },
         };
-    </script>
-    <script>
         const myChart = new Chart(
             document.getElementById('myChart'),
-            config
+            chartConfig
         );
-
+    </script>
+    <script>
         console.log("Data", { issues, datasets, userConfig });
         document.getElementById('date').innerHTML = new Date(issues.date);
         document.getElementById('project').innerHTML = userConfig.fixtures;
