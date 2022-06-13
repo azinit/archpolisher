@@ -2,10 +2,11 @@ import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import { __FIXTURES as F, clustersFiles } from "shared/fixtures";
 import glob2reg from "glob-to-regexp";
+import config from "./config";
 const { Project } = analyzer.fs;
 
 const imports: ImportsGraph = F.GH_FDD.imports;
-const project = new Project(imports, { abstractnessDepth: 3 });
+const project = new Project(imports, { ...config, abstractnessDepth: 3 });
 const dataset = clusterizer.prepareDataset(project, "files"); //?
 const clustering = clusterizer.cluster(dataset); //?
 
