@@ -149,7 +149,7 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult)
     return {
         date: new Date().toISOString(),
         strategy: clustering.strategy,
-        description: "Some modules should be transferred, according to Instability&Abstractness modules clustering",
+        description: "Some modules should be transferred, according to Instability & Abstractness modules clustering",
         issues: clustering.clusters.map((cluster) => {
             const units = cluster.map(idx => project[clustering.strategy][idx]);
             return findClusterIssues(units);

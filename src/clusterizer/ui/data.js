@@ -2,19 +2,14 @@
 var userConfig = {
 	"fixtures": "GH_FDD",
 	"strategy": "files",
-	"extensions": [
-		"tsx",
-		"ts",
-		"jsx",
-		"js"
-	],
+	"extensions": ["tsx", "ts", "jsx", "js"],
 	"clustering": {
 		"neighNum": 1,
 		"neighRadius": 0.05
 	}
 };
 var issues = {
-	"date": "2022-06-11T17:44:31.073Z",
+	"date": "2022-06-11T18:04:23.718Z",
 	"strategy": "files",
 	"description": "Some modules should be transferred, according to Instability&Abstractness modules clustering",
 	"issues": [
@@ -30,27 +25,40 @@ var issues = {
 			"module": "shared/components/tabs/item/index.scss",
 			"similar": [
 				"app/header/hooks.ts",
+				"app/header/index.scss",
+				"app/header/logo.svg",
 				"app/hocs/with-antd.tsx",
 				"app/hocs/with-router.tsx",
+				"app/styles/normalize-antd.scss",
+				"app/styles/normalize.scss",
+				"app/styles/utils.scss",
+				"app/styles/vars.scss",
 				"features/auth/types.ts",
 				"features/hero-sheet/assets/github-icon-sad.svg",
 				"features/hero-sheet/assets/github-icon.svg",
-				"features/origin/index.tsx",
-				"features/repo-details/details-card/index.tsx",
+				"features/hero-sheet/index.scss",
+				"features/origin/index.scss",
+				"features/repo-details/details-card/index.scss",
 				"features/repo-explorer/components/branches-menu/index.scss",
 				"features/repo-explorer/components/entries-view/file.svg",
 				"features/repo-explorer/components/entries-view/folder.svg",
-				"features/repo-explorer/components/entries-view/index.scss",
 				"features/repo-explorer/components/entries-view/placeholder.png",
 				"features/repo-explorer/components/readme/code-renderer.tsx",
 				"features/repo-explorer/components/readme/index.scss",
 				"features/repo-explorer/components/skeleton-area/index.scss",
 				"features/repo-explorer/components/toolbar/clone-menu.tsx",
 				"features/repo-explorer/components/toolbar/index.scss",
+				"features/repo-list/index.scss",
 				"features/repo-stat/fixtures.tsx",
+				"features/repo-stat/index.scss",
+				"features/search/filters/index.scss",
 				"features/search/results/list/index.scss",
 				"features/search/results/toolbar/index.scss",
+				"features/user-info/index.scss",
+				"pages/auth/index.scss",
 				"pages/helpers.ts",
+				"pages/repository/index.scss",
+				"pages/user/index.scss",
 				"shared/components/card/index.scss",
 				"shared/components/card/skeleton/index.scss",
 				"shared/components/org/index.scss",
@@ -59,27 +67,13 @@ var issues = {
 			]
 		},
 		{
-			"module": "shared/components/org/index.tsx",
-			"similar": [
-				"app/header/index.tsx",
-				"app/index.tsx",
-				"features/error/catcher.tsx",
-				"features/repo-details/card-common/index.tsx",
-				"features/repo-explorer/components/readme/index.tsx",
-				"features/repo-list/pagination/index.tsx",
-				"features/repo-stat/index.tsx",
-				"features/search/index.tsx",
-				"features/user-info/hooks.ts",
-				"pages/auth/index.tsx",
-				"pages/error/index.tsx",
-				"pages/repository/index.tsx"
-			]
-		},
-		{
 			"module": "shared/components/repo/index.tsx",
 			"similar": [
+				"app/header/index.tsx",
 				"app/hocs/index.ts",
 				"app/hocs/with-error-handling.tsx",
+				"app/index.scss",
+				"app/index.tsx",
 				"features/auth/index.ts",
 				"features/repo-details/index.tsx",
 				"features/repo-explorer/components/entries-view/git-file-view.tsx",
@@ -89,10 +83,13 @@ var issues = {
 				"features/repo-list/index.tsx",
 				"features/repo-list/items/index.tsx",
 				"features/repo-list/tabs/index.tsx",
+				"features/repo-stat/index.tsx",
 				"features/search/filters/index.tsx",
 				"features/search/results/index.tsx",
 				"features/search/results/list/index.tsx",
-				"pages/index.tsx"
+				"pages/auth/index.tsx",
+				"pages/index.tsx",
+				"pages/repository/index.tsx"
 			]
 		},
 		{
@@ -103,7 +100,6 @@ var issues = {
 				"features/auth/user/index.tsx",
 				"features/error/helpers.ts",
 				"features/error/index.ts",
-				"features/hero-sheet/index.tsx",
 				"features/repo-details/card-collaborators/index.tsx",
 				"features/repo-explorer/components/branches-menu/index.tsx",
 				"features/repo-explorer/components/entries-view/last-commit-header.tsx",
@@ -111,10 +107,8 @@ var issues = {
 				"features/repo-explorer/hooks.ts",
 				"features/search/results/toolbar/index.tsx",
 				"features/search/results/toolbar/sort-select.tsx",
-				"features/user-info/index.tsx",
 				"pages/home/index.tsx",
-				"pages/search/index.tsx",
-				"pages/user/index.tsx"
+				"pages/search/index.tsx"
 			]
 		},
 		{
@@ -127,6 +121,7 @@ var issues = {
 				"features/repo-list/queries.gen.ts",
 				"features/search/hooks.ts",
 				"features/search/params.ts",
+				"features/repo-details/details-card/index.tsx",
 				"features/repo-explorer/components/skeleton-area/index.tsx",
 				"features/repo-list/params.ts",
 				"features/search/results/queries.gen.ts",
@@ -139,6 +134,9 @@ var issues = {
 				"features/auth/firebase/index.ts",
 				"features/auth/firebase/init.ts",
 				"features/index.ts",
+				"features/origin/index.tsx",
+				"features/repo-details/index.scss",
+				"features/repo-explorer/components/entries-view/index.scss",
 				"features/repo-explorer/index.ts",
 				"features/repo-list/hooks.ts",
 				"features/repo-stat/queries.gen.ts",
@@ -154,6 +152,21 @@ var issues = {
 		{
 			"module": "features/auth/hooks.ts",
 			"similar": []
+		},
+		{
+			"module": "shared/components/org/index.tsx",
+			"similar": [
+				"features/error/catcher.tsx",
+				"features/hero-sheet/index.tsx",
+				"features/repo-details/card-common/index.tsx",
+				"features/repo-explorer/components/readme/index.tsx",
+				"features/repo-list/pagination/index.tsx",
+				"features/search/index.tsx",
+				"features/user-info/hooks.ts",
+				"features/user-info/index.tsx",
+				"pages/error/index.tsx",
+				"pages/user/index.tsx"
+			]
 		},
 		{
 			"module": "index.tsx",
@@ -184,6 +197,10 @@ var issues = {
 		{
 			"module": "shared/hooks/index.ts",
 			"similar": []
+		},
+		{
+			"module": "shared/mixins.scss",
+			"similar": []
 		}
 	],
 	"noise": []
@@ -202,12 +219,12 @@ var datasets = [
 		"data": [
 			{
 				"x": 0.5,
-				"y": 0.33333333333333337,
+				"y": 0.3076923076923077,
 				"label": ".deploy/index.ts"
 			},
 			{
 				"x": 0.5,
-				"y": 0.33333333333333337,
+				"y": 0.3076923076923077,
 				"label": ".deploy/temp-stand.ts"
 			}
 		]
@@ -225,12 +242,42 @@ var datasets = [
 			{
 				"x": 0,
 				"y": 0,
+				"label": "app/header/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "app/header/logo.svg"
+			},
+			{
+				"x": 0,
+				"y": 0,
 				"label": "app/hocs/with-antd.tsx"
 			},
 			{
 				"x": 0,
 				"y": 0,
 				"label": "app/hocs/with-router.tsx"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "app/styles/normalize-antd.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "app/styles/normalize.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "app/styles/utils.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "app/styles/vars.scss"
 			},
 			{
 				"x": 0,
@@ -250,7 +297,12 @@ var datasets = [
 			{
 				"x": 0,
 				"y": 0,
-				"label": "features/origin/index.tsx"
+				"label": "features/hero-sheet/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "features/origin/index.scss"
 			},
 			{
 				"x": 0,
@@ -305,7 +357,7 @@ var datasets = [
 			{
 				"x": 0,
 				"y": 0,
-				"label": "features/repo-explorer/components"
+				"label": "features/repo-list/index.scss"
 			},
 			{
 				"x": 0,
@@ -315,17 +367,47 @@ var datasets = [
 			{
 				"x": 0,
 				"y": 0,
+				"label": "features/repo-stat/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "features/search/filters"
+			},
+			{
+				"x": 0,
+				"y": 0,
 				"label": "features/search/results"
 			},
 			{
 				"x": 0,
 				"y": 0,
 				"label": "features/search/results"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "features/user-info/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/auth/index.scss"
 			},
 			{
 				"x": 0,
 				"y": 0,
 				"label": "pages/helpers.ts"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/repository/index.scss"
+			},
+			{
+				"x": 0,
+				"y": 0,
+				"label": "pages/user/index.scss"
 			},
 			{
 				"x": 0,
@@ -365,77 +447,10 @@ var datasets = [
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.75,
+				"x": 0.8333333333333334,
 				"y": 0,
 				"label": "app/header/index.tsx"
 			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "app/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/error/catcher.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-details/card-common"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-list/pagination"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-stat/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/search/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/user-info/hooks.ts"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "pages/auth/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "pages/error/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "pages/repository/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "shared/components/org"
-			}
-		]
-	},
-	{
-		"label": "{app|features|pages|shared}",
-		"backgroundColor": "pink",
-		"pointRadius": 10,
-		"data": [
 			{
 				"x": 0.8333333333333334,
 				"y": 0,
@@ -449,10 +464,20 @@ var datasets = [
 			{
 				"x": 0.8,
 				"y": 0,
-				"label": "features/auth/index.ts"
+				"label": "app/index.scss"
 			},
 			{
 				"x": 0.8,
+				"y": 0,
+				"label": "app/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0,
+				"label": "features/auth/index.ts"
+			},
+			{
+				"x": 0.8333333333333334,
 				"y": 0,
 				"label": "features/repo-details/index.tsx"
 			},
@@ -477,7 +502,7 @@ var datasets = [
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.8333333333333334,
+				"x": 0.8571428571428571,
 				"y": 0,
 				"label": "features/repo-list/index.tsx"
 			},
@@ -494,6 +519,11 @@ var datasets = [
 			{
 				"x": 0.8,
 				"y": 0,
+				"label": "features/repo-stat/index.tsx"
+			},
+			{
+				"x": 0.8333333333333334,
+				"y": 0,
 				"label": "features/search/filters"
 			},
 			{
@@ -507,9 +537,19 @@ var datasets = [
 				"label": "features/search/results"
 			},
 			{
+				"x": 0.8,
+				"y": 0,
+				"label": "pages/auth/index.tsx"
+			},
+			{
 				"x": 0.875,
 				"y": 0,
 				"label": "pages/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0,
+				"label": "pages/repository/index.tsx"
 			},
 			{
 				"x": 0.8,
@@ -520,7 +560,7 @@ var datasets = [
 	},
 	{
 		"label": "{app|features|pages|shared}",
-		"backgroundColor": "cyan",
+		"backgroundColor": "pink",
 		"pointRadius": 10,
 		"data": [
 			{
@@ -547,11 +587,6 @@ var datasets = [
 				"x": 0.6666666666666666,
 				"y": 0,
 				"label": "features/error/index.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/hero-sheet/index.tsx"
 			},
 			{
 				"x": 0.6666666666666666,
@@ -591,11 +626,6 @@ var datasets = [
 			{
 				"x": 0.6666666666666666,
 				"y": 0,
-				"label": "features/user-info/index.tsx"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
 				"label": "pages/home/index.tsx"
 			},
 			{
@@ -606,18 +636,13 @@ var datasets = [
 			{
 				"x": 0.6666666666666666,
 				"y": 0,
-				"label": "pages/user/index.tsx"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
 				"label": "shared/components/user"
 			}
 		]
 	},
 	{
 		"label": "{features|shared}",
-		"backgroundColor": "yellow",
+		"backgroundColor": "cyan",
 		"pointRadius": 10,
 		"data": [
 			{
@@ -658,6 +683,11 @@ var datasets = [
 			{
 				"x": 0.3333333333333333,
 				"y": 0,
+				"label": "features/repo-details/details-card"
+			},
+			{
+				"x": 0.3333333333333333,
+				"y": 0,
 				"label": "features/repo-explorer/components"
 			},
 			{
@@ -684,7 +714,7 @@ var datasets = [
 	},
 	{
 		"label": "{features|shared}",
-		"backgroundColor": "magenta",
+		"backgroundColor": "yellow",
 		"pointRadius": 10,
 		"data": [
 			{
@@ -701,6 +731,21 @@ var datasets = [
 				"x": 0.47619047619047616,
 				"y": 0,
 				"label": "features/index.ts"
+			},
+			{
+				"x": 0.5,
+				"y": 0,
+				"label": "features/origin/index.tsx"
+			},
+			{
+				"x": 0.5,
+				"y": 0,
+				"label": "features/repo-details/index.scss"
+			},
+			{
+				"x": 0.5,
+				"y": 0,
+				"label": "features/repo-explorer/components"
 			},
 			{
 				"x": 0.5,
@@ -761,13 +806,75 @@ var datasets = [
 	},
 	{
 		"label": "features/auth/hooks.ts/{hooks.ts}",
-		"backgroundColor": "orange",
+		"backgroundColor": "magenta",
 		"pointRadius": 10,
 		"data": [
 			{
 				"x": 0.6,
 				"y": 0,
 				"label": "features/auth/hooks.ts"
+			}
+		]
+	},
+	{
+		"label": "{features|pages|shared}",
+		"backgroundColor": "orange",
+		"pointRadius": 10,
+		"data": [
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/error/catcher.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/hero-sheet/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/repo-details/card-common"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/repo-explorer/components"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/repo-list/pagination"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/search/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/user-info/hooks.ts"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "features/user-info/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "pages/error/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "pages/user/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0,
+				"label": "shared/components/org"
 			}
 		]
 	},
@@ -847,7 +954,7 @@ var datasets = [
 		"data": [
 			{
 				"x": 0.037037037037037035,
-				"y": 0.9166666666666666,
+				"y": 0.9230769230769231,
 				"label": "models.ts"
 			}
 		]
@@ -875,19 +982,38 @@ var datasets = [
 				"label": "shared/hooks/index.ts"
 			}
 		]
+	},
+	{
+		"label": "shared/mixins.scss/{mixins.scss}",
+		"backgroundColor": "Gold",
+		"pointRadius": 10,
+		"data": [
+			{
+				"x": 0,
+				"y": -1,
+				"label": "shared/mixins.scss"
+			}
+		]
 	}
 ];
 var files = [
 	".deploy/index.ts",
 	".deploy/temp-stand.ts",
 	"app/header/hooks.ts",
+	"app/header/index.scss",
 	"app/header/index.tsx",
+	"app/header/logo.svg",
 	"app/hocs/index.ts",
 	"app/hocs/with-antd.tsx",
 	"app/hocs/with-apollo.tsx",
 	"app/hocs/with-error-handling.tsx",
 	"app/hocs/with-router.tsx",
+	"app/index.scss",
 	"app/index.tsx",
+	"app/styles/normalize-antd.scss",
+	"app/styles/normalize.scss",
+	"app/styles/utils.scss",
+	"app/styles/vars.scss",
 	"features/auth/consts.ts",
 	"features/auth/firebase/auth-github.ts",
 	"features/auth/firebase/index.ts",
@@ -902,12 +1028,16 @@ var files = [
 	"features/error/index.ts",
 	"features/hero-sheet/assets/github-icon-sad.svg",
 	"features/hero-sheet/assets/github-icon.svg",
+	"features/hero-sheet/index.scss",
 	"features/hero-sheet/index.tsx",
 	"features/index.ts",
+	"features/origin/index.scss",
 	"features/origin/index.tsx",
 	"features/repo-details/card-collaborators/index.tsx",
 	"features/repo-details/card-common/index.tsx",
+	"features/repo-details/details-card/index.scss",
 	"features/repo-details/details-card/index.tsx",
+	"features/repo-details/index.scss",
 	"features/repo-details/index.tsx",
 	"features/repo-details/queries.gen.ts",
 	"features/repo-explorer/components/branches-menu/index.scss",
@@ -933,6 +1063,7 @@ var files = [
 	"features/repo-explorer/index.ts",
 	"features/repo-explorer/queries.gen.ts",
 	"features/repo-list/hooks.ts",
+	"features/repo-list/index.scss",
 	"features/repo-list/index.tsx",
 	"features/repo-list/items/index.tsx",
 	"features/repo-list/pagination/index.tsx",
@@ -940,8 +1071,10 @@ var files = [
 	"features/repo-list/queries.gen.ts",
 	"features/repo-list/tabs/index.tsx",
 	"features/repo-stat/fixtures.tsx",
+	"features/repo-stat/index.scss",
 	"features/repo-stat/index.tsx",
 	"features/repo-stat/queries.gen.ts",
+	"features/search/filters/index.scss",
 	"features/search/filters/index.tsx",
 	"features/search/hooks.ts",
 	"features/search/index.tsx",
@@ -955,18 +1088,22 @@ var files = [
 	"features/search/results/toolbar/index.tsx",
 	"features/search/results/toolbar/sort-select.tsx",
 	"features/user-info/hooks.ts",
+	"features/user-info/index.scss",
 	"features/user-info/index.tsx",
 	"features/user-info/queries.gen.ts",
 	"index.tsx",
 	"models.gen.ts",
 	"models.ts",
+	"pages/auth/index.scss",
 	"pages/auth/index.tsx",
 	"pages/error/index.tsx",
 	"pages/helpers.ts",
 	"pages/home/index.tsx",
 	"pages/index.tsx",
+	"pages/repository/index.scss",
 	"pages/repository/index.tsx",
 	"pages/search/index.tsx",
+	"pages/user/index.scss",
 	"pages/user/index.tsx",
 	"serviceWorker.ts",
 	"shared/components/card/index.scss",
@@ -995,7 +1132,8 @@ var files = [
 	"shared/hooks/index.ts",
 	"shared/hooks/use-debounce.ts",
 	"shared/hooks/use-local-storage.ts",
-	"shared/hooks/use-previous.ts"
+	"shared/hooks/use-previous.ts",
+	"shared/mixins.scss"
 ];
 var modules = [
 	".deploy",
