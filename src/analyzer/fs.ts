@@ -37,7 +37,7 @@ export class Project {
      * Отфильтровываем лишние файлы (например scss/css)
      */
     private cleanImports(imports: ImportsGraph, exts: string[]): ImportsGraph {
-        const filesMask = new RegExp(`.*\.(${exts.join("|")})`);
+        const filesMask = new RegExp(`.*\\.(${exts.join("|")})`);
         return Object.entries(imports).reduce((acc: ImportsGraph, [file, deps]) => {
             const isAllowed = filesMask.test(file);
             if (!isAllowed) return acc;
