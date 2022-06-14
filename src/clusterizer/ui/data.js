@@ -1,880 +1,280 @@
 
 var userConfig = {
-	"fixtures": "GH_FDD",
-	"strategy": "files",
-	"extensions": ["tsx", "ts", "jsx", "js"],
+	"fixtures": "FAVEIN",
+	"strategy": "modules",
+	"exts": [
+		"tsx",
+		"ts",
+		"jsx",
+		"js"
+	],
 	"clustering": {
 		"neighNum": 1,
-		"neighRadius": 0.05
+		"neighRadius": 0.06
 	}
 };
 var issues = {
-	"date": "2022-06-11T18:04:23.718Z",
-	"strategy": "files",
-	"description": "Some modules should be transferred, according to Instability&Abstractness modules clustering",
+	"date": "2022-06-14T01:51:06.415Z",
+	"strategy": "modules",
+	"description": "Some modules should be transferred, according to Instability & Abstractness modules clustering",
 	"issues": [
 		{
-			"module": ".deploy/index.ts",
+			"module": "api",
+			"similar": [
+				"components/code-renderer",
+				"components/loader",
+				"components/rate",
+				"components/text-field",
+				"components/user"
+			]
+		},
+		{
+			"module": "serviceWorker.ts",
+			"similar": [
+				"components/code-renderer",
+				"components/loader",
+				"components/rate",
+				"components/text-field",
+				"components/user"
+			]
+		},
+		{
+			"module": "components/comment",
+			"similar": [
+				"components/card/add",
+				"components/card/form",
+				"components/card/item-compact"
+			]
+		},
+		{
+			"module": "components/card/sheet",
 			"similar": []
 		},
 		{
-			"module": ".deploy/temp-stand.ts",
+			"module": "components/dashboard",
 			"similar": []
 		},
 		{
-			"module": "shared/components/tabs/item/index.scss",
-			"similar": [
-				"app/header/hooks.ts",
-				"app/header/index.scss",
-				"app/header/logo.svg",
-				"app/hocs/with-antd.tsx",
-				"app/hocs/with-router.tsx",
-				"app/styles/normalize-antd.scss",
-				"app/styles/normalize.scss",
-				"app/styles/utils.scss",
-				"app/styles/vars.scss",
-				"features/auth/types.ts",
-				"features/hero-sheet/assets/github-icon-sad.svg",
-				"features/hero-sheet/assets/github-icon.svg",
-				"features/hero-sheet/index.scss",
-				"features/origin/index.scss",
-				"features/repo-details/details-card/index.scss",
-				"features/repo-explorer/components/branches-menu/index.scss",
-				"features/repo-explorer/components/entries-view/file.svg",
-				"features/repo-explorer/components/entries-view/folder.svg",
-				"features/repo-explorer/components/entries-view/placeholder.png",
-				"features/repo-explorer/components/readme/code-renderer.tsx",
-				"features/repo-explorer/components/readme/index.scss",
-				"features/repo-explorer/components/skeleton-area/index.scss",
-				"features/repo-explorer/components/toolbar/clone-menu.tsx",
-				"features/repo-explorer/components/toolbar/index.scss",
-				"features/repo-list/index.scss",
-				"features/repo-stat/fixtures.tsx",
-				"features/repo-stat/index.scss",
-				"features/search/filters/index.scss",
-				"features/search/results/list/index.scss",
-				"features/search/results/toolbar/index.scss",
-				"features/user-info/index.scss",
-				"pages/auth/index.scss",
-				"pages/helpers.ts",
-				"pages/repository/index.scss",
-				"pages/user/index.scss",
-				"shared/components/card/index.scss",
-				"shared/components/card/skeleton/index.scss",
-				"shared/components/org/index.scss",
-				"shared/components/repo/index.scss",
-				"shared/components/simple-pagination/index.scss"
-			]
-		},
-		{
-			"module": "shared/components/repo/index.tsx",
-			"similar": [
-				"app/header/index.tsx",
-				"app/hocs/index.ts",
-				"app/hocs/with-error-handling.tsx",
-				"app/index.scss",
-				"app/index.tsx",
-				"features/auth/index.ts",
-				"features/repo-details/index.tsx",
-				"features/repo-explorer/components/entries-view/git-file-view.tsx",
-				"features/repo-explorer/components/entries-view/index.tsx",
-				"features/repo-explorer/components/index.tsx",
-				"features/repo-explorer/components/toolbar/index.tsx",
-				"features/repo-list/index.tsx",
-				"features/repo-list/items/index.tsx",
-				"features/repo-list/tabs/index.tsx",
-				"features/repo-stat/index.tsx",
-				"features/search/filters/index.tsx",
-				"features/search/results/index.tsx",
-				"features/search/results/list/index.tsx",
-				"pages/auth/index.tsx",
-				"pages/index.tsx",
-				"pages/repository/index.tsx"
-			]
-		},
-		{
-			"module": "shared/components/user/index.tsx",
-			"similar": [
-				"app/hocs/with-apollo.tsx",
-				"features/auth/firebase/auth-github.ts",
-				"features/auth/user/index.tsx",
-				"features/error/helpers.ts",
-				"features/error/index.ts",
-				"features/repo-details/card-collaborators/index.tsx",
-				"features/repo-explorer/components/branches-menu/index.tsx",
-				"features/repo-explorer/components/entries-view/last-commit-header.tsx",
-				"features/repo-explorer/components/hooks.ts",
-				"features/repo-explorer/hooks.ts",
-				"features/search/results/toolbar/index.tsx",
-				"features/search/results/toolbar/sort-select.tsx",
-				"pages/home/index.tsx",
-				"pages/search/index.tsx"
-			]
-		},
-		{
-			"module": "shared/components/card/skeleton/index.tsx",
-			"similar": [
-				"features/auth/consts.ts",
-				"features/error/definitions.ts",
-				"features/repo-details/queries.gen.ts",
-				"features/repo-explorer/queries.gen.ts",
-				"features/repo-list/queries.gen.ts",
-				"features/search/hooks.ts",
-				"features/search/params.ts",
-				"features/repo-details/details-card/index.tsx",
-				"features/repo-explorer/components/skeleton-area/index.tsx",
-				"features/repo-list/params.ts",
-				"features/search/results/queries.gen.ts",
-				"features/user-info/queries.gen.ts"
-			]
-		},
-		{
-			"module": "features/search/results/pagination/index.tsx",
-			"similar": [
-				"features/auth/firebase/index.ts",
-				"features/auth/firebase/init.ts",
-				"features/index.ts",
-				"features/origin/index.tsx",
-				"features/repo-details/index.scss",
-				"features/repo-explorer/components/entries-view/index.scss",
-				"features/repo-explorer/index.ts",
-				"features/repo-list/hooks.ts",
-				"features/repo-stat/queries.gen.ts",
-				"shared/components/card/skeleton-group/index.tsx",
-				"shared/components/index.ts",
-				"shared/components/repo/lang.tsx",
-				"shared/components/simple-pagination/index.tsx",
-				"shared/components/tabs/index.tsx",
-				"shared/components/tabs/item/index.tsx",
-				"shared/components/card/index.tsx"
-			]
-		},
-		{
-			"module": "features/auth/hooks.ts",
+			"module": "components/header",
 			"similar": []
 		},
 		{
-			"module": "shared/components/org/index.tsx",
-			"similar": [
-				"features/error/catcher.tsx",
-				"features/hero-sheet/index.tsx",
-				"features/repo-details/card-common/index.tsx",
-				"features/repo-explorer/components/readme/index.tsx",
-				"features/repo-list/pagination/index.tsx",
-				"features/search/index.tsx",
-				"features/user-info/hooks.ts",
-				"features/user-info/index.tsx",
-				"pages/error/index.tsx",
-				"pages/user/index.tsx"
-			]
+			"module": "store",
+			"similar": []
+		},
+		{
+			"module": "components/label",
+			"similar": []
+		},
+		{
+			"module": "components/list",
+			"similar": []
+		},
+		{
+			"module": "components/markdown",
+			"similar": []
 		},
 		{
 			"module": "index.tsx",
 			"similar": []
 		},
 		{
-			"module": "shared/get-env/index.ts",
+			"module": "pages/errors/404",
 			"similar": [
-				"models.gen.ts",
-				"serviceWorker.ts",
-				"shared/helpers/alert.ts",
-				"shared/helpers/compose.ts",
-				"shared/helpers/dom.ts",
-				"shared/helpers/string.ts",
-				"shared/hooks/use-debounce.ts",
-				"shared/hooks/use-local-storage.ts",
-				"shared/hooks/use-previous.ts"
+				"pages/auth/sign-in",
+				"pages/auth/sign-up",
+				"pages/users"
 			]
 		},
 		{
-			"module": "models.ts",
+			"module": "pages/card",
 			"similar": []
 		},
 		{
-			"module": "shared/helpers/index.ts",
+			"module": "pages/dashboard",
 			"similar": []
 		},
 		{
-			"module": "shared/hooks/index.ts",
+			"module": "pages/labels",
 			"similar": []
 		},
 		{
-			"module": "shared/mixins.scss",
+			"module": "pages/user",
+			"similar": []
+		},
+		{
+			"module": "pages/faves",
+			"similar": []
+		},
+		{
+			"module": "pages/user-cards",
+			"similar": []
+		},
+		{
+			"module": "pages/home",
 			"similar": []
 		}
 	],
-	"noise": []
+	"noise": [
+		"pages/admin"
+	]
 };
 var datasets = [
 	{
 		"label": "Noise",
 		"backgroundColor": "gray",
 		"pointRadius": 10,
-		"data": []
+		"data": [
+			{
+				"x": null,
+				"y": 1,
+				"label": "pages/admin"
+			}
+		]
 	},
 	{
-		"label": ".deploy/{index.ts|temp-stand.ts}",
+		"label": "{api|components|serviceWorker.ts}",
 		"backgroundColor": "red",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.5,
-				"y": 0.3076923076923077,
-				"label": ".deploy/index.ts"
+				"x": 0,
+				"y": 1,
+				"label": "api"
 			},
 			{
-				"x": 0.5,
-				"y": 0.3076923076923077,
-				"label": ".deploy/temp-stand.ts"
+				"x": 0,
+				"y": 1,
+				"label": "components/code-renderer"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/loader"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/rate"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/text-field"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "components/user"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "serviceWorker.ts"
 			}
 		]
 	},
 	{
-		"label": "{app|features|pages|shared}",
+		"label": "components/{card|comment}",
 		"backgroundColor": "green",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0,
-				"y": 0,
-				"label": "app/header/hooks.ts"
+				"x": 0.5,
+				"y": 0.8095238095238095,
+				"label": "components/card/add"
 			},
 			{
-				"x": 0,
-				"y": 0,
-				"label": "app/header/index.scss"
+				"x": 0.5,
+				"y": 0.8571428571428572,
+				"label": "components/card/form"
 			},
 			{
-				"x": 0,
-				"y": 0,
-				"label": "app/header/logo.svg"
+				"x": 0.4444444444444444,
+				"y": 0.8095238095238095,
+				"label": "components/card/item-compact"
 			},
 			{
-				"x": 0,
-				"y": 0,
-				"label": "app/hocs/with-antd.tsx"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "app/hocs/with-router.tsx"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "app/styles/normalize-antd.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "app/styles/normalize.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "app/styles/utils.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "app/styles/vars.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/auth/types.ts"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/hero-sheet/assets"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/hero-sheet/assets"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/hero-sheet/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/origin/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-details/details-card"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-list/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-stat/fixtures.tsx"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/repo-stat/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/search/filters"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "features/user-info/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "pages/auth/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "pages/helpers.ts"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "pages/repository/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "pages/user/index.scss"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "shared/components/card"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "shared/components/card"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "shared/components/org"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "shared/components/repo"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "shared/components/simple-pagination"
-			},
-			{
-				"x": 0,
-				"y": 0,
-				"label": "shared/components/tabs"
+				"x": 0.5,
+				"y": 0.8095238095238095,
+				"label": "components/comment"
 			}
 		]
 	},
 	{
-		"label": "{app|features|pages|shared}",
+		"label": "components/card/sheet/{sheet}",
 		"backgroundColor": "blue",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.8333333333333334,
-				"y": 0,
-				"label": "app/header/index.tsx"
-			},
-			{
-				"x": 0.8333333333333334,
-				"y": 0,
-				"label": "app/hocs/index.ts"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "app/hocs/with-error-handling.tsx"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "app/index.scss"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "app/index.tsx"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "features/auth/index.ts"
-			},
-			{
-				"x": 0.8333333333333334,
-				"y": 0,
-				"label": "features/repo-details/index.tsx"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.8571428571428571,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.8571428571428571,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.8571428571428571,
-				"y": 0,
-				"label": "features/repo-list/index.tsx"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "features/repo-list/items"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "features/repo-list/tabs"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "features/repo-stat/index.tsx"
-			},
-			{
-				"x": 0.8333333333333334,
-				"y": 0,
-				"label": "features/search/filters"
-			},
-			{
-				"x": 0.8333333333333334,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.8333333333333334,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "pages/auth/index.tsx"
-			},
-			{
-				"x": 0.875,
-				"y": 0,
-				"label": "pages/index.tsx"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "pages/repository/index.tsx"
-			},
-			{
-				"x": 0.8,
-				"y": 0,
-				"label": "shared/components/repo"
+				"x": 0.7777777777777778,
+				"y": 0.6190476190476191,
+				"label": "components/card/sheet"
 			}
 		]
 	},
 	{
-		"label": "{app|features|pages|shared}",
+		"label": "components/dashboard/{dashboard}",
 		"backgroundColor": "pink",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "app/hocs/with-apollo.tsx"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/auth/firebase"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/auth/user"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/error/helpers.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/error/index.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/repo-details/card-collaborators"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/repo-explorer/hooks.ts"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "pages/home/index.tsx"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "pages/search/index.tsx"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0,
-				"label": "shared/components/user"
+				"x": 0.5,
+				"y": 0.5714285714285714,
+				"label": "components/dashboard"
 			}
 		]
 	},
 	{
-		"label": "{features|shared}",
+		"label": "{components|store}",
 		"backgroundColor": "cyan",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.25,
-				"y": 0,
-				"label": "features/auth/consts.ts"
+				"x": 0.07692307692307693,
+				"y": 0.9047619047619048,
+				"label": "components/header"
 			},
 			{
-				"x": 0.25,
-				"y": 0,
-				"label": "features/error/definitions.ts"
-			},
-			{
-				"x": 0.25,
-				"y": 0,
-				"label": "features/repo-details/queries.gen.ts"
-			},
-			{
-				"x": 0.25,
-				"y": 0,
-				"label": "features/repo-explorer/queries.gen.ts"
-			},
-			{
-				"x": 0.2,
-				"y": 0,
-				"label": "features/repo-list/queries.gen.ts"
-			},
-			{
-				"x": 0.2857142857142857,
-				"y": 0,
-				"label": "features/search/hooks.ts"
-			},
-			{
-				"x": 0.2,
-				"y": 0,
-				"label": "features/search/params.ts"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0,
-				"label": "features/repo-details/details-card"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0,
-				"label": "features/repo-list/params.ts"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0,
-				"label": "features/user-info/queries.gen.ts"
-			},
-			{
-				"x": 0.3333333333333333,
-				"y": 0,
-				"label": "shared/components/card"
+				"x": 0.05263157894736842,
+				"y": 0.9523809523809523,
+				"label": "store"
 			}
 		]
 	},
 	{
-		"label": "{features|shared}",
+		"label": "components/label/{label}",
 		"backgroundColor": "yellow",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/auth/firebase"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/auth/firebase"
-			},
-			{
-				"x": 0.47619047619047616,
-				"y": 0,
-				"label": "features/index.ts"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/origin/index.tsx"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/repo-details/index.scss"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/repo-explorer/index.ts"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/repo-list/hooks.ts"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/repo-stat/queries.gen.ts"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "shared/components/card"
-			},
-			{
-				"x": 0.5454545454545454,
-				"y": 0,
-				"label": "shared/components/index.ts"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "shared/components/repo"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "shared/components/simple-pagination"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "shared/components/tabs"
-			},
-			{
-				"x": 0.5,
-				"y": 0,
-				"label": "shared/components/tabs"
-			},
-			{
-				"x": 0.42857142857142855,
-				"y": 0,
-				"label": "shared/components/card"
+				"x": 0.2,
+				"y": 0.9047619047619048,
+				"label": "components/label"
 			}
 		]
 	},
 	{
-		"label": "features/auth/hooks.ts/{hooks.ts}",
+		"label": "components/list/{list}",
 		"backgroundColor": "magenta",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.6,
-				"y": 0,
-				"label": "features/auth/hooks.ts"
+				"x": 0.6666666666666666,
+				"y": 0.6190476190476191,
+				"label": "components/list"
 			}
 		]
 	},
 	{
-		"label": "{features|pages|shared}",
+		"label": "components/markdown/{markdown}",
 		"backgroundColor": "orange",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/error/catcher.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/hero-sheet/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-details/card-common"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/repo-list/pagination"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/search/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/user-info/hooks.ts"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "features/user-info/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "pages/error/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "pages/user/index.tsx"
-			},
-			{
-				"x": 0.75,
-				"y": 0,
-				"label": "shared/components/org"
+				"x": 0.25,
+				"y": 0.9523809523809523,
+				"label": "components/markdown"
 			}
 		]
 	},
@@ -884,269 +284,184 @@ var datasets = [
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 1,
+				"x": 0.8,
 				"y": 0,
 				"label": "index.tsx"
 			}
 		]
 	},
 	{
-		"label": "{models.gen.ts|serviceWorker.ts|shared}",
+		"label": "pages/{auth|errors|users}",
 		"backgroundColor": "violet",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0,
-				"y": 1,
-				"label": "models.gen.ts"
+				"x": 1,
+				"y": 0.8095238095238095,
+				"label": "pages/auth/sign-in"
 			},
 			{
-				"x": 0,
-				"y": 1,
-				"label": "serviceWorker.ts"
+				"x": 1,
+				"y": 0.8095238095238095,
+				"label": "pages/auth/sign-up"
 			},
 			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/get-env/index.ts"
+				"x": 1,
+				"y": 0.8571428571428572,
+				"label": "pages/errors/404"
 			},
 			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/helpers/alert.ts"
-			},
-			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/helpers/compose.ts"
-			},
-			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/helpers/dom.ts"
-			},
-			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/helpers/string.ts"
-			},
-			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/hooks/use-debounce.ts"
-			},
-			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/hooks/use-local-storage.ts"
-			},
-			{
-				"x": 0,
-				"y": 1,
-				"label": "shared/hooks/use-previous.ts"
+				"x": 1,
+				"y": 0.8095238095238095,
+				"label": "pages/users"
 			}
 		]
 	},
 	{
-		"label": "models.ts/{models.ts}",
+		"label": "pages/{card|dashboard|labels|user}",
 		"backgroundColor": "CornflowerBlue",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.037037037037037035,
-				"y": 0.9230769230769231,
-				"label": "models.ts"
+				"x": 1,
+				"y": 0,
+				"label": "pages/card"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "pages/dashboard"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "pages/labels"
+			},
+			{
+				"x": 1,
+				"y": 0,
+				"label": "pages/user"
 			}
 		]
 	},
 	{
-		"label": "shared/helpers/index.ts/{index.ts}",
+		"label": "pages/{faves|user-cards}",
 		"backgroundColor": "Cornsilk",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.3333333333333333,
-				"y": 1,
-				"label": "shared/helpers/index.ts"
+				"x": 1,
+				"y": 0.7142857142857143,
+				"label": "pages/faves"
+			},
+			{
+				"x": 1,
+				"y": 0.7142857142857143,
+				"label": "pages/user-cards"
 			}
 		]
 	},
 	{
-		"label": "shared/hooks/index.ts/{index.ts}",
+		"label": "pages/home/{home}",
 		"backgroundColor": "Coral",
 		"pointRadius": 10,
 		"data": [
 			{
-				"x": 0.5,
-				"y": 1,
-				"label": "shared/hooks/index.ts"
-			}
-		]
-	},
-	{
-		"label": "shared/mixins.scss/{mixins.scss}",
-		"backgroundColor": "Gold",
-		"pointRadius": 10,
-		"data": [
-			{
-				"x": 0,
-				"y": -1,
-				"label": "shared/mixins.scss"
+				"x": 0.6666666666666666,
+				"y": 0,
+				"label": "pages/home"
 			}
 		]
 	}
 ];
 var files = [
-	".deploy/index.ts",
-	".deploy/temp-stand.ts",
-	"app/header/hooks.ts",
-	"app/header/index.scss",
-	"app/header/index.tsx",
-	"app/header/logo.svg",
-	"app/hocs/index.ts",
-	"app/hocs/with-antd.tsx",
-	"app/hocs/with-apollo.tsx",
-	"app/hocs/with-error-handling.tsx",
-	"app/hocs/with-router.tsx",
-	"app/index.scss",
-	"app/index.tsx",
-	"app/styles/normalize-antd.scss",
-	"app/styles/normalize.scss",
-	"app/styles/utils.scss",
-	"app/styles/vars.scss",
-	"features/auth/consts.ts",
-	"features/auth/firebase/auth-github.ts",
-	"features/auth/firebase/index.ts",
-	"features/auth/firebase/init.ts",
-	"features/auth/hooks.ts",
-	"features/auth/index.ts",
-	"features/auth/types.ts",
-	"features/auth/user/index.tsx",
-	"features/error/catcher.tsx",
-	"features/error/definitions.ts",
-	"features/error/helpers.ts",
-	"features/error/index.ts",
-	"features/hero-sheet/assets/github-icon-sad.svg",
-	"features/hero-sheet/assets/github-icon.svg",
-	"features/hero-sheet/index.scss",
-	"features/hero-sheet/index.tsx",
-	"features/index.ts",
-	"features/origin/index.scss",
-	"features/origin/index.tsx",
-	"features/repo-details/card-collaborators/index.tsx",
-	"features/repo-details/card-common/index.tsx",
-	"features/repo-details/details-card/index.scss",
-	"features/repo-details/details-card/index.tsx",
-	"features/repo-details/index.scss",
-	"features/repo-details/index.tsx",
-	"features/repo-details/queries.gen.ts",
-	"features/repo-explorer/components/branches-menu/index.scss",
-	"features/repo-explorer/components/branches-menu/index.tsx",
-	"features/repo-explorer/components/entries-view/file.svg",
-	"features/repo-explorer/components/entries-view/folder.svg",
-	"features/repo-explorer/components/entries-view/git-file-view.tsx",
-	"features/repo-explorer/components/entries-view/index.scss",
-	"features/repo-explorer/components/entries-view/index.tsx",
-	"features/repo-explorer/components/entries-view/last-commit-header.tsx",
-	"features/repo-explorer/components/entries-view/placeholder.png",
-	"features/repo-explorer/components/hooks.ts",
-	"features/repo-explorer/components/index.tsx",
-	"features/repo-explorer/components/readme/code-renderer.tsx",
-	"features/repo-explorer/components/readme/index.scss",
-	"features/repo-explorer/components/readme/index.tsx",
-	"features/repo-explorer/components/skeleton-area/index.scss",
-	"features/repo-explorer/components/skeleton-area/index.tsx",
-	"features/repo-explorer/components/toolbar/clone-menu.tsx",
-	"features/repo-explorer/components/toolbar/index.scss",
-	"features/repo-explorer/components/toolbar/index.tsx",
-	"features/repo-explorer/hooks.ts",
-	"features/repo-explorer/index.ts",
-	"features/repo-explorer/queries.gen.ts",
-	"features/repo-list/hooks.ts",
-	"features/repo-list/index.scss",
-	"features/repo-list/index.tsx",
-	"features/repo-list/items/index.tsx",
-	"features/repo-list/pagination/index.tsx",
-	"features/repo-list/params.ts",
-	"features/repo-list/queries.gen.ts",
-	"features/repo-list/tabs/index.tsx",
-	"features/repo-stat/fixtures.tsx",
-	"features/repo-stat/index.scss",
-	"features/repo-stat/index.tsx",
-	"features/repo-stat/queries.gen.ts",
-	"features/search/filters/index.scss",
-	"features/search/filters/index.tsx",
-	"features/search/hooks.ts",
-	"features/search/index.tsx",
-	"features/search/params.ts",
-	"features/search/results/index.tsx",
-	"features/search/results/list/index.scss",
-	"features/search/results/list/index.tsx",
-	"features/search/results/pagination/index.tsx",
-	"features/search/results/queries.gen.ts",
-	"features/search/results/toolbar/index.scss",
-	"features/search/results/toolbar/index.tsx",
-	"features/search/results/toolbar/sort-select.tsx",
-	"features/user-info/hooks.ts",
-	"features/user-info/index.scss",
-	"features/user-info/index.tsx",
-	"features/user-info/queries.gen.ts",
+	"api/helpers/index.ts",
+	"api/index.tsx",
+	"components/card/add/index.tsx",
+	"components/card/form/index.tsx",
+	"components/card/item-compact/index.tsx",
+	"components/card/sheet/actions/index.tsx",
+	"components/card/sheet/comments/comment-form/index.tsx",
+	"components/card/sheet/comments/index.tsx",
+	"components/card/sheet/content/editor/index.tsx",
+	"components/card/sheet/content/index.tsx",
+	"components/card/sheet/header/index.tsx",
+	"components/card/sheet/index.tsx",
+	"components/card/sheet/labels/index.tsx",
+	"components/card/sheet/rates/index.tsx",
+	"components/code-renderer/index.tsx",
+	"components/comment/index.tsx",
+	"components/dashboard/add/index.tsx",
+	"components/dashboard/form/index.tsx",
+	"components/dashboard/index.tsx",
+	"components/dashboard/item/dashboard-actions/index.tsx",
+	"components/dashboard/item/index.tsx",
+	"components/header/index.tsx",
+	"components/label/index.tsx",
+	"components/label/mutable/index.tsx",
+	"components/list/form/index.tsx",
+	"components/list/index.tsx",
+	"components/loader/index.tsx",
+	"components/markdown/index.tsx",
+	"components/rate/index.tsx",
+	"components/text-field/index.tsx",
+	"components/user/index.tsx",
 	"index.tsx",
-	"models.gen.ts",
-	"models.ts",
-	"pages/auth/index.scss",
-	"pages/auth/index.tsx",
-	"pages/error/index.tsx",
-	"pages/helpers.ts",
+	"pages/admin/index.tsx",
+	"pages/app.tsx",
+	"pages/auth/sign-in/index.tsx",
+	"pages/auth/sign-up/index.tsx",
+	"pages/card/index.tsx",
+	"pages/dashboard/index.tsx",
+	"pages/errors/404/index.tsx",
+	"pages/faves/index.tsx",
+	"pages/home/fixtures.ts",
 	"pages/home/index.tsx",
-	"pages/index.tsx",
-	"pages/repository/index.scss",
-	"pages/repository/index.tsx",
-	"pages/search/index.tsx",
-	"pages/user/index.scss",
+	"pages/home/screen/index.tsx",
+	"pages/labels/form/index.tsx",
+	"pages/labels/index.tsx",
+	"pages/user-cards/index.tsx",
 	"pages/user/index.tsx",
+	"pages/users/index.tsx",
 	"serviceWorker.ts",
-	"shared/components/card/index.scss",
-	"shared/components/card/index.tsx",
-	"shared/components/card/skeleton-group/index.tsx",
-	"shared/components/card/skeleton/index.scss",
-	"shared/components/card/skeleton/index.tsx",
-	"shared/components/index.ts",
-	"shared/components/org/index.scss",
-	"shared/components/org/index.tsx",
-	"shared/components/repo/index.scss",
-	"shared/components/repo/index.tsx",
-	"shared/components/repo/lang.tsx",
-	"shared/components/simple-pagination/index.scss",
-	"shared/components/simple-pagination/index.tsx",
-	"shared/components/tabs/index.tsx",
-	"shared/components/tabs/item/index.scss",
-	"shared/components/tabs/item/index.tsx",
-	"shared/components/user/index.tsx",
-	"shared/get-env/index.ts",
-	"shared/helpers/alert.ts",
-	"shared/helpers/compose.ts",
-	"shared/helpers/dom.ts",
-	"shared/helpers/index.ts",
-	"shared/helpers/string.ts",
-	"shared/hooks/index.ts",
-	"shared/hooks/use-debounce.ts",
-	"shared/hooks/use-local-storage.ts",
-	"shared/hooks/use-previous.ts",
-	"shared/mixins.scss"
+	"store/auth/service.ts",
+	"store/auth/slice.tsx",
+	"store/entities/index.ts",
+	"store/entities/service.ts",
+	"store/helpers/index.ts",
+	"store/index.ts"
 ];
 var modules = [
-	".deploy",
-	"app",
-	"features",
+	"api",
+	"components/card/add",
+	"components/card/form",
+	"components/card/item-compact",
+	"components/card/sheet",
+	"components/code-renderer",
+	"components/comment",
+	"components/dashboard",
+	"components/header",
+	"components/label",
+	"components/list",
+	"components/loader",
+	"components/markdown",
+	"components/rate",
+	"components/text-field",
+	"components/user",
 	"index.tsx",
-	"models.gen.ts",
-	"models.ts",
-	"pages",
+	"pages/admin",
+	"pages/auth/sign-in",
+	"pages/auth/sign-up",
+	"pages/card",
+	"pages/dashboard",
+	"pages/errors/404",
+	"pages/faves",
+	"pages/home",
+	"pages/labels",
+	"pages/user-cards",
+	"pages/user",
+	"pages/users",
 	"serviceWorker.ts",
-	"shared/components",
-	"shared/get-env",
-	"shared/helpers",
-	"shared/hooks"
+	"store"
 ];
     

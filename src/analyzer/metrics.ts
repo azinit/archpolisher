@@ -22,7 +22,7 @@ type __Imports = "modulesGraph" | "imports";
 export function calcInstability(module: Module, project: TProject, __imports: __Imports = "modulesGraph"): number {
     // Calc deps by external modules
     const outDeps = project[__imports][module].length;
-    if (outDeps === undefined) return -1;
+    if (outDeps === undefined) return -1; // FIXME: 0.5?
     // Calc deps from external modules
     const inDeps = Object.entries(project[__imports]).filter(([gModule, gDeps]) => {
         // !!! FIXME: remove? (test!)
