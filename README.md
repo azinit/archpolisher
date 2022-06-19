@@ -10,7 +10,7 @@
 - clusterize modules and search architectural issues
 - provides interactive UI with issues details
 
-![screen-ui](./assets/screen-ui.png)
+![screen-ui](https://raw.githubusercontent.com/azinit/archpolisher/master/assets/screen-ui.png)
 
 ## Get Started
 
