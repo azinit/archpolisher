@@ -42,7 +42,8 @@ export class Project {
     private cleanImports(imports: ImportsGraph, exts: string[]): ImportsGraph {
         const filesMask = new RegExp(`.*\\.(${exts.join("|")})`);
         return Object.entries(imports).reduce((acc: ImportsGraph, [file, deps]) => {
-            const isAllowed = filesMask.test(file);
+            const _isIndex = ["index.tsx", "index.ts"].includes(file);
+            const isAllowed = filesMask.test(file) && !_isIndex;
             if (!isAllowed) return acc;
             const filteredDeps = deps.filter(d => filesMask.test(d));
             return { ...acc, [file]: filteredDeps };
@@ -153,8 +154,8 @@ function getModules(structure: Structure, root: string[] = []): Module[] {
         const dirModules = getModules(dirTree, nextRoot);
         return dirModules;
     }).flat();
-    // return modules;
-    return modules.filter(m => !["index.tsx", "index.ts"].includes(m));
+    return modules;
+    // return modules.filter(m => !["index.tsx", "index.ts"].includes(m));
 }
 
 export interface IProject extends Project { };

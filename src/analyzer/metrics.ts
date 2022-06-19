@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { IProject } from "./fs";
 
 export function calcAbstractnessFile(file: TFile, project: TProject): number {
     return calcAbstractness(project.asModule(file), project);
