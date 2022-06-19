@@ -32,7 +32,7 @@ function main(imports: ImportsGraph) {
     const project = new Project(imports, userConfig.analyzer); //?
     const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
     const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
-    const issues = refactorer.findProjectIssues(project, clustering);
+    const issues = refactorer.findProjectIssues(project, clustering, userConfig.refactorer);
     refactorer.render(project, clustering, dataset, issues); //?
     return issues;
 }

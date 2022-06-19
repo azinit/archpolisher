@@ -6,10 +6,13 @@ import glob2reg from "glob-to-regexp";
 import config from "./config";
 const { Project } = analyzer.fs;
 
-const imports: ImportsGraph = F[config.fixtures as keyof typeof F].imports;
-const project = new Project(imports, { ...config, abstractnessDepth: 3 });
-const dataset = clusterizer.prepareDataset(project, "files"); //?
-const clustering = clusterizer.cluster(dataset); //?
+const userConfig = config as unknown as UserConfig;
+
+const imports: ImportsGraph = F[userConfig.fixtures].imports;
+const project = new Project(imports, userConfig.analyzer);
+const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
+const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
+const issues = refactorer.findProjectIssues(project, clustering, userConfig.refactorer);
 
 // === INSTABILITY (0, 0.6, 0.8, 1)
 analyzer.metrics.calcInstabilityFile(F.GH_FDD.files.SH_GET_ENV, project); //?
@@ -40,13 +43,13 @@ analyzer.fs.getFSDist("features/foo/auth", "features/auth/bar") //?
 analyzer.fs.getFSDist("lib", "shared/lib") //? 
 
 // === CLUSTERING#Issues ()
-refactorer.findClusterIssues([
-    "shared/lib/dom.ts",
-    "shared/lib/compose.ts",
-    // "shared/components/card.tsx",
-    "helpers/index.ts",
-]) //?
-refactorer.findProjectIssues(project, clustering); //?
+// refactorer.findClusterIssues([
+//     "shared/lib/dom.ts",
+//     "shared/lib/compose.ts",
+//     // "shared/components/card.tsx",
+//     "helpers/index.ts",
+// ], userConfig.refactorer) //?
+refactorer.findProjectIssues(project, clustering, userConfig.refactorer); //?
 // === CLUSTERING
 refactorer.unifyGroup(clustersFiles.single) //?
 refactorer.unifyGroup(clustersFiles.multiple) //?

@@ -14,7 +14,7 @@ const DEFAULT_OPTIONS = {
 
 
 export class Project {
-    // !!! FIXME: rename with grouping (files**, modules** [filesImports, modulesImports]) + rename at metrics
+    // FIXME: rename with grouping (files**, modules** [filesImports, modulesImports]) + rename at metrics
     imports: ImportsGraph;
     structure: Structure;
     files: TFile[];
@@ -84,7 +84,7 @@ export class Project {
      *  ["models.ts", "models.gen.ts"],
      */
     private getModulesWeights(depth = 5): ModulesWeights {
-        // let __map: Record<string, any> = {};
+        let __map: Record<string, any> = {};
         const result = this.modules.reduce((acc, module) => {
             const deps1 = this.modulesGraph[module]; // depth=1
             const deps2 = deps1.map(dep => this.modulesGraph[dep]).flat(); // depth=2
@@ -94,10 +94,10 @@ export class Project {
             // NOTE: refine depth iterating!
             const totalDeps = [deps1, deps2, deps3, deps4, deps5];
             const deps = _.uniq(totalDeps.slice(0, depth).flat())
-            // __map[module] = deps;
+            __map[module] = deps;
             return { ...acc, [module]: deps.length };
         }, {});
-        // __map;
+        __map;
         return result;
     }
 

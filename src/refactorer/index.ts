@@ -14,7 +14,7 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
     // noise в начало, чтобы сначало отрендерились серые
     // NOTE: неочевидно что gray первым
 
-    // !!! TODO: Добавить разные виды отображения?
+    // TODO: Добавить разные виды отображения?
     const issuesUnits = issues.issues.map(i => i.module);
     const issuesClustersIndices = issues.issues.map(i => i._cluster);
     // const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
@@ -107,46 +107,55 @@ const MAX_FS_DIST = 3;
  *  ]
  * }
  */
-export function findProjectIssues(project: TProject, clustering: ClustersResult): FSResult {
+export function findProjectIssues(project: TProject, clustering: ClustersResult, options: Partial<RefactorerOptions> = {}): FSResult {
+    const _options = { ...DEFAULT_OPTIONS, ...options };
     return {
         date: new Date().toISOString(),
         strategy: clustering.strategy,
         description: "Some modules should be transferred, according to Instability & Abstractness modules clustering",
         issues: clustering.clusters.map((cluster, gidx) => {
             const units = cluster.map(idx => project[clustering.strategy][idx]);
-            return findClusterIssues(units, gidx);
+            return findClusterIssues(units, gidx, _options);
         }).flat(),
         noise: clustering.noise.map(idx => project[clustering.strategy][idx]),
     }
 }
 
-// !!! TODO: minDist
-// !!! TODO: minDiff
+export type RefactorerOptions = {
+    minDiff: number;
+    minDist: number;
+};
+const DEFAULT_OPTIONS: RefactorerOptions = {
+    minDiff: 3,
+    minDist: 6,
+}
 
-const MIN_DIFF = 3;
-
-export function findClusterIssues(units: FSUnit[], clusterIdx = 0): FSIssue[] {
+export function findClusterIssues(units: FSUnit[], clusterIdx = 0, options: RefactorerOptions): FSIssue[] {
     if (units.length === 1) return [];
+
     // Считаем сумму расстояний до всех соседей в кластере
     const dists: number[] = units.map((u1) => (
         // NOTE: consider use "minDist" for summarizing
         _.sum(units.map((u2) => analyzer.fs.getFSDist(u1, u2))
         )));
-    const maxDist = _.max(dists);
+    const maxDist = _.max(dists)!;
+    if (maxDist < options.minDist) return [];
+
     const issuesUnits = units.filter((_, idx) => dists[idx] === maxDist);
     const neighUnits = units.filter((_, idx) => dists[idx] !== maxDist);
     if (issuesUnits.length === units.length) return [];
     // if (!neighUnits.length) console.log("DEBUG", { units, issuesUnits, neighUnits });
+
     // Для фильтрации файлов рядом в одном модуле
-    const absDiff = Math.max(...dists) - Math.min(...dists);
-    if (absDiff < MIN_DIFF) return [];
+    const absDiff = maxDist - _.min(dists)!;
+    if (absDiff < options.minDiff) return [];
 
     return issuesUnits.map((iu) => ({
         module: iu,
         similar: neighUnits,
         _cluster: clusterIdx,
         // __absDiff: absDiff,
-        // __dists: dists,
+        __dists: dists,
         // __units: units,
     }))
 };
