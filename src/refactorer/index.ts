@@ -15,21 +15,28 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
     // NOTE: неочевидно что gray первым
 
     // !!! TODO: Добавить разные виды отображения?
-    // const issuesUnits = issues.issues.map(i => i.module);
+    const issuesUnits = issues.issues.map(i => i.module);
     const issuesClustersIndices = issues.issues.map(i => i._cluster);
     const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
     // const issuesClusters = clustering.clusters;
     const clusters = [clustering.noise, ...issuesClusters];
     // FIXME: modules (clust: 10, 0.15)
     // const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
-    const datasets = clusters.map((group, idx) => ({
-        label: (idx === 0) ? "Noise" : `Group#${idx}`,
+    const datasets = clusters.map((group, gIdx) => ({
+        label: (gIdx === 0) ? "Noise" : `Group#${gIdx}`,
         // label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx], 4),
         // label: (idx === 0)
         //     ? "Noise"
         //     : clustersUnits[idx]
-        backgroundColor: BLUE_COLORS[idx],
+        backgroundColor: BLUE_COLORS[gIdx],
         pointRadius: 10,
+        borderWidth: 2,
+        pointBorderColor: group.map(fIdx => {
+            const unit = labels[fIdx];
+            console.log(unit, {issuesUnits});
+            if (issuesUnits.some(iu => iu.includes(unit))) return "#953553";
+            return BLUE_COLORS[gIdx];
+        }),
         data: group.map(fIdx => {
             const [x, y] = dataset.data[fIdx];
             return { x, y, label: labels[fIdx] };

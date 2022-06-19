@@ -17,7 +17,7 @@ var userConfig = {
 	}
 };
 var issues = {
-	"date": "2022-06-19T03:42:58.764Z",
+	"date": "2022-06-19T03:54:22.140Z",
 	"strategy": "files",
 	"description": "Some modules should be transferred, according to Instability & Abstractness modules clustering",
 	"issues": [
@@ -204,12 +204,25 @@ var datasets = [
 		"label": "Noise",
 		"backgroundColor": "gray",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [],
 		"data": []
 	},
 	{
 		"label": "Group#1",
 		"backgroundColor": "#B6D0E2",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#B6D0E2",
+			"#B6D0E2",
+			"#953553",
+			"#953553",
+			"#B6D0E2",
+			"#B6D0E2",
+			"#B6D0E2",
+			"#B6D0E2"
+		],
 		"data": [
 			{
 				"x": 0.52,
@@ -257,6 +270,16 @@ var datasets = [
 		"label": "Group#2",
 		"backgroundColor": "#A7C7E7",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#A7C7E7",
+			"#A7C7E7",
+			"#A7C7E7",
+			"#A7C7E7",
+			"#953553",
+			"#A7C7E7",
+			"#953553"
+		],
 		"data": [
 			{
 				"x": 0.03,
@@ -299,6 +322,26 @@ var datasets = [
 		"label": "Group#3",
 		"backgroundColor": "#7393B3",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#7393B3",
+			"#953553",
+			"#7393B3",
+			"#7393B3",
+			"#953553"
+		],
 		"data": [
 			{
 				"x": 0.78,
@@ -391,6 +434,16 @@ var datasets = [
 		"label": "Group#4",
 		"backgroundColor": "#4682B4",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#4682B4",
+			"#953553",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4"
+		],
 		"data": [
 			{
 				"x": 0.6966666666666667,
@@ -433,6 +486,18 @@ var datasets = [
 		"label": "Group#5",
 		"backgroundColor": "#6082B6",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#6082B6",
+			"#6082B6",
+			"#6082B6",
+			"#953553",
+			"#953553",
+			"#953553",
+			"#953553",
+			"#6082B6",
+			"#6082B6"
+		],
 		"data": [
 			{
 				"x": 0.7066666666666667,
@@ -485,6 +550,15 @@ var datasets = [
 		"label": "Group#6",
 		"backgroundColor": "#6495ED",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#6495ED",
+			"#953553",
+			"#953553",
+			"#953553",
+			"#953553",
+			"#6495ED"
+		],
 		"data": [
 			{
 				"x": 0.03,
@@ -522,6 +596,14 @@ var datasets = [
 		"label": "Group#7",
 		"backgroundColor": "#0096FF",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#0096FF",
+			"#0096FF",
+			"#0096FF",
+			"#953553",
+			"#0096FF"
+		],
 		"data": [
 			{
 				"x": 0.78,
@@ -554,6 +636,21 @@ var datasets = [
 		"label": "Group#8",
 		"backgroundColor": "#1434A4",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#953553",
+			"#953553",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4",
+			"#1434A4"
+		],
 		"data": [
 			{
 				"x": 0.03,
@@ -621,6 +718,14 @@ var datasets = [
 		"label": "Group#9",
 		"backgroundColor": "#3F00FF",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#3F00FF",
+			"#953553",
+			"#953553",
+			"#953553",
+			"#3F00FF"
+		],
 		"data": [
 			{
 				"x": 0.53,
@@ -653,6 +758,14 @@ var datasets = [
 		"label": "Group#10",
 		"backgroundColor": "#000080",
 		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			"#000080",
+			"#000080",
+			"#953553",
+			"#953553",
+			"#953553"
+		],
 		"data": [
 			{
 				"x": 0.3633333333333333,
