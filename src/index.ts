@@ -30,7 +30,7 @@ const userConfig = config as unknown as UserConfig;
 function main(imports: ImportsGraph) {
 
     const project = new Project(imports, userConfig.analyzer); //?
-    const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
+    const dataset = clusterizer.prepareDataset(project, userConfig.strategy, userConfig.clustering); //?
     const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
     const issues = refactorer.findProjectIssues(project, clustering, userConfig.refactorer);
     refactorer.render(project, clustering, dataset, issues); //?

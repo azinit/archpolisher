@@ -23,6 +23,7 @@ export type ClusterOptions = {
     neighRadius: number;
     /** number of points in neighborhood to form a cluster */
     neighNum: number;
+    spread: number;
 }
 export type ClustersResult = {
     clusters: Cluster[];
@@ -30,26 +31,27 @@ export type ClustersResult = {
     strategy: DatasetStrategy;
 };
 
-const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3 };
+const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3, spread: 0 };
 
 // default eps = 0.01
-const __getEps = (unit: FSUnit, eps = 0.00) => {
+const __getEps = (unit: FSUnit, eps = 0.01) => {
     // return _.random(-eps, eps, true)
     // const hash = unit.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
     // return hash % 5 * eps;
     return eps * unit.split("/").length;
 };
 
-export function prepareDataset(project: TProject, strategy: DatasetStrategy = "modules") {
+export function prepareDataset(project: TProject, strategy: DatasetStrategy = "modules", options: ClusterOptions = DEFAULT_OPTIONS) {
+
     // NOTE: simplify?
     const data = strategy === "modules"
         ? project.modules.map((unit) => [
-            analyzer.metrics.calcInstability(unit, project) + __getEps(unit),
-            analyzer.metrics.calcAbstractness(unit, project) + __getEps(unit),
+            analyzer.metrics.calcInstability(unit, project) + __getEps(unit, options.spread),
+            analyzer.metrics.calcAbstractness(unit, project) + __getEps(unit, options.spread),
         ])
         : project.files.map((unit) => [
-            analyzer.metrics.calcInstabilityFile(unit, project) + __getEps(unit),
-            analyzer.metrics.calcAbstractnessFile(unit, project) + __getEps(unit),
+            analyzer.metrics.calcInstabilityFile(unit, project) + __getEps(unit, options.spread),
+            analyzer.metrics.calcAbstractnessFile(unit, project) + __getEps(unit, options.spread),
         ])
     return { data, strategy };
 }

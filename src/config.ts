@@ -5,14 +5,15 @@ export default {
     // NOTE: custom filter for files? (regeexp)
     // "GH_FDD" | "GH_FDD__SPEC" | "GH_FSD" | "FAVEIN"
     "fixtures": "GH_FDD",
-    "strategy": "modules",
+    "strategy": "files",
     "analyzer": {
         "extensions": ["tsx", "ts", "jsx", "js"],
         "abstractnessDepth": 5,
     },
     "clustering": {
         "neighNum": 1,
-        "neighRadius": 0.06
+        "neighRadius": 0.06,
+        "spread": 0.02,
     },
     "refactorer": {
         "minDist": 1,
