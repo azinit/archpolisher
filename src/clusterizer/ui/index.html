@@ -115,8 +115,26 @@
             data: { datasets },
             options: {
                 scales: {
-                    x: { type: 'linear', position: 'bottom', text: 'Instability' },
-                    y: { text: 'Abstractness' },
+                    x: { 
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'Instability',
+                            color: 'black',
+                            font: { size: 20 },
+                            padding: 10,
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Abstractness',
+                            color: 'black',
+                            font: { size: 20 },
+                            padding: 10,
+                        }
+                    },
                 },
                 plugins: {
                     tooltip: {
