@@ -25,7 +25,6 @@ export function calcInstability(module: Module, project: TProject, __imports: __
     if (outDeps === undefined) return -1; // FIXME: 0.5?
     // Calc deps from external modules
     const inDeps = Object.entries(project[__imports]).filter(([gModule, gDeps]) => {
-        // !!! FIXME: remove? (test!)
         if (gModule === module) return false;
         const gResult = gDeps.includes(module);
         return gResult;

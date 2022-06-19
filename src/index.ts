@@ -8,7 +8,6 @@ import { __FIXTURES } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
-// !!! (Imports) only for different specific extensions (tsx, ts, js, jsx) | scss/css later
 // NOTE: (Modules) Улучшить анализ boundaries для модулей (shared/ui? shared/ui/button? shared/ui/button/index.tsx?)
 // NOTE: (PublicAPI) add "index" resolution aliases for modules (shared/ui, not only shared/ui/button)
 // NOTE: (PublicAPI) resolve reesports ({Auth} from features <=> features/auth)

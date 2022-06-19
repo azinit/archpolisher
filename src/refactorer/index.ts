@@ -120,7 +120,6 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult)
     }
 }
 
-// !!! FIXME: one unit cluster exception
 export function findClusterIssues(units: FSUnit[], clusterIdx = 0): FSIssue[] {
     if (units.length === 1) return [];
     // Считаем сумму расстояний до всех соседей в кластере
