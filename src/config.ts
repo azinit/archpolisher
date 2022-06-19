@@ -5,7 +5,10 @@ export default {
     // NOTE: custom filter for files? (regeexp)
     "fixtures": "FAVEIN",
     "strategy": "modules",
-    "exts": ["tsx", "ts", "jsx", "js"],
+    "analyzer": {
+        "extensions": ["tsx", "ts", "jsx", "js"],
+        "abstractnessDepth": 5,
+    },
     "clustering": {
         "neighNum": 1,
         "neighRadius": 0.06

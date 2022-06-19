@@ -1,12 +1,15 @@
 import _ from "lodash";
-type Options = {
-    abstractnessDepth?: number;
-    exts?: string[];
+
+export type AnalyzerConfig = {
+    extensions: string[];
+    abstractnessDepth: number;
 };
+
+type Options = Partial<AnalyzerConfig>;
 
 const DEFAULT_OPTIONS = {
     abstractnessDepth: 3,
-    exts: ["tsx", "ts", "jsx", "js"],
+    extensions: ["tsx", "ts", "jsx", "js"],
 };
 
 
@@ -21,7 +24,7 @@ export class Project {
 
     constructor(imports: ImportsGraph, options: Options = DEFAULT_OPTIONS) {
         const inOptions = { ...DEFAULT_OPTIONS, ...options, }
-        this.imports = this.cleanImports(imports, inOptions.exts);
+        this.imports = this.cleanImports(imports, inOptions.extensions);
         this.files = Object.keys(this.imports);
         this.structure = this.getStructure();
         // FIXME: refine options

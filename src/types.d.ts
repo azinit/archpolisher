@@ -27,3 +27,10 @@ declare type FSResult = {
     issues: FSIssue[];
     noise: FSUnit[];
 };
+
+declare type UserConfig = {
+    fixtures: keyof typeof import("shared/fixtures").__FIXTURES;
+    strategy: DatasetStrategy;
+    analyzer: import("analyzer").fs.AnalyzerConfig;
+    clustering: clusterizer.ClusterOptions;
+}

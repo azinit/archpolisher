@@ -23,19 +23,13 @@ const { Project } = analyzer.fs;
 // NOTE: Project instance with DI? (without passing as param)
 
 // NOTE: specify/refine neigh options values
-type Config = {
-    fixtures: keyof typeof __FIXTURES,
-    strategy: DatasetStrategy,
-    exts: string[],
-    clustering: clusterizer.ClusterOptions,
-}
 
-const userConfig = config as unknown as Config;
+const userConfig = config as unknown as UserConfig;
 
 // const config = 
 function main(imports: ImportsGraph) {
 
-    const project = new Project(imports, userConfig); //?
+    const project = new Project(imports, userConfig.analyzer); //?
     const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
     const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
     const issues = clusterizer.findProjectIssues(project, clustering);

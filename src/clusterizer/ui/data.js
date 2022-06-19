@@ -2,19 +2,22 @@
 var userConfig = {
 	"fixtures": "FAVEIN",
 	"strategy": "modules",
-	"exts": [
-		"tsx",
-		"ts",
-		"jsx",
-		"js"
-	],
+	"analyzer": {
+		"extensions": [
+			"tsx",
+			"ts",
+			"jsx",
+			"js"
+		],
+		"abstractnessDepth": 5
+	},
 	"clustering": {
 		"neighNum": 1,
 		"neighRadius": 0.06
 	}
 };
 var issues = {
-	"date": "2022-06-19T01:55:58.073Z",
+	"date": "2022-06-19T02:18:17.248Z",
 	"strategy": "modules",
 	"description": "Some modules should be transferred, according to Instability & Abstractness modules clustering",
 	"issues": [
