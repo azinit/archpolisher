@@ -120,6 +120,11 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult)
     }
 }
 
+// !!! TODO: minDist
+// !!! TODO: minDiff
+
+const MIN_DIFF = 3;
+
 export function findClusterIssues(units: FSUnit[], clusterIdx = 0): FSIssue[] {
     if (units.length === 1) return [];
     // Считаем сумму расстояний до всех соседей в кластере
@@ -132,10 +137,15 @@ export function findClusterIssues(units: FSUnit[], clusterIdx = 0): FSIssue[] {
     const neighUnits = units.filter((_, idx) => dists[idx] !== maxDist);
     if (issuesUnits.length === units.length) return [];
     // if (!neighUnits.length) console.log("DEBUG", { units, issuesUnits, neighUnits });
+    // Для фильтрации файлов рядом в одном модуле
+    const absDiff = Math.max(...dists) - Math.min(...dists);
+    if (absDiff < MIN_DIFF) return [];
+
     return issuesUnits.map((iu) => ({
         module: iu,
         similar: neighUnits,
         _cluster: clusterIdx,
+        // __absDiff: absDiff,
         // __dists: dists,
         // __units: units,
     }))

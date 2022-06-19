@@ -17,4 +17,4 @@
 
 export const COLORS = ["gray", "red", "green", "blue", "pink", "cyan", "yellow", "magenta", "orange", "brown", "violet", "CornflowerBlue", "Cornsilk", "Coral", "Gold", "FireBrick", "Lime"];
 
-export const BLUE_COLORS = ["gray", "#B6D0E2", "#A7C7E7", "#7393B3", "#4682B4", "#6082B6", "#6495ED", "#0096FF", "#1434A4", "#3F00FF", "#000080", "#0437F2", "#0818A8", "#40B5AD", "#008080", "#40E0D0", "#00A36C"]
+export const BLUE_COLORS = ["gray", "#B6D0E2", "#A7C7E7", "#7393B3", "#4682B4", "#6082B6", "#6495ED", "#0096FF", "#1434A4", "#3F00FF", "#000080", "#0437F2", "#0818A8", "#40B5AD", "#008080", "#40E0D0", "#96DED1", "#00A36C", "#9FE2BF", "#C1E1C1", "#ECFFDC", "#AFE1AF", "#90EE90", "#98FB98"]
