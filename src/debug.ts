@@ -1,5 +1,6 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
+import * as refactorer from "refactorer";
 import { __FIXTURES as F, clustersFiles } from "shared/fixtures";
 import glob2reg from "glob-to-regexp";
 import config from "./config";
@@ -39,18 +40,18 @@ analyzer.fs.getFSDist("features/foo/auth", "features/auth/bar") //?
 analyzer.fs.getFSDist("lib", "shared/lib") //? 
 
 // === CLUSTERING#Issues ()
-clusterizer.findClusterIssues([
+refactorer.findClusterIssues([
     "shared/lib/dom.ts",
     "shared/lib/compose.ts",
     // "shared/components/card.tsx",
     "helpers/index.ts",
 ]) //?
-clusterizer.findProjectIssues(project, clustering); //?
+refactorer.findProjectIssues(project, clustering); //?
 // === CLUSTERING
-// clusterizer.unifyGroup(clustersFiles.single) //?
-// clusterizer.unifyGroup(clustersFiles.multiple) //?
-// clusterizer.unifyGroup(clustersFiles.shared) //?
-clusterizer.unifyGroup(clustersFiles.modules) //?
+refactorer.unifyGroup(clustersFiles.single) //?
+refactorer.unifyGroup(clustersFiles.multiple) //?
+refactorer.unifyGroup(clustersFiles.shared) //?
+refactorer.unifyGroup(clustersFiles.modules) //?
 
 // const imBefore = imports;
 // const imAfter = cleanImports(imports)

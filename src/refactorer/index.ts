@@ -2,7 +2,7 @@ import fs from "fs";
 import _ from "lodash";
 import type { ClustersResult, Dataset } from "clusterizer";
 import * as analyzer from "analyzer";
-import { COLORS } from "shared/lib";
+import { COLORS, BLUE_COLORS } from "shared/lib";
 import userConfig from "../config";
 
 export function render(project: TProject, clustering: ClustersResult, dataset: Dataset, issues: FSResult) {
@@ -17,8 +17,8 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
     const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
     const datasets = clusters.map((group, idx) => ({
         // label: `Group#${idx}`
-        label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx]),
-        backgroundColor: COLORS[idx],
+        label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx], 2),
+        backgroundColor: BLUE_COLORS[idx],
         pointRadius: 10,
         data: group.map(fIdx => {
             const [x, y] = dataset.data[fIdx];
@@ -37,6 +37,10 @@ var modules = ${JSON.stringify(project.modules, null, "\t")};
 }
 
 export function unifyGroup(group: FSUnit[], maxSiblings = 4) {
+    if (group.length === 1) {
+        return group[0];
+    }
+
     const cuts = group.map((f) => f.split("/"));
     const structure = analyzer.fs.fsGroupBy(cuts);
     const root = [];
