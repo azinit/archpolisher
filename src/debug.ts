@@ -6,7 +6,7 @@ import glob2reg from "glob-to-regexp";
 import config from "./config";
 const { Project } = analyzer.fs;
 
-const imports: ImportsGraph = F.GH_FDD__SPEC.imports;
+const imports: ImportsGraph = F[config.fixtures as keyof typeof F].imports;
 const project = new Project(imports, { ...config, abstractnessDepth: 3 });
 const dataset = clusterizer.prepareDataset(project, "files"); //?
 const clustering = clusterizer.cluster(dataset); //?

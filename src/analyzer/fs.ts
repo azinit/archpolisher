@@ -83,7 +83,8 @@ export class Project {
      *  ["models.ts", "models.gen.ts"],
      */
     private getModulesWeights(depth = 5): ModulesWeights {
-        return this.modules.reduce((acc, module) => {
+        // let __map: Record<string, any> = {};
+        const result = this.modules.reduce((acc, module) => {
             const deps1 = this.modulesGraph[module]; // depth=1
             const deps2 = deps1.map(dep => this.modulesGraph[dep]).flat(); // depth=2
             const deps3 = deps2.map(dep => this.modulesGraph[dep]).flat(); // depth=3
@@ -92,13 +93,17 @@ export class Project {
             // NOTE: refine depth iterating!
             const totalDeps = [deps1, deps2, deps3, deps4, deps5];
             const deps = _.uniq(totalDeps.slice(0, depth).flat())
+            // __map[module] = deps;
             return { ...acc, [module]: deps.length };
         }, {});
+        // __map;
+        return result;
     }
 
     // Предполагается, что для любого файла есть верхнеуровневый модуль (иначе все крашнется сразу)
     public asModule(file: TFile): Module {
-        return this.modules.find((m) => file.includes(m))!;
+        // return this.modules.find((m) => file.includes(m))!; // index.tsx bug!
+        return this.modules.find((m) => _.startsWith(file, m))!;
     }
 };
 
@@ -148,7 +153,8 @@ function getModules(structure: Structure, root: string[] = []): Module[] {
         const dirModules = getModules(dirTree, nextRoot);
         return dirModules;
     }).flat();
-    return modules;
+    // return modules;
+    return modules.filter(m => !["index.tsx", "index.ts"].includes(m));
 }
 
 export interface IProject extends Project { };

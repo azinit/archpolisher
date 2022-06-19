@@ -17,8 +17,8 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
     // !!! TODO: Добавить разные виды отображения?
     const issuesUnits = issues.issues.map(i => i.module);
     const issuesClustersIndices = issues.issues.map(i => i._cluster);
-    const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
-    // const issuesClusters = clustering.clusters;
+    // const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
+    const issuesClusters = clustering.clusters;
     const clusters = [clustering.noise, ...issuesClusters];
     // FIXME: modules (clust: 10, 0.15)
     // const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
@@ -33,7 +33,7 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
         borderWidth: 2,
         pointBorderColor: group.map(fIdx => {
             const unit = labels[fIdx];
-            console.log(unit, {issuesUnits});
+            // console.log(unit, {issuesUnits});
             if (issuesUnits.some(iu => iu.includes(unit))) return "#953553";
             return BLUE_COLORS[gIdx];
         }),
