@@ -2,6 +2,7 @@
 
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
+import * as refactorer from "refactorer";
 import config from "./config";
 import { __FIXTURES } from "shared/fixtures";
 
@@ -32,8 +33,8 @@ function main(imports: ImportsGraph) {
     const project = new Project(imports, userConfig.analyzer); //?
     const dataset = clusterizer.prepareDataset(project, userConfig.strategy); //?
     const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
-    const issues = clusterizer.findProjectIssues(project, clustering);
-    clusterizer.render(project, clustering, dataset, issues); //?
+    const issues = refactorer.findProjectIssues(project, clustering);
+    refactorer.render(project, clustering, dataset, issues); //?
     return issues;
 }
 
