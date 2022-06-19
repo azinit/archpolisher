@@ -22,6 +22,9 @@
     .li-code {
         margin-bottom: -40px;
     }
+    .li-description {
+        margin-top: -80px;
+    }
 
     b + .code {
         margin-top: -20px;
@@ -52,14 +55,16 @@
         font-size: 0.8rem;
         /* white-space: nowrap; */
         overflow: auto;
-        max-height: 300px;
+        /* max-height: 300px; */
+        max-height: 600px;
         max-width: 500px;
     }
-
+    
     code {
         display: block;
         padding: 0px 20px;
         margin: -25px 0;
+        color: #7393B3;
     }
     /* scrollbar */
     ::-webkit-scrollbar {
@@ -88,11 +93,11 @@
         </main>
         <aside>
             <ul>
-                <li><b>Date:</b> <div id="date"></div></li>
+                <!-- <li><b>Date:</b> <div id="date"></div></li>
                 <li><b>Project:</b> <div id="project"></div></li>
                 <li><b>Config:</b> <div id="config"></div></li>
-                <br/>
-                <li><b>Description:</b> <div id="description"></div></li>
+                <br/> -->
+                <li class="li-description"><b>Description:</b> <div id="description"></div></li>
                 <li class="li-code"><b>Noise:</b>
                     <div class="code">
                         <code id="noise"></code>
@@ -157,12 +162,12 @@
     </script>
     <script>
         console.log("Data", { issues, datasets, userConfig, files, modules });
-        document.getElementById('date').innerHTML = new Date(issues.date);
-        document.getElementById('project').innerText = `${userConfig.fixtures} (${files.length} files, ${modules.length} modules)`;
+        // document.getElementById('date').innerHTML = new Date(issues.date);
+        // document.getElementById('project').innerText = `${userConfig.fixtures} (${files.length} files, ${modules.length} modules)`;
+        // document.getElementById('config').innerText = `${userConfig.strategy} (${JSON.stringify(userConfig.clustering)})`;
         document.getElementById('description').innerText = issues.description;
-        document.getElementById('config').innerText = `${userConfig.strategy} (${JSON.stringify(userConfig.clustering)})`;
-        document.getElementById('noise').innerText = JSON.stringify(issues.noise, null, "\t");
-        document.getElementById('issues').innerText = JSON.stringify(issues.issues, null, "\t");
+        document.getElementById('issues').innerText = `Total: ${issues.issues.length}\n` + JSON.stringify(issues.issues.map(({ _cluster, ...data}) => data), null, "\t");
+        document.getElementById('noise').innerText = `Total: ${issues.noise.length}\n` + JSON.stringify(issues.noise, null, "\t");
     </script>
 </body>
 

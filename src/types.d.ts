@@ -19,6 +19,7 @@ declare type Datetime = string;
 declare type FSIssue = {
     module: FSUnit;
     similar: FSUnit[];
+    _cluster: number;
 };
 declare type FSResult = {
     date: Datetime;

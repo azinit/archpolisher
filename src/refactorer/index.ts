@@ -10,14 +10,24 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
         ? project.modules
         : project.files.map((file) => file.split("/").slice(0, 3).join("/"));
 
+    
     // noise в начало, чтобы сначало отрендерились серые
     // NOTE: неочевидно что gray первым
-    const clusters = [clustering.noise, ...clustering.clusters];
+
+    // !!! TODO: Добавить разные виды отображения?
+    // const issuesUnits = issues.issues.map(i => i.module);
+    const issuesClustersIndices = issues.issues.map(i => i._cluster);
+    const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
+    // const issuesClusters = clustering.clusters;
+    const clusters = [clustering.noise, ...issuesClusters];
     // FIXME: modules (clust: 10, 0.15)
-    const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
+    // const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
     const datasets = clusters.map((group, idx) => ({
-        // label: `Group#${idx}`
-        label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx], 2),
+        label: (idx === 0) ? "Noise" : `Group#${idx}`,
+        // label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx], 4),
+        // label: (idx === 0)
+        //     ? "Noise"
+        //     : clustersUnits[idx]
         backgroundColor: BLUE_COLORS[idx],
         pointRadius: 10,
         data: group.map(fIdx => {
@@ -95,16 +105,17 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult)
         date: new Date().toISOString(),
         strategy: clustering.strategy,
         description: "Some modules should be transferred, according to Instability & Abstractness modules clustering",
-        issues: clustering.clusters.map((cluster) => {
+        issues: clustering.clusters.map((cluster, gidx) => {
             const units = cluster.map(idx => project[clustering.strategy][idx]);
-            return findClusterIssues(units);
+            return findClusterIssues(units, gidx);
         }).flat(),
         noise: clustering.noise.map(idx => project[clustering.strategy][idx]),
     }
 }
 
 // !!! FIXME: one unit cluster exception
-export function findClusterIssues(units: FSUnit[]): FSIssue[] {
+export function findClusterIssues(units: FSUnit[], clusterIdx = 0): FSIssue[] {
+    if (units.length === 1) return [];
     // Считаем сумму расстояний до всех соседей в кластере
     const dists: number[] = units.map((u1) => (
         // NOTE: consider use "minDist" for summarizing
@@ -113,9 +124,12 @@ export function findClusterIssues(units: FSUnit[]): FSIssue[] {
     const maxDist = _.max(dists);
     const issuesUnits = units.filter((_, idx) => dists[idx] === maxDist);
     const neighUnits = units.filter((_, idx) => dists[idx] !== maxDist);
+    if (issuesUnits.length === units.length) return [];
+    // if (!neighUnits.length) console.log("DEBUG", { units, issuesUnits, neighUnits });
     return issuesUnits.map((iu) => ({
         module: iu,
         similar: neighUnits,
+        _cluster: clusterIdx,
         // __dists: dists,
         // __units: units,
     }))
