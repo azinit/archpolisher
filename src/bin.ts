@@ -1,8 +1,6 @@
-import * as analyzer from "analyzer";
-import * as archpolisher from ".";
+import { parseProject } from "./analyzer/parser";
+import * as archpolisher from "./run";
 
-console.log({ archpolisher, analyzer });
+console.log({ archpolisher, parseProject });
 
-analyzer.parser
-    .parseProject()
-    .then(archpolisher.run);
+parseProject().then(archpolisher.run);

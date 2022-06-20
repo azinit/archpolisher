@@ -5,8 +5,8 @@
 // import * as fixtures from "shared/fixtures";
 // import config from "./config";
 import { __FIXTURES } from "shared/fixtures";
-import { run } from "../index";
-import userConfig from "../config";
+import { run } from "../run";
+import { userConfig } from "shared/config";
 
 run(__FIXTURES[userConfig.fixtures].imports); //?
 // console.log("TEST", { analyzer, clusterizer, refactorer, fixtures });

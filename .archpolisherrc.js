@@ -8,7 +8,7 @@ module.exports = {
     "analyzer": {
         "extensions": ["tsx", "ts", "jsx", "js"],
         "abstractnessDepth": 5,
-        "root": "./src/index.ts",
+        "root": "./src/run.ts",
     },
     "clustering": {
         "neighNum": 1,
