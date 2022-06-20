@@ -1,6 +1,6 @@
 {
   "name": "archpolisher",
-  "version": "0.0.0-concept.13",
+  "version": "0.0.0-concept.15",
   "description": "🍰 Architecture analyze toolkit",
   "keywords": [
     "clean-architecture",
@@ -10,7 +10,7 @@
     "architecture-metrics",
     "tookit"
   ],
-  "main": "dist/index.js",
+  "main": "dist/bin.js",
   "author": "Ilya Azin (<azinit.me@gmail.com>)",
   "repository": "https://github.com/azinit/archpolisher.git",
   "license": "MIT",
