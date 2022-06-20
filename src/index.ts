@@ -27,14 +27,14 @@ const { Project } = analyzer.fs;
 const userConfig = config as unknown as UserConfig;
 
 // const config = 
-function main(imports: ImportsGraph) {
+export function run(imports: ImportsGraph, config: UserConfig = userConfig) {
 
-    const project = new Project(imports, userConfig.analyzer); //?
-    const dataset = clusterizer.prepareDataset(project, userConfig.strategy, userConfig.clustering); //?
-    const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
-    const issues = refactorer.findProjectIssues(project, clustering, userConfig.refactorer);
+    const project = new Project(imports, config.analyzer); //?
+    const dataset = clusterizer.prepareDataset(project, config.strategy, config.clustering); //?
+    const clustering = clusterizer.cluster(dataset, config.clustering); //?
+    const issues = refactorer.findProjectIssues(project, clustering, config.refactorer);
     refactorer.render(project, clustering, dataset, issues); //?
     return issues;
 }
 
-main(__FIXTURES[userConfig.fixtures].imports); //?
+// run(__FIXTURES[userConfig.fixtures].imports); //?
