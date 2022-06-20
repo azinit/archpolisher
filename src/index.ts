@@ -1,7 +1,4 @@
 /// <reference path="./types.d.ts" />
-
-console.log("[ARCHPOLISHER] Hello World!");
-
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
@@ -39,3 +36,5 @@ export function run(imports: ImportsGraph) {
     console.log("> [ARCHPOLISHER] Finished!");
     return issues;
 }
+
+export const parserProject = analyzer.parser.parseProject;
