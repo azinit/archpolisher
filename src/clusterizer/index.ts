@@ -65,7 +65,7 @@ export function prepareDataset(
     const data = units.map((unit, uIdx) => [
         getInstability(unit, project) + __getEps(unit, options.spread),
         getAbstractness(unit, project) + __getEps(unit, options.spread),
-        // normalize(fsMin, fsMax)(fsCoords[uIdx]),
+        normalize(fsMin, fsMax)(fsCoords[uIdx]),
     ]);
     // NOTE: simplify?
     // const data = strategy === "modules"

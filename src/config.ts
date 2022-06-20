@@ -4,7 +4,7 @@ export default {
     // [FSD] modules: [num=1, rad=0.06+]
     // NOTE: custom filter for files? (regeexp)
     // "GH_FDD" | "GH_FDD__SPEC" | "GH_FSD" | "FAVEIN"
-    "fixtures": "GH_FDD__SPEC",
+    "fixtures": "FAVEIN",
     "strategy": "modules",
     "analyzer": {
         "extensions": ["tsx", "ts", "jsx", "js"],
