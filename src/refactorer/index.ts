@@ -1,4 +1,6 @@
 import fs from "fs";
+import path from "path";
+import process from "process";
 import _ from "lodash";
 import type { ClustersResult, Dataset } from "clusterizer";
 import * as analyzer from "analyzer";
@@ -51,7 +53,9 @@ var datasets = ${JSON.stringify(datasets, null, "\t")};
 var files = ${JSON.stringify(project.files, null, "\t")};
 var modules = ${JSON.stringify(project.modules, null, "\t")};
     `;
-    fs.writeFileSync("src/refactorer/ui/data.js", dataContent); //?
+    // fs.writeFileSync("src/refactorer/ui/data.js", dataContent); //?
+    process.chdir(__dirname);
+    fs.writeFileSync(path.resolve("ui/data.js"), dataContent); //?
 }
 
 export function unifyGroup(group: FSUnit[], maxSiblings = 4) {
