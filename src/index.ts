@@ -37,4 +37,4 @@ export function run(imports: ImportsGraph) {
     return issues;
 }
 
-export const parserProject = analyzer.parser.parseProject;
+export const parseProject = analyzer.parser.parseProject;

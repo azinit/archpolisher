@@ -1,4 +1,6 @@
 import fs from "fs";
+import path from "path";
+import process from "process";
 import madge from "madge";
 import { userConfig } from "shared/config";
 
@@ -10,6 +12,9 @@ const config = {
 };
 
 export async function parseProject() {
+    const packageDir = path.join(process.cwd(), ".archpolisher");
+    if (!fs.existsSync(packageDir)) fs.mkdirSync(packageDir);
+
     // Parse imports
     const result = await madge(userConfig.analyzer.root, config);
     const imports: ImportsGraph = result.obj();
