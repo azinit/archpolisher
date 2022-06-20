@@ -39,6 +39,7 @@
             "neighNum": 1,
             "neighRadius": 0.05
             "spread": 0.00,
+            "withFSDist": true,
         },
         /** Refactor options (dists, ui) */
         "refactorer": {

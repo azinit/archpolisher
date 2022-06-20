@@ -1,6 +1,6 @@
 {
   "name": "archpolisher",
-  "version": "0.0.0-concept.18",
+  "version": "0.0.0-concept.19",
   "description": "🍰 Architecture analyze toolkit",
   "keywords": [
     "clean-architecture",
@@ -19,7 +19,7 @@
     "README.md"
   ],
   "bin": {
-    "archpolisher": "./bin.js"
+    "archpolisher": "./dist/bin.js"
   },
   "scripts": {
     "noderun": "cross-env NODE_PATH=./src ts-node",
