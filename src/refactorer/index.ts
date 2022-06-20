@@ -111,13 +111,13 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult,
     const _options = { ...DEFAULT_OPTIONS, ...options };
     return {
         date: new Date().toISOString(),
-        strategy: clustering.strategy,
+        strategy: clustering.dataset.strategy,
         description: "Some modules should be transferred, according to Instability & Abstractness modules clustering",
-        issues: clustering.clusters.map((cluster, gidx) => {
-            const units = cluster.map(idx => project[clustering.strategy][idx]);
-            return findClusterIssues(units, gidx, _options);
+        issues: clustering.clusters.map((cluster, _gidx) => {
+            const units = cluster.map(idx => project[clustering.dataset.strategy][idx]);
+            return findClusterIssues(units, clustering.dataset, _gidx, _options);
         }).flat(),
-        noise: clustering.noise.map(idx => project[clustering.strategy][idx]),
+        noise: clustering.noise.map(idx => project[clustering.dataset.strategy][idx]),
     }
 }
 
@@ -130,7 +130,7 @@ const DEFAULT_OPTIONS: RefactorerOptions = {
     minDist: 6,
 }
 
-export function findClusterIssues(units: FSUnit[], clusterIdx = 0, options: RefactorerOptions): FSIssue[] {
+export function findClusterIssues(units: FSUnit[], dataset: Dataset, clusterIdx = 0, options: RefactorerOptions): FSIssue[] {
     if (units.length === 1) return [];
 
     // Считаем сумму расстояний до всех соседей в кластере
@@ -154,8 +154,18 @@ export function findClusterIssues(units: FSUnit[], clusterIdx = 0, options: Refa
         module: iu,
         similar: neighUnits,
         _cluster: clusterIdx,
+        // 1 - [feat / Mean[cl_feats]]
+        similarity: [
+            1 - Math.abs(dataset.data[dataset.units.indexOf(iu)][0] - _.meanBy(dataset.data, 0)),
+            1 - Math.abs(dataset.data[dataset.units.indexOf(iu)][1] - _.meanBy(dataset.data, 1)),
+        ],
+        // units: dataset.units,
         // __absDiff: absDiff,
-        __dists: dists,
+        // __dists: dists,
+        // __ds: [
+            // dataset.data.map(d => d[0]),
+            // dataset.data.map(d => d[1]),
+        // ],
         // __units: units,
     }))
 };

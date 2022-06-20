@@ -13,10 +13,10 @@ export default {
     "clustering": {
         "neighNum": 1,
         "neighRadius": 0.06,
-        "spread": 0.02,
+        "spread": 0.00,
     },
     "refactorer": {
         "minDist": 1,
-        "minDiff": 1,
+        "minDiff": 4, //3
     },
 }

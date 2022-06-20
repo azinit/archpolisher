@@ -14,44 +14,18 @@ var userConfig = {
 	"clustering": {
 		"neighNum": 1,
 		"neighRadius": 0.06,
-		"spread": 0.02
+		"spread": 0
 	},
 	"refactorer": {
 		"minDist": 1,
-		"minDiff": 1
+		"minDiff": 4
 	}
 };
 var issues = {
-	"date": "2022-06-19T23:16:56.049Z",
+	"date": "2022-06-20T00:00:19.166Z",
 	"strategy": "files",
 	"description": "Some modules should be transferred, according to Instability & Abstractness modules clustering",
 	"issues": [
-		{
-			"module": "app/header/hooks.ts",
-			"similar": [
-				"app/hocs/with-antd.tsx",
-				"app/hocs/with-router.tsx"
-			],
-			"_cluster": 2,
-			"__dists": [
-				4,
-				2,
-				2
-			]
-		},
-		{
-			"module": "app/header/index.tsx",
-			"similar": [
-				"app/hocs/with-error-handling.tsx",
-				"app/hocs/index.ts"
-			],
-			"_cluster": 3,
-			"__dists": [
-				4,
-				2,
-				2
-			]
-		},
 		{
 			"module": "features/search/results/queries.gen.ts",
 			"similar": [
@@ -66,17 +40,9 @@ var issues = {
 				"features/user-info/queries.gen.ts"
 			],
 			"_cluster": 6,
-			"__dists": [
-				19,
-				19,
-				19,
-				19,
-				17,
-				15,
-				15,
-				17,
-				19,
-				23
+			"similarity": [
+				0.8786881562134088,
+				0.880050505050505
 			]
 		},
 		{
@@ -91,116 +57,12 @@ var issues = {
 				"features/repo-explorer/components/hooks.ts",
 				"features/repo-explorer/components/readme/index.tsx",
 				"features/repo-explorer/hooks.ts",
-				"features/user-info/index.tsx",
-				"features/error/catcher.tsx",
-				"features/repo-stat/index.tsx",
-				"features/search/index.tsx",
-				"features/user-info/hooks.ts",
-				"features/auth/index.ts",
-				"features/repo-details/card-common/index.tsx",
-				"features/repo-details/index.tsx",
-				"features/repo-explorer/components/toolbar/index.tsx",
-				"features/repo-list/pagination/index.tsx",
-				"features/repo-list/index.tsx",
-				"features/repo-list/items/index.tsx",
-				"features/repo-list/tabs/index.tsx",
-				"features/search/filters/index.tsx",
-				"features/search/results/index.tsx",
-				"features/repo-explorer/components/entries-view/index.tsx",
-				"features/repo-explorer/components/index.tsx"
+				"features/user-info/index.tsx"
 			],
 			"_cluster": 7,
-			"__dists": [
-				99,
-				99,
-				73,
-				73,
-				99,
-				105,
-				81,
-				107,
-				65,
-				117,
-				75,
-				73,
-				77,
-				69,
-				75,
-				73,
-				99,
-				73,
-				107,
-				97,
-				71,
-				97,
-				97,
-				95,
-				91,
-				117,
-				105,
-				81
-			]
-		},
-		{
-			"module": "features/search/results/list/index.tsx",
-			"similar": [
-				"features/auth/firebase/auth-github.ts",
-				"features/auth/user/index.tsx",
-				"features/error/helpers.ts",
-				"features/error/index.ts",
-				"features/repo-details/card-collaborators/index.tsx",
-				"features/repo-explorer/components/entries-view/git-file-view.tsx",
-				"features/repo-explorer/components/hooks.ts",
-				"features/repo-explorer/components/readme/index.tsx",
-				"features/repo-explorer/hooks.ts",
-				"features/user-info/index.tsx",
-				"features/error/catcher.tsx",
-				"features/repo-stat/index.tsx",
-				"features/search/index.tsx",
-				"features/user-info/hooks.ts",
-				"features/auth/index.ts",
-				"features/repo-details/card-common/index.tsx",
-				"features/repo-details/index.tsx",
-				"features/repo-explorer/components/toolbar/index.tsx",
-				"features/repo-list/pagination/index.tsx",
-				"features/repo-list/index.tsx",
-				"features/repo-list/items/index.tsx",
-				"features/repo-list/tabs/index.tsx",
-				"features/search/filters/index.tsx",
-				"features/search/results/index.tsx",
-				"features/repo-explorer/components/entries-view/index.tsx",
-				"features/repo-explorer/components/index.tsx"
-			],
-			"_cluster": 7,
-			"__dists": [
-				99,
-				99,
-				73,
-				73,
-				99,
-				105,
-				81,
-				107,
-				65,
-				117,
-				75,
-				73,
-				77,
-				69,
-				75,
-				73,
-				99,
-				73,
-				107,
-				97,
-				71,
-				97,
-				97,
-				95,
-				91,
-				117,
-				105,
-				81
+			"similarity": [
+				0.787978510453258,
+				0.880050505050505
 			]
 		},
 		{
@@ -208,25 +70,17 @@ var issues = {
 			"similar": [
 				"features/auth/firebase/index.ts",
 				"features/auth/firebase/init.ts",
+				"features/index.ts",
 				"features/repo-explorer/components/branches-menu/index.tsx",
 				"features/repo-explorer/components/entries-view/last-commit-header.tsx",
 				"features/repo-explorer/index.ts",
 				"features/repo-list/hooks.ts",
-				"features/repo-stat/queries.gen.ts",
-				"features/index.ts"
+				"features/repo-stat/queries.gen.ts"
 			],
 			"_cluster": 8,
-			"__dists": [
-				31,
-				31,
-				37,
-				37,
-				23,
-				27,
-				27,
-				39,
-				39,
-				19
+			"similarity": [
+				0.9546451771199245,
+				0.880050505050505
 			]
 		},
 		{
@@ -234,25 +88,89 @@ var issues = {
 			"similar": [
 				"features/auth/firebase/index.ts",
 				"features/auth/firebase/init.ts",
+				"features/index.ts",
 				"features/repo-explorer/components/branches-menu/index.tsx",
 				"features/repo-explorer/components/entries-view/last-commit-header.tsx",
 				"features/repo-explorer/index.ts",
 				"features/repo-list/hooks.ts",
-				"features/repo-stat/queries.gen.ts",
-				"features/index.ts"
+				"features/repo-stat/queries.gen.ts"
 			],
 			"_cluster": 8,
-			"__dists": [
-				31,
-				31,
-				37,
-				37,
-				23,
-				27,
-				27,
-				39,
-				39,
-				19
+			"similarity": [
+				0.9546451771199245,
+				0.880050505050505
+			]
+		},
+		{
+			"module": "features/repo-explorer/components/entries-view/index.tsx",
+			"similar": [
+				"features/auth/index.ts",
+				"features/error/catcher.tsx",
+				"features/repo-details/card-common/index.tsx",
+				"features/repo-details/index.tsx",
+				"features/repo-explorer/components/index.tsx",
+				"features/repo-list/index.tsx",
+				"features/repo-list/items/index.tsx",
+				"features/repo-list/pagination/index.tsx",
+				"features/repo-list/tabs/index.tsx",
+				"features/repo-stat/index.tsx",
+				"features/search/filters/index.tsx",
+				"features/search/index.tsx",
+				"features/search/results/index.tsx",
+				"features/user-info/hooks.ts"
+			],
+			"_cluster": 10,
+			"similarity": [
+				0.6213118437865912,
+				0.880050505050505
+			]
+		},
+		{
+			"module": "features/repo-explorer/components/toolbar/index.tsx",
+			"similar": [
+				"features/auth/index.ts",
+				"features/error/catcher.tsx",
+				"features/repo-details/card-common/index.tsx",
+				"features/repo-details/index.tsx",
+				"features/repo-explorer/components/index.tsx",
+				"features/repo-list/index.tsx",
+				"features/repo-list/items/index.tsx",
+				"features/repo-list/pagination/index.tsx",
+				"features/repo-list/tabs/index.tsx",
+				"features/repo-stat/index.tsx",
+				"features/search/filters/index.tsx",
+				"features/search/index.tsx",
+				"features/search/results/index.tsx",
+				"features/user-info/hooks.ts"
+			],
+			"_cluster": 10,
+			"similarity": [
+				0.7046451771199245,
+				0.880050505050505
+			]
+		},
+		{
+			"module": "features/search/results/list/index.tsx",
+			"similar": [
+				"features/auth/index.ts",
+				"features/error/catcher.tsx",
+				"features/repo-details/card-common/index.tsx",
+				"features/repo-details/index.tsx",
+				"features/repo-explorer/components/index.tsx",
+				"features/repo-list/index.tsx",
+				"features/repo-list/items/index.tsx",
+				"features/repo-list/pagination/index.tsx",
+				"features/repo-list/tabs/index.tsx",
+				"features/repo-stat/index.tsx",
+				"features/search/filters/index.tsx",
+				"features/search/index.tsx",
+				"features/search/results/index.tsx",
+				"features/user-info/hooks.ts"
+			],
+			"_cluster": 10,
+			"similarity": [
+				0.6546451771199244,
+				0.880050505050505
 			]
 		},
 		{
@@ -266,45 +184,17 @@ var issues = {
 				"features/repo-explorer/components/toolbar/clone-menu.tsx",
 				"features/repo-stat/fixtures.tsx"
 			],
-			"_cluster": 10,
-			"__dists": [
-				21,
-				21,
-				21,
-				27,
-				25,
-				25,
-				25,
-				21
-			]
-		},
-		{
-			"module": "models.gen.ts",
-			"similar": [
-				"shared/helpers/alert.ts",
-				"shared/helpers/compose.ts",
-				"shared/helpers/dom.ts",
-				"shared/helpers/string.ts",
-				"shared/hooks/use-debounce.ts",
-				"shared/hooks/use-local-storage.ts",
-				"shared/hooks/use-previous.ts"
-			],
 			"_cluster": 11,
-			"__dists": [
-				16,
-				16,
-				10,
-				10,
-				10,
-				10,
-				12,
-				12,
-				12
+			"similarity": [
+				0.5453548228800755,
+				0.880050505050505
 			]
 		},
 		{
 			"module": "shared/get-env/index.ts",
 			"similar": [
+				"models.gen.ts",
+				"serviceWorker.ts",
 				"shared/helpers/alert.ts",
 				"shared/helpers/compose.ts",
 				"shared/helpers/dom.ts",
@@ -313,17 +203,10 @@ var issues = {
 				"shared/hooks/use-local-storage.ts",
 				"shared/hooks/use-previous.ts"
 			],
-			"_cluster": 11,
-			"__dists": [
-				16,
-				16,
-				10,
-				10,
-				10,
-				10,
-				12,
-				12,
-				12
+			"_cluster": 12,
+			"similarity": [
+				0.5453548228800755,
+				0.36994949494949503
 			]
 		},
 		{
@@ -333,42 +216,14 @@ var issues = {
 				"shared/components/repo/lang.tsx",
 				"shared/components/tabs/index.tsx"
 			],
-			"_cluster": 18,
-			"__dists": [
-				8,
-				4,
-				6,
-				6
-			]
-		},
-		{
-			"module": "shared/components/card/skeleton/index.tsx",
-			"similar": [
-				"shared/components/simple-pagination/index.tsx"
-			],
 			"_cluster": 19,
-			"__dists": [
-				7,
-				6,
-				7
-			]
-		},
-		{
-			"module": "shared/components/tabs/item/index.tsx",
-			"similar": [
-				"shared/components/simple-pagination/index.tsx"
-			],
-			"_cluster": 19,
-			"__dists": [
-				7,
-				6,
-				7
+			"similarity": [
+				0.9546451771199245,
+				0.619949494949495
 			]
 		}
 	],
-	"noise": [
-		"serviceWorker.ts"
-	]
+	"noise": []
 };
 var datasets = [
 	{
@@ -376,16 +231,8 @@ var datasets = [
 		"backgroundColor": "gray",
 		"pointRadius": 10,
 		"borderWidth": 2,
-		"pointBorderColor": [
-			"gray"
-		],
-		"data": [
-			{
-				"x": null,
-				"y": 1.02,
-				"label": "serviceWorker.ts"
-			}
-		]
+		"pointBorderColor": [],
+		"data": []
 	},
 	{
 		"label": "Group#1",
@@ -397,8 +244,8 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 1.04,
-				"y": 0.165,
+				"x": 1,
+				"y": 0.125,
 				"label": ".deploy/index.ts"
 			}
 		]
@@ -413,8 +260,8 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 0.54,
-				"y": 0.165,
+				"x": 0.5,
+				"y": 0.125,
 				"label": ".deploy/temp-stand.ts"
 			}
 		]
@@ -425,24 +272,24 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#953553",
+			"#7393B3",
 			"#7393B3",
 			"#7393B3"
 		],
 		"data": [
 			{
-				"x": 0.06,
-				"y": 0.06,
+				"x": 0,
+				"y": 0,
 				"label": "app/header/hooks.ts"
 			},
 			{
-				"x": 0.06,
-				"y": 0.06,
+				"x": 0,
+				"y": 0,
 				"label": "app/hocs/with-antd.tsx"
 			},
 			{
-				"x": 0.06,
-				"y": 0.06,
+				"x": 0,
+				"y": 0,
 				"label": "app/hocs/with-router.tsx"
 			}
 		]
@@ -453,24 +300,24 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#953553",
+			"#4682B4",
 			"#4682B4",
 			"#4682B4"
 		],
 		"data": [
 			{
-				"x": 0.81,
-				"y": 0.06,
+				"x": 0.75,
+				"y": 0,
 				"label": "app/header/index.tsx"
 			},
 			{
-				"x": 0.8600000000000001,
-				"y": 0.06,
+				"x": 0.8,
+				"y": 0,
 				"label": "app/hocs/with-error-handling.tsx"
 			},
 			{
-				"x": 0.8933333333333333,
-				"y": 0.06,
+				"x": 0.8333333333333334,
+				"y": 0,
 				"label": "app/hocs/index.ts"
 			}
 		]
@@ -485,8 +332,8 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 0.7266666666666666,
-				"y": 0.06,
+				"x": 0.6666666666666666,
+				"y": 0,
 				"label": "app/hocs/with-apollo.tsx"
 			}
 		]
@@ -501,8 +348,8 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 1.04,
-				"y": 0.04,
+				"x": 1,
+				"y": 0,
 				"label": "app/index.tsx"
 			}
 		]
@@ -521,59 +368,59 @@ var datasets = [
 			"#0096FF",
 			"#0096FF",
 			"#0096FF",
-			"#0096FF",
-			"#953553"
+			"#953553",
+			"#0096FF"
 		],
 		"data": [
 			{
-				"x": 0.31,
-				"y": 0.31,
+				"x": 0.25,
+				"y": 0.25,
 				"label": "features/auth/consts.ts"
 			},
 			{
-				"x": 0.31,
-				"y": 0.31,
+				"x": 0.25,
+				"y": 0.25,
 				"label": "features/error/definitions.ts"
 			},
 			{
-				"x": 0.31,
-				"y": 0.31,
+				"x": 0.25,
+				"y": 0.25,
 				"label": "features/repo-details/queries.gen.ts"
 			},
 			{
-				"x": 0.31,
-				"y": 0.31,
+				"x": 0.25,
+				"y": 0.25,
 				"label": "features/repo-explorer/queries.gen.ts"
 			},
 			{
-				"x": 0.26,
-				"y": 0.31,
+				"x": 0.2,
+				"y": 0.25,
 				"label": "features/repo-list/queries.gen.ts"
 			},
 			{
-				"x": 0.3457142857142857,
-				"y": 0.31,
+				"x": 0.2857142857142857,
+				"y": 0.25,
 				"label": "features/search/hooks.ts"
 			},
 			{
-				"x": 0.26,
-				"y": 0.31,
+				"x": 0.2,
+				"y": 0.25,
 				"label": "features/search/params.ts"
 			},
 			{
-				"x": 0.3933333333333333,
-				"y": 0.31,
+				"x": 0.3333333333333333,
+				"y": 0.25,
 				"label": "features/repo-list/params.ts"
 			},
 			{
-				"x": 0.3933333333333333,
-				"y": 0.31,
-				"label": "features/user-info/queries.gen.ts"
+				"x": 0.3333333333333333,
+				"y": 0.25,
+				"label": "features/search/results"
 			},
 			{
-				"x": 0.41333333333333333,
-				"y": 0.33,
-				"label": "features/search/results"
+				"x": 0.3333333333333333,
+				"y": 0.25,
+				"label": "features/user-info/queries.gen.ts"
 			}
 		]
 	},
@@ -588,170 +435,68 @@ var datasets = [
 			"#1434A4",
 			"#1434A4",
 			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
 			"#953553",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
-			"#1434A4",
 			"#953553",
 			"#953553",
 			"#1434A4",
+			"#953553",
 			"#1434A4"
 		],
 		"data": [
 			{
-				"x": 0.7466666666666666,
-				"y": 0.33,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/auth/firebase"
 			},
 			{
-				"x": 0.7466666666666666,
-				"y": 0.33,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/auth/user"
 			},
 			{
-				"x": 0.7266666666666666,
-				"y": 0.31,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/error/helpers.ts"
 			},
 			{
-				"x": 0.7266666666666666,
-				"y": 0.31,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/error/index.ts"
 			},
 			{
-				"x": 0.7466666666666666,
-				"y": 0.33,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/repo-details/card-collaborators"
 			},
 			{
-				"x": 0.7666666666666666,
-				"y": 0.35,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.7466666666666666,
-				"y": 0.33,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.7666666666666666,
-				"y": 0.35,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.7266666666666666,
-				"y": 0.31,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/repo-explorer/hooks.ts"
 			},
 			{
-				"x": 0.7666666666666666,
-				"y": 0.35,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/search/results"
 			},
 			{
-				"x": 0.7266666666666666,
-				"y": 0.31,
+				"x": 0.6666666666666666,
+				"y": 0.25,
 				"label": "features/user-info/index.tsx"
-			},
-			{
-				"x": 0.81,
-				"y": 0.31,
-				"label": "features/error/catcher.tsx"
-			},
-			{
-				"x": 0.81,
-				"y": 0.31,
-				"label": "features/repo-stat/index.tsx"
-			},
-			{
-				"x": 0.81,
-				"y": 0.31,
-				"label": "features/search/index.tsx"
-			},
-			{
-				"x": 0.81,
-				"y": 0.31,
-				"label": "features/user-info/hooks.ts"
-			},
-			{
-				"x": 0.8600000000000001,
-				"y": 0.31,
-				"label": "features/auth/index.ts"
-			},
-			{
-				"x": 0.83,
-				"y": 0.33,
-				"label": "features/repo-details/card-common"
-			},
-			{
-				"x": 0.8600000000000001,
-				"y": 0.31,
-				"label": "features/repo-details/index.tsx"
-			},
-			{
-				"x": 0.85,
-				"y": 0.35,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.83,
-				"y": 0.33,
-				"label": "features/repo-list/pagination"
-			},
-			{
-				"x": 0.8933333333333333,
-				"y": 0.31,
-				"label": "features/repo-list/index.tsx"
-			},
-			{
-				"x": 0.88,
-				"y": 0.33,
-				"label": "features/repo-list/items"
-			},
-			{
-				"x": 0.88,
-				"y": 0.33,
-				"label": "features/repo-list/tabs"
-			},
-			{
-				"x": 0.88,
-				"y": 0.33,
-				"label": "features/search/filters"
-			},
-			{
-				"x": 0.9133333333333333,
-				"y": 0.33,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.9,
-				"y": 0.35,
-				"label": "features/search/results"
-			},
-			{
-				"x": 0.9333333333333333,
-				"y": 0.35,
-				"label": "features/repo-explorer/components"
-			},
-			{
-				"x": 0.937142857142857,
-				"y": 0.33,
-				"label": "features/repo-explorer/components"
 			}
 		]
 	},
@@ -764,64 +509,64 @@ var datasets = [
 			"#3F00FF",
 			"#3F00FF",
 			"#3F00FF",
-			"#3F00FF",
+			"#953553",
+			"#953553",
 			"#3F00FF",
 			"#3F00FF",
 			"#3F00FF",
 			"#953553",
-			"#953553",
-			"#3F00FF"
+			"#953553"
 		],
 		"data": [
 			{
-				"x": 0.58,
-				"y": 0.33,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/auth/firebase"
 			},
 			{
-				"x": 0.58,
-				"y": 0.33,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/auth/firebase"
 			},
 			{
-				"x": 0.6,
-				"y": 0.35,
+				"x": 0.47619047619047616,
+				"y": 0.25,
+				"label": "features/index.ts"
+			},
+			{
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.6,
-				"y": 0.35,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.56,
-				"y": 0.31,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/repo-explorer/index.ts"
 			},
 			{
-				"x": 0.56,
-				"y": 0.31,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/repo-list/hooks.ts"
 			},
 			{
-				"x": 0.56,
-				"y": 0.31,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/repo-stat/queries.gen.ts"
 			},
 			{
-				"x": 0.6,
-				"y": 0.35,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/search/results"
 			},
 			{
-				"x": 0.6,
-				"y": 0.35,
+				"x": 0.5,
+				"y": 0.25,
 				"label": "features/search/results"
-			},
-			{
-				"x": 0.5161904761904762,
-				"y": 0.29,
-				"label": "features/index.ts"
 			}
 		]
 	},
@@ -835,8 +580,8 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 0.6599999999999999,
-				"y": 0.31,
+				"x": 0.6,
+				"y": 0.25,
 				"label": "features/auth/hooks.ts"
 			}
 		]
@@ -850,52 +595,106 @@ var datasets = [
 			"#0437F2",
 			"#0437F2",
 			"#0437F2",
+			"#0437F2",
+			"#953553",
+			"#953553",
 			"#953553",
 			"#0437F2",
 			"#0437F2",
 			"#0437F2",
+			"#0437F2",
+			"#0437F2",
+			"#0437F2",
+			"#0437F2",
+			"#953553",
+			"#953553",
 			"#0437F2"
 		],
 		"data": [
 			{
-				"x": 0.06,
-				"y": 0.31,
-				"label": "features/auth/types.ts"
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/auth/index.ts"
 			},
 			{
-				"x": 0.06,
-				"y": 0.31,
-				"label": "features/hero-sheet/index.tsx"
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/error/catcher.tsx"
 			},
 			{
-				"x": 0.06,
-				"y": 0.31,
-				"label": "features/origin/index.tsx"
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/repo-details/card-common"
 			},
 			{
-				"x": 0.08,
-				"y": 0.33,
-				"label": "features/repo-details/details-card"
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-details/index.tsx"
 			},
 			{
-				"x": 0.1,
-				"y": 0.35,
+				"x": 0.8333333333333334,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.1,
-				"y": 0.35,
+				"x": 0.8571428571428571,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.1,
-				"y": 0.35,
+				"x": 0.75,
+				"y": 0.25,
 				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.06,
-				"y": 0.31,
-				"label": "features/repo-stat/fixtures.tsx"
+				"x": 0.8333333333333334,
+				"y": 0.25,
+				"label": "features/repo-list/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-list/items"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/repo-list/pagination"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/repo-list/tabs"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/repo-stat/index.tsx"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/search/filters"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/search/index.tsx"
+			},
+			{
+				"x": 0.8333333333333334,
+				"y": 0.25,
+				"label": "features/search/results"
+			},
+			{
+				"x": 0.8,
+				"y": 0.25,
+				"label": "features/search/results"
+			},
+			{
+				"x": 0.75,
+				"y": 0.25,
+				"label": "features/user-info/hooks.ts"
 			}
 		]
 	},
@@ -905,61 +704,55 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#0818A8",
+			"#0818A8",
+			"#0818A8",
 			"#953553",
 			"#953553",
-			"#0818A8",
-			"#0818A8",
-			"#0818A8",
-			"#0818A8",
-			"#0818A8",
-			"#0818A8",
+			"#953553",
+			"#953553",
 			"#0818A8"
 		],
 		"data": [
 			{
-				"x": 0.02,
-				"y": 1.02,
-				"label": "models.gen.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/auth/types.ts"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/get-env/index.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/hero-sheet/index.tsx"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/helpers/alert.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/origin/index.tsx"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/helpers/compose.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/repo-details/details-card"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/helpers/dom.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/helpers/string.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/hooks/use-debounce.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/repo-explorer/components"
 			},
 			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/hooks/use-local-storage.ts"
-			},
-			{
-				"x": 0.06,
-				"y": 1.06,
-				"label": "shared/hooks/use-previous.ts"
+				"x": 0,
+				"y": 0.25,
+				"label": "features/repo-stat/fixtures.tsx"
 			}
 		]
 	},
@@ -969,13 +762,67 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#40B5AD",
+			"#40B5AD",
+			"#953553",
+			"#40B5AD",
+			"#40B5AD",
+			"#40B5AD",
+			"#40B5AD",
+			"#40B5AD",
+			"#40B5AD",
 			"#40B5AD"
 		],
 		"data": [
 			{
-				"x": 0.05703703703703704,
-				"y": 0.895,
-				"label": "models.ts"
+				"x": 0,
+				"y": 1,
+				"label": "models.gen.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "serviceWorker.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/get-env/index.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/helpers/alert.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/helpers/compose.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/helpers/dom.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/helpers/string.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/hooks/use-debounce.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/hooks/use-local-storage.ts"
+			},
+			{
+				"x": 0,
+				"y": 1,
+				"label": "shared/hooks/use-previous.ts"
 			}
 		]
 	},
@@ -985,25 +832,13 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#008080",
-			"#008080",
 			"#008080"
 		],
 		"data": [
 			{
-				"x": 0.81,
-				"y": 0.185,
-				"label": "pages/auth/index.tsx"
-			},
-			{
-				"x": 0.81,
-				"y": 0.185,
-				"label": "pages/error/index.tsx"
-			},
-			{
-				"x": 0.81,
-				"y": 0.185,
-				"label": "pages/repository/index.tsx"
+				"x": 0.037037037037037035,
+				"y": 0.875,
+				"label": "models.ts"
 			}
 		]
 	},
@@ -1013,13 +848,25 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#40E0D0",
+			"#40E0D0",
 			"#40E0D0"
 		],
 		"data": [
 			{
-				"x": 0.04,
-				"y": 0.165,
-				"label": "pages/helpers.ts"
+				"x": 0.75,
+				"y": 0.125,
+				"label": "pages/auth/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0.125,
+				"label": "pages/error/index.tsx"
+			},
+			{
+				"x": 0.75,
+				"y": 0.125,
+				"label": "pages/repository/index.tsx"
 			}
 		]
 	},
@@ -1029,25 +876,13 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#96DED1",
-			"#96DED1",
 			"#96DED1"
 		],
 		"data": [
 			{
-				"x": 0.7266666666666666,
-				"y": 0.185,
-				"label": "pages/home/index.tsx"
-			},
-			{
-				"x": 0.7266666666666666,
-				"y": 0.185,
-				"label": "pages/search/index.tsx"
-			},
-			{
-				"x": 0.7266666666666666,
-				"y": 0.185,
-				"label": "pages/user/index.tsx"
+				"x": 0,
+				"y": 0.125,
+				"label": "pages/helpers.ts"
 			}
 		]
 	},
@@ -1057,13 +892,25 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#00A36C",
+			"#00A36C",
 			"#00A36C"
 		],
 		"data": [
 			{
-				"x": 0.915,
-				"y": 0.165,
-				"label": "pages/index.tsx"
+				"x": 0.6666666666666666,
+				"y": 0.125,
+				"label": "pages/home/index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.125,
+				"label": "pages/search/index.tsx"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.125,
+				"label": "pages/user/index.tsx"
 			}
 		]
 	},
@@ -1073,13 +920,13 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#953553"
+			"#9FE2BF"
 		],
 		"data": [
 			{
-				"x": 0.41333333333333333,
-				"y": 0.83,
-				"label": "shared/components/card"
+				"x": 0.875,
+				"y": 0.125,
+				"label": "pages/index.tsx"
 			}
 		]
 	},
@@ -1089,31 +936,13 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#953553",
-			"#C1E1C1",
-			"#C1E1C1",
 			"#953553"
 		],
 		"data": [
 			{
-				"x": 0.6,
-				"y": 0.85,
+				"x": 0.3333333333333333,
+				"y": 0.75,
 				"label": "shared/components/card"
-			},
-			{
-				"x": 0.6054545454545455,
-				"y": 0.81,
-				"label": "shared/components/index.ts"
-			},
-			{
-				"x": 0.58,
-				"y": 0.83,
-				"label": "shared/components/repo"
-			},
-			{
-				"x": 0.58,
-				"y": 0.83,
-				"label": "shared/components/tabs"
 			}
 		]
 	},
@@ -1125,22 +954,28 @@ var datasets = [
 		"pointBorderColor": [
 			"#953553",
 			"#ECFFDC",
-			"#953553"
+			"#ECFFDC",
+			"#ECFFDC"
 		],
 		"data": [
 			{
-				"x": 0.1,
-				"y": 0.85,
+				"x": 0.5,
+				"y": 0.75,
 				"label": "shared/components/card"
 			},
 			{
-				"x": 0.08,
-				"y": 0.83,
-				"label": "shared/components/simple-pagination"
+				"x": 0.5454545454545454,
+				"y": 0.75,
+				"label": "shared/components/index.ts"
 			},
 			{
-				"x": 0.1,
-				"y": 0.85,
+				"x": 0.5,
+				"y": 0.75,
+				"label": "shared/components/repo"
+			},
+			{
+				"x": 0.5,
+				"y": 0.75,
 				"label": "shared/components/tabs"
 			}
 		]
@@ -1151,19 +986,25 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#953553",
 			"#AFE1AF",
 			"#AFE1AF"
 		],
 		"data": [
 			{
-				"x": 0.7466666666666666,
-				"y": 0.83,
-				"label": "shared/components/org"
+				"x": 0,
+				"y": 0.75,
+				"label": "shared/components/card"
 			},
 			{
-				"x": 0.7466666666666666,
-				"y": 0.83,
-				"label": "shared/components/user"
+				"x": 0,
+				"y": 0.75,
+				"label": "shared/components/simple-pagination"
+			},
+			{
+				"x": 0,
+				"y": 0.75,
+				"label": "shared/components/tabs"
 			}
 		]
 	},
@@ -1173,13 +1014,19 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#90EE90",
 			"#90EE90"
 		],
 		"data": [
 			{
-				"x": 0.83,
-				"y": 0.83,
-				"label": "shared/components/repo"
+				"x": 0.6666666666666666,
+				"y": 0.75,
+				"label": "shared/components/org"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.75,
+				"label": "shared/components/user"
 			}
 		]
 	},
@@ -1193,9 +1040,9 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 0.3933333333333333,
-				"y": 1.06,
-				"label": "shared/helpers/index.ts"
+				"x": 0.75,
+				"y": 0.75,
+				"label": "shared/components/repo"
 			}
 		]
 	},
@@ -1208,8 +1055,23 @@ var datasets = [
 		],
 		"data": [
 			{
-				"x": 0.56,
-				"y": 1.06,
+				"x": 0.3333333333333333,
+				"y": 1,
+				"label": "shared/helpers/index.ts"
+			}
+		]
+	},
+	{
+		"label": "Group#25",
+		"pointRadius": 10,
+		"borderWidth": 2,
+		"pointBorderColor": [
+			null
+		],
+		"data": [
+			{
+				"x": 0.5,
+				"y": 1,
 				"label": "shared/hooks/index.ts"
 			}
 		]

@@ -20,8 +20,11 @@ analyzer.metrics.calcInstabilityFile(F.GH_FDD.files.FE_AUTH_HOOKS, project); //?
 analyzer.metrics.calcInstabilityFile(F.GH_FDD.files.PG_AUTH_UI, project); //?
 // NOTE: (NonActual?) in[header] == 0? failed resolution?
 analyzer.metrics.calcInstabilityFile(F.GH_FDD.files.HEADER, project); //?
-const __totalInstability = project.files.reduce((acc, file, idx) => {
-    const value = analyzer.metrics.calcInstabilityFile(file, project);
+analyzer.metrics.calcInstabilityFile("serviceWorker.ts", project); //?
+const __totalInstability = project[userConfig.strategy].reduce((acc, file, idx) => {
+    const value = userConfig.strategy === "modules"
+        ? analyzer.metrics.calcInstability(file, project)
+        : analyzer.metrics.calcInstabilityFile(file, project);
     return { ...acc, [file]: value }
 }, {}) //?
 // === ABSTRACTNESS (0, .25, .5, .75)
@@ -29,8 +32,11 @@ analyzer.metrics.calcAbstractnessFile(F.GH_FDD.files.HEADER, project); //?
 analyzer.metrics.calcAbstractnessFile(F.GH_FDD.files.PG_AUTH_UI, project); //?
 analyzer.metrics.calcAbstractnessFile(F.GH_FDD.files.FE_AUTH_HOOKS, project); //?
 analyzer.metrics.calcAbstractnessFile(F.GH_FDD.files.SH_GET_ENV, project); //?
-const __totalAbstractness = project.modules.reduce((acc, module, idx) => {
-    const value = analyzer.metrics.calcAbstractness(module, project);
+analyzer.metrics.calcAbstractnessFile("pages/app.tsx", project); //?
+const __totalAbstractness = project[userConfig.strategy].reduce((acc, module, idx) => {
+    const value = userConfig.strategy === "modules"
+        ? analyzer.metrics.calcAbstractness(module, project)
+        : analyzer.metrics.calcAbstractnessFile(module, project);
     return { ...acc, [module]: value }
 }, {}) //?
 project.modules.reduce((acc, m) => ({ ...acc, [m]: analyzer.metrics.calcAbstractnessFile(m, project) }), {}) //?

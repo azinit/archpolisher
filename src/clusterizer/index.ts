@@ -16,6 +16,7 @@ type UnitFeatures = number[];
 export type Dataset = {
     data: UnitFeatures[],
     strategy: DatasetStrategy,
+    units: FSUnit[],
 };
 
 export type ClusterOptions = {
@@ -28,7 +29,7 @@ export type ClusterOptions = {
 export type ClustersResult = {
     clusters: Cluster[];
     noise: Cluster;
-    strategy: DatasetStrategy;
+    dataset: Dataset;
 };
 
 const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3, spread: 0 };
@@ -41,19 +42,30 @@ const __getEps = (unit: FSUnit, eps = 0.01) => {
     return eps * unit.split("/").length;
 };
 
-export function prepareDataset(project: TProject, strategy: DatasetStrategy = "modules", options: ClusterOptions = DEFAULT_OPTIONS) {
-
+export function prepareDataset(
+    project: TProject,
+    strategy: DatasetStrategy = "modules",
+    options: ClusterOptions = DEFAULT_OPTIONS
+): Dataset {
+    const units = project[strategy];
+    const getInstability = strategy === "modules" ? analyzer.metrics.calcInstability : analyzer.metrics.calcInstabilityFile;
+    const getAbstractness = strategy === "modules" ? analyzer.metrics.calcAbstractness : analyzer.metrics.calcAbstractnessFile;
+    const data = units.map((unit) => [
+        getInstability(unit, project) + __getEps(unit, options.spread),
+        getAbstractness(unit, project) + __getEps(unit, options.spread),
+    ]);
     // NOTE: simplify?
-    const data = strategy === "modules"
-        ? project.modules.map((unit) => [
-            analyzer.metrics.calcInstability(unit, project) + __getEps(unit, options.spread),
-            analyzer.metrics.calcAbstractness(unit, project) + __getEps(unit, options.spread),
-        ])
-        : project.files.map((unit) => [
-            analyzer.metrics.calcInstabilityFile(unit, project) + __getEps(unit, options.spread),
-            analyzer.metrics.calcAbstractnessFile(unit, project) + __getEps(unit, options.spread),
-        ])
-    return { data, strategy };
+    // const data = strategy === "modules"
+    //     ? units.map((unit) => [
+    //         analyzer.metrics.calcInstability(unit, project) + __getEps(unit, options.spread),
+    //         analyzer.metrics.calcAbstractness(unit, project) + __getEps(unit, options.spread),
+    //     ])
+    //     : units.map((unit) => [
+    //         analyzer.metrics.calcInstabilityFile(unit, project) + __getEps(unit, options.spread),
+    //         analyzer.metrics.calcAbstractnessFile(unit, project) + __getEps(unit, options.spread),
+    //     ])
+
+    return { data, strategy, units };
 }
 
 /**
@@ -64,5 +76,5 @@ export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTI
     const dbscan = new mlClustering.DBSCAN();
     const clusters = dbscan.run(dataset.data, options.neighRadius, options.neighNum);
     const noise = dbscan.noise;
-    return { clusters, noise, strategy: dataset.strategy };
+    return { clusters, noise, dataset };
 }
