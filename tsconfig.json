@@ -115,6 +115,7 @@
     "removeComments": true,
     "sourceMap": false,
     "outDir": "dist",
+    "noEmit": true,
   },
   "include": [
     "src/**/*",

@@ -1,4 +1,5 @@
-const archpolisher = require("./dist/index.js");
+const archpolisher = require("./dist");
+const imports = require("./src/shared/fixtures/gh-fdd-spec.imports.json");
+const userConfig = require("./dist/config");
 
-console.log(archpolisher);
-console.log(archpolisher.run);
+archpolisher.run(imports, userConfig);

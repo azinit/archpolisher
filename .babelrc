@@ -1,0 +1,27 @@
+{
+    "presets": [
+        "@babel/env",
+        "@babel/preset-typescript"
+    ],
+    "plugins": [
+        ["inline-json-import", {}],
+        ["module-resolver", {
+            "root": ["./src"], 
+            "alias": {
+                "shared": "./src/shared",
+                "analyzer": "./src/analyzer",
+                "clusterizer": "./src/clusterizer",
+                "refactorer": "./src/refactorer"
+            }
+        }]
+    ],
+    "ignore": [
+        "node_modules",
+        "src/shared/fixtures",
+        "src/debug.ts",
+        // "src/config.ts",
+        "src/test.ts",
+        "src/poset.ts",
+        "src/types.d.ts"
+    ]
+}

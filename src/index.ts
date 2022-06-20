@@ -6,7 +6,7 @@ import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
 import config from "./config";
-import { __FIXTURES } from "shared/fixtures";
+// import { __FIXTURES } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
