@@ -38,9 +38,10 @@ export function run(imports: ImportsGraph, config: UserConfig = userConfig) {
     console.log("> [ARCHPOLISHER] Searching issues...");
     const issues = refactorer.findProjectIssues(project, clustering, config.refactorer);
     console.log("> [ARCHPOLISHER] Rendering results...");
-    refactorer.render(project, clustering, dataset, issues); //?
+    refactorer.render(project, clustering, issues); //?
     console.log("> [ARCHPOLISHER] Finished!");
     return issues;
 }
 
-// run(__FIXTURES[userConfig.fixtures].imports); //?
+import { __FIXTURES } from "shared/fixtures";
+run(__FIXTURES[userConfig.fixtures].imports); //?

@@ -7,8 +7,8 @@ import * as analyzer from "analyzer";
 import { COLORS, BLUE_COLORS } from "shared/lib";
 import userConfig from "../config";
 
-export function render(project: TProject, clustering: ClustersResult, dataset: Dataset, issues: FSResult) {
-    const labels = dataset.strategy === "modules"
+export function render(project: TProject, clustering: ClustersResult, issues: FSResult) {
+    const labels = clustering.dataset.strategy === "modules"
         ? project.modules
         : project.files.map((file) => file.split("/").slice(0, 3).join("/"));
 
@@ -19,8 +19,8 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
     // TODO: Добавить разные виды отображения?
     const issuesUnits = issues.issues.map(i => i.module);
     const issuesClustersIndices = issues.issues.map(i => i._cluster);
-    // const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
-    const issuesClusters = clustering.clusters;
+    const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
+    // const issuesClusters = clustering.clusters;
     const clusters = [clustering.noise, ...issuesClusters];
     // FIXME: modules (clust: 10, 0.15)
     // const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
@@ -41,21 +41,27 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
             return BLUE_COLORS[gIdx];
         }),
         data: group.map(fIdx => {
-            const [x, y] = dataset.data[fIdx];
+            const [x, y] = clustering.dataset.data[fIdx];
             return { x, y, label: labels[fIdx] };
         })
     }))
 
-    const dataContent = `
+    // === Writing results
+    const contentJSON = JSON.stringify(issues, null, "\t");
+    const contentHTML = String(fs.readFileSync(path.join(__dirname, "index.html")));
+    const contentData = `
 var userConfig = ${JSON.stringify(userConfig, null, "\t")};
 var issues = ${JSON.stringify(issues, null, "\t")};
 var datasets = ${JSON.stringify(datasets, null, "\t")};
 var files = ${JSON.stringify(project.files, null, "\t")};
 var modules = ${JSON.stringify(project.modules, null, "\t")};
     `;
-    // fs.writeFileSync("src/refactorer/ui/data.js", dataContent); //?
-    process.chdir(__dirname);
-    fs.writeFileSync(path.resolve("ui/data.js"), dataContent); //?
+    
+    const packageDir = path.join(process.cwd(), ".archpolisher");
+    if (!fs.existsSync(packageDir)) fs.mkdirSync(packageDir);
+    fs.writeFileSync(".archpolisher/report.json", contentJSON); //?
+    fs.writeFileSync(".archpolisher/report.html", contentHTML); //?
+    fs.writeFileSync(".archpolisher/data.js", contentData); //?
 }
 
 export function unifyGroup(group: FSUnit[], maxSiblings = 4) {
@@ -114,7 +120,7 @@ const MAX_FS_DIST = 3;
  */
 export function findProjectIssues(project: TProject, clustering: ClustersResult, options: Partial<RefactorerOptions> = {}): FSResult {
     const _options = { ...DEFAULT_OPTIONS, ...options };
-    return {
+    let result = {
         date: new Date().toISOString(),
         strategy: clustering.dataset.strategy,
         description: "Some modules should be transferred, according to Instability & Abstractness modules clustering",
@@ -123,7 +129,11 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult,
             return findClusterIssues(units, cluster, clustering.dataset, _gidx, _options);
         }).flat(),
         noise: clustering.noise.map(idx => project[clustering.dataset.strategy][idx]),
+    };
+    if (!result.issues.length) {
+        result.description = "No issues found!";
     }
+    return result;
 }
 
 export type RefactorerOptions = {
