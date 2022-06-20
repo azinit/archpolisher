@@ -22,7 +22,7 @@
     "noderun": "cross-env NODE_PATH=./src ts-node",
     "noderun-dev": "cross-env NODE_PATH=./src ts-node-dev --respawn --transpile-only",
     "start": "yarn noderun src/index.ts",
-    "dev": "yarn noderun-dev src/index.ts",
+    "dev": "yarn noderun-dev src/tests/main.test.ts",
     "start:debug": "yarn noderun src/debug.ts",
     "start:ml": "yarn noderun src/clusterize/index.ts",
     "start:fixtures": "yarn noderun src/shared/fixtures/index.ts",

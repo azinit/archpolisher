@@ -3,7 +3,7 @@ import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
 import { __FIXTURES as F, clustersFiles } from "shared/fixtures";
 import glob2reg from "glob-to-regexp";
-import config from "./config";
+import config from "../config";
 const { Project } = analyzer.fs;
 
 const userConfig = config as unknown as UserConfig;

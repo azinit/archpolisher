@@ -6,7 +6,6 @@ import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
 import config from "./config";
-// import { __FIXTURES } from "shared/fixtures";
 
 const { Project } = analyzer.fs;
 
@@ -28,7 +27,6 @@ const { Project } = analyzer.fs;
 
 const userConfig = config as unknown as UserConfig;
 
-// const config = 
 export function run(imports: ImportsGraph, config: UserConfig = userConfig) {
     console.log("> [ARCHPOLISHER] Analyzing modules...");
     const project = new Project(imports, config.analyzer); //?
@@ -42,6 +40,3 @@ export function run(imports: ImportsGraph, config: UserConfig = userConfig) {
     console.log("> [ARCHPOLISHER] Finished!");
     return issues;
 }
-
-import { __FIXTURES } from "shared/fixtures";
-run(__FIXTURES[userConfig.fixtures].imports); //?
