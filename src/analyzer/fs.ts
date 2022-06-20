@@ -115,7 +115,7 @@ export function getFSDist(unit1: FSUnit, unit2: FSUnit): number {
     const tokens1 = unit1.split("/");
     const tokens2 = unit2.split("/");
     const minLength = Math.min(tokens1.length, tokens2.length);
-    const intersection = [];
+    const intersection: string[] = [];
     for (let i = 0; i < minLength; i++) {
         if (tokens1[i] !== tokens2[i]) break;
         intersection.push(tokens1[i]);

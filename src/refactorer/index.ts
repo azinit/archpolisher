@@ -61,7 +61,7 @@ export function unifyGroup(group: FSUnit[], maxSiblings = 4) {
 
     const cuts = group.map((f) => f.split("/"));
     const structure = analyzer.fs.fsGroupBy(cuts);
-    const root = [];
+    const root: string[] = [];
     let children: FSUnit[] = [];
     let cursor: Structure | null = structure;
     while (cursor) {

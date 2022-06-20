@@ -117,7 +117,6 @@
     "outDir": "dist",
   },
   "include": [
-    // "src/**/*"
-    "test.ts"
+    "src/**/*",
   ]
 }
