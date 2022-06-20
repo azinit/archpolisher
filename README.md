@@ -26,22 +26,38 @@
 
     ```js
     {
-        /** Analysis strategy: by modules | files */
-        "strategy": "files",
+        /** modules | files */
+        "strategy": "modules",
         /** Analysis options (files filter, module graph rollout depth) */
         "analyzer": {
             "extensions": ["tsx", "ts", "jsx", "js"],
-            "abstractnessDepth": 3
+            "abstractnessDepth": 5,
+            "root": "./src/index.ts",
         },
         /** Clustering options (neares neighbours num and neighbours nums) */
         "clustering": {
             "neighNum": 1,
             "neighRadius": 0.05
-        }
+            "spread": 0.00,
+        },
+        /** Refactor options (dists, ui) */
+        "refactorer": {
+            "onlyIssues": false,
+            "minDist": 1,
+            "minDiff": 3,
+        },
     }
     ```
 
-3. Run toolkit
+3. Setup script at `package.json`
+
+    ```js
+    "scripts": {
+        "archpolisher": "node archpolisher"
+    }
+    ```
+
+4. Run toolkit
 
     ```sh
     $ npm run archpolisher

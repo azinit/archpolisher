@@ -1,5 +1,6 @@
 import mlClustering from "density-clustering";
 import * as analyzer from "analyzer";
+import { userConfig } from "shared/config";
 import _ from "lodash";
 
 type FSUnitIdx = number;
@@ -25,6 +26,7 @@ export type ClusterOptions = {
     /** number of points in neighborhood to form a cluster */
     neighNum: number;
     spread: number;
+    withFSDist: boolean;
 }
 export type ClustersResult = {
     clusters: Cluster[];
@@ -32,7 +34,7 @@ export type ClustersResult = {
     dataset: Dataset;
 };
 
-const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3, spread: 0 };
+const DEFAULT_OPTIONS: ClusterOptions = { neighRadius: 0.2, neighNum: 3, spread: 0, withFSDist: false };
 
 // default eps = 0.01
 const __getEps = (unit: FSUnit, eps = 0.01) => {
@@ -49,23 +51,19 @@ function normalize(min: number, max: number) {
     };
 }
 
-export function prepareDataset(
-    project: TProject,
-    strategy: DatasetStrategy = "modules",
-    options: ClusterOptions = DEFAULT_OPTIONS
-): Dataset {
-    const units = project[strategy];
-    const getInstability = strategy === "modules" ? analyzer.metrics.calcInstability : analyzer.metrics.calcInstabilityFile;
-    const getAbstractness = strategy === "modules" ? analyzer.metrics.calcAbstractness : analyzer.metrics.calcAbstractnessFile;
+export function prepareDataset(project: TProject): Dataset {
+    const units = project[userConfig.strategy];
+    const getInstability = userConfig.strategy === "modules" ? analyzer.metrics.calcInstability : analyzer.metrics.calcInstabilityFile;
+    const getAbstractness = userConfig.strategy === "modules" ? analyzer.metrics.calcAbstractness : analyzer.metrics.calcAbstractnessFile;
     const fsCoords = units.map(unit => analyzer.metrics.calcFSCoords(unit, project));
     const fsMax = _.max(fsCoords)!;
     const fsMin = _.min(fsCoords)!;
     // const _fsCoords = fsCoords.map(normalize(fsMin, fsMax));
 
     const data = units.map((unit, uIdx) => [
-        getInstability(unit, project) + __getEps(unit, options.spread),
-        getAbstractness(unit, project) + __getEps(unit, options.spread),
-        normalize(fsMin, fsMax)(fsCoords[uIdx]),
+        getInstability(unit, project) + __getEps(unit, userConfig.clustering.spread),
+        getAbstractness(unit, project) + __getEps(unit, userConfig.clustering.spread),
+        userConfig.clustering.withFSDist ? normalize(fsMin, fsMax)(fsCoords[uIdx]) : 0,
     ]);
     // NOTE: simplify?
     // const data = strategy === "modules"
@@ -78,16 +76,17 @@ export function prepareDataset(
     //         analyzer.metrics.calcAbstractnessFile(unit, project) + __getEps(unit, options.spread),
     //     ])
 
-    return { data, strategy, units };
+    return { data, strategy: userConfig.strategy, units };
 }
 
 /**
  * Clustering
  * NOTE: Add custumizing of algo?
  */
-export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTIONS): ClustersResult {
+// export function cluster(dataset: Dataset, options: ClusterOptions = DEFAULT_OPTIONS): ClustersResult {
+export function cluster(dataset: Dataset): ClustersResult {
     const dbscan = new mlClustering.DBSCAN();
-    const clusters = dbscan.run(dataset.data, options.neighRadius, options.neighNum);
+    const clusters = dbscan.run(dataset.data, userConfig.clustering.neighRadius, userConfig.clustering.neighNum);
     const noise = dbscan.noise;
     return { clusters, noise, dataset };
 }

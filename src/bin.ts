@@ -1,5 +1,8 @@
+import * as analyzer from "analyzer";
 import * as archpolisher from ".";
 
-archpolisher
+console.log({ archpolisher, analyzer });
+
+analyzer.parser
     .parseProject()
-    .then(archpolisher.run)
+    .then(archpolisher.run);

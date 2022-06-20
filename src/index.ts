@@ -2,7 +2,6 @@
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
-import { userConfig } from "shared/config";
 
 const { Project } = analyzer.fs;
 
@@ -25,17 +24,14 @@ const { Project } = analyzer.fs;
 
 export function run(imports: ImportsGraph) {
     console.log("> [ARCHPOLISHER] Analyzing modules...");
-    const project = new Project(imports, userConfig.analyzer); //?
+    const project = new Project(imports);
     console.log("> [ARCHPOLISHER] Clustering by calculations...");
-    const dataset = clusterizer.prepareDataset(project, userConfig.strategy, userConfig.clustering); //?
-    const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
+    const dataset = clusterizer.prepareDataset(project);
+    const clustering = clusterizer.cluster(dataset);
     console.log("> [ARCHPOLISHER] Searching issues...");
-    const issues = refactorer.findProjectIssues(project, clustering, userConfig.refactorer);
+    const issues = refactorer.findProjectIssues(project, clustering);
     console.log("> [ARCHPOLISHER] Rendering results...");
-    refactorer.render(project, clustering, issues); //?
+    refactorer.render(project, clustering, issues);
     console.log("> [ARCHPOLISHER] Finished!");
     return issues;
 }
-
-export const {parseProject} = analyzer.parser;
-export const parserProject = parseProject;

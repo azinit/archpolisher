@@ -15,11 +15,11 @@ export function render(project: TProject, clustering: ClustersResult, issues: FS
     // noise в начало, чтобы сначало отрендерились серые
     // NOTE: неочевидно что gray первым
 
-    // TODO: Добавить разные виды отображения?
     const issuesUnits = issues.issues.map(i => i.module);
     const issuesClustersIndices = issues.issues.map(i => i._cluster);
-    const issuesClusters = clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx));
-    // const issuesClusters = clustering.clusters;
+    const issuesClusters = userConfig.refactorer.onlyIssues 
+        ? clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx))
+        : clustering.clusters;
     const clusters = [clustering.noise, ...issuesClusters];
     // FIXME: modules (clust: 10, 0.15)
     // const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
@@ -115,8 +115,8 @@ const MAX_FS_DIST = 3;
  *  ]
  * }
  */
-export function findProjectIssues(project: TProject, clustering: ClustersResult, options: Partial<RefactorerOptions> = {}): FSResult {
-    const _options = { ...DEFAULT_OPTIONS, ...options };
+export function findProjectIssues(project: TProject, clustering: ClustersResult): FSResult {
+    const _options = { ...DEFAULT_OPTIONS, ...userConfig.refactorer };
     let result = {
         date: new Date().toISOString(),
         strategy: clustering.dataset.strategy,
@@ -134,10 +134,12 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult,
 }
 
 export type RefactorerOptions = {
+    onlyIssues: boolean;
     minDiff: number;
     minDist: number;
 };
 const DEFAULT_OPTIONS: RefactorerOptions = {
+    onlyIssues: true,
     minDiff: 3,
     minDist: 6,
 }

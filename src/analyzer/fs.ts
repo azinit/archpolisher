@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { userConfig } from "shared/config";
 
 export type AnalyzerConfig = {
     extensions: string[];
@@ -23,8 +24,8 @@ export class Project {
     modulesGraph: ModulesGraph;
     modulesWeights: ModulesWeights;
 
-    constructor(imports: ImportsGraph, options: Options = DEFAULT_OPTIONS) {
-        const inOptions = { ...DEFAULT_OPTIONS, ...options, }
+    constructor(imports: ImportsGraph) {
+        const inOptions = { ...DEFAULT_OPTIONS, ...userConfig.analyzer }
         this.imports = this.cleanImports(imports, inOptions.extensions);
         this.files = Object.keys(this.imports);
         this.structure = this.getStructure();

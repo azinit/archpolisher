@@ -8,14 +8,17 @@ module.exports = {
     "analyzer": {
         "extensions": ["tsx", "ts", "jsx", "js"],
         "abstractnessDepth": 5,
+        "root": "./src/index.ts",
     },
     "clustering": {
         "neighNum": 1,
         // "neighRadius": 0.06,
         "neighRadius": 0.1,
         "spread": 0.00,
+        "withFSDist": true,
     },
     "refactorer": {
+        "onlyIssues": false,
         "minDist": 1,
         "minDiff": 3, //3-4
     },
