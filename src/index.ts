@@ -1,5 +1,7 @@
 /// <reference path="./types.d.ts" />
 
+console.log("[ARCHPOLISHER] Hello World!");
+
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
@@ -10,7 +12,7 @@ const { Project } = analyzer.fs;
 
 // NOTE: (Modules) Улучшить анализ boundaries для модулей (shared/ui? shared/ui/button? shared/ui/button/index.tsx?)
 // NOTE: (PublicAPI) add "index" resolution aliases for modules (shared/ui, not only shared/ui/button)
-// NOTE: (PublicAPI) resolve reesports ({Auth} from features <=> features/auth)
+// NOTE: (PublicAPI) resolve reesports ({Auth} from features <=> [ARCHPOLISHER] features/auth)
 // NOTE: (Metrics) I: (A>B>C - более устойчивый/неустойчивый? не всегда!)
 // NOTE: (Metrics) Calc dist from main sequence D = |A + I - 1 | // 0 - на главной, 1 - далеко от нее
 // NOTE: (Metrics) I&A не всегда отражают реальную картину
@@ -28,12 +30,16 @@ const userConfig = config as unknown as UserConfig;
 
 // const config = 
 export function run(imports: ImportsGraph, config: UserConfig = userConfig) {
-
+    console.log("> [ARCHPOLISHER] Analyzing modules...");
     const project = new Project(imports, config.analyzer); //?
+    console.log("> [ARCHPOLISHER] Clustering by calculations...");
     const dataset = clusterizer.prepareDataset(project, config.strategy, config.clustering); //?
     const clustering = clusterizer.cluster(dataset, config.clustering); //?
+    console.log("> [ARCHPOLISHER] Searching issues...");
     const issues = refactorer.findProjectIssues(project, clustering, config.refactorer);
+    console.log("> [ARCHPOLISHER] Rendering results...");
     refactorer.render(project, clustering, dataset, issues); //?
+    console.log("> [ARCHPOLISHER] Finished!");
     return issues;
 }
 
