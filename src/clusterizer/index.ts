@@ -42,6 +42,13 @@ const __getEps = (unit: FSUnit, eps = 0.01) => {
     return eps * unit.split("/").length;
 };
 
+function normalize(min: number, max: number) {
+    var delta = max - min;
+    return function (val: number): number {
+        return (val - min) / delta;
+    };
+}
+
 export function prepareDataset(
     project: TProject,
     strategy: DatasetStrategy = "modules",
@@ -50,9 +57,15 @@ export function prepareDataset(
     const units = project[strategy];
     const getInstability = strategy === "modules" ? analyzer.metrics.calcInstability : analyzer.metrics.calcInstabilityFile;
     const getAbstractness = strategy === "modules" ? analyzer.metrics.calcAbstractness : analyzer.metrics.calcAbstractnessFile;
-    const data = units.map((unit) => [
+    const fsCoords = units.map(unit => analyzer.metrics.calcFSCoords(unit, project));
+    const fsMax = _.max(fsCoords)!;
+    const fsMin = _.min(fsCoords)!;
+    // const _fsCoords = fsCoords.map(normalize(fsMin, fsMax));
+
+    const data = units.map((unit, uIdx) => [
         getInstability(unit, project) + __getEps(unit, options.spread),
         getAbstractness(unit, project) + __getEps(unit, options.spread),
+        // normalize(fsMin, fsMax)(fsCoords[uIdx]),
     ]);
     // NOTE: simplify?
     // const data = strategy === "modules"

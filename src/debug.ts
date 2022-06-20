@@ -39,6 +39,11 @@ const __totalAbstractness = project[userConfig.strategy].reduce((acc, module, id
         : analyzer.metrics.calcAbstractnessFile(module, project);
     return { ...acc, [module]: value }
 }, {}) //?
+const __totalFSCoords = project[userConfig.strategy].reduce((acc, module, idx) => {
+    const value = analyzer.metrics.calcFSCoords(module, project);
+    return { ...acc, [module]: value }
+}, {}) //?
+analyzer.metrics.calcFSCoords("components/user/index.tsx", project);
 project.modules.reduce((acc, m) => ({ ...acc, [m]: analyzer.metrics.calcAbstractnessFile(m, project) }), {}) //?
 // === FS (1, 0, 4, 2, 1)
 // FIXME: analyzer.fs.getFSDist("features/repo-search", "features/repo-search") //?

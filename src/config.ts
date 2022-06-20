@@ -12,11 +12,12 @@ export default {
     },
     "clustering": {
         "neighNum": 1,
-        "neighRadius": 0.06,
+        // "neighRadius": 0.06,
+        "neighRadius": 0.1,
         "spread": 0.00,
     },
     "refactorer": {
         "minDist": 1,
-        "minDiff": 1, //3-4
+        "minDiff": 3, //3-4
     },
 }

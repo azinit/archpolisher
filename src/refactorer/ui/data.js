@@ -13,16 +13,16 @@ var userConfig = {
 	},
 	"clustering": {
 		"neighNum": 1,
-		"neighRadius": 0.06,
+		"neighRadius": 0.1,
 		"spread": 0
 	},
 	"refactorer": {
 		"minDist": 1,
-		"minDiff": 1
+		"minDiff": 3
 	}
 };
 var issues = {
-	"date": "2022-06-20T00:36:17.820Z",
+	"date": "2022-06-20T01:52:05.884Z",
 	"strategy": "modules",
 	"description": "Some modules should be transferred, according to Instability & Abstractness modules clustering",
 	"issues": [
@@ -38,7 +38,7 @@ var issues = {
 				"shared/helpers",
 				"shared/hooks"
 			],
-			"_cluster": 4,
+			"_cluster": 3,
 			"similarity": [
 				1,
 				1
@@ -56,10 +56,22 @@ var issues = {
 				"shared/helpers",
 				"shared/hooks"
 			],
-			"_cluster": 4,
+			"_cluster": 3,
 			"similarity": [
 				1,
 				1
+			]
+		},
+		{
+			"module": "features/repo-details",
+			"similar": [
+				"shared/components/org",
+				"shared/components/user"
+			],
+			"_cluster": 4,
+			"similarity": [
+				1,
+				0.9348605267258845
 			]
 		}
 	],
@@ -112,6 +124,7 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#7393B3",
 			"#7393B3"
 		],
 		"data": [
@@ -119,6 +132,11 @@ var datasets = [
 				"x": 0.4,
 				"y": 0.6091631603553062,
 				"label": "features/auth"
+			},
+			{
+				"x": 0.3333333333333333,
+				"y": 0.648901355773726,
+				"label": "features/error"
 			}
 		]
 	},
@@ -128,32 +146,16 @@ var datasets = [
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
+			"#953553",
+			"#953553",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
+			"#4682B4",
 			"#4682B4"
-		],
-		"data": [
-			{
-				"x": 0.3333333333333333,
-				"y": 0.648901355773726,
-				"label": "features/error"
-			}
-		]
-	},
-	{
-		"label": "Group#5",
-		"backgroundColor": "#6082B6",
-		"pointRadius": 10,
-		"borderWidth": 2,
-		"pointBorderColor": [
-			"#953553",
-			"#953553",
-			"#6082B6",
-			"#6082B6",
-			"#6082B6",
-			"#6082B6",
-			"#6082B6",
-			"#6082B6",
-			"#6082B6",
-			"#6082B6"
 		],
 		"data": [
 			{
@@ -209,29 +211,41 @@ var datasets = [
 		]
 	},
 	{
-		"label": "Group#6",
-		"backgroundColor": "#6495ED",
+		"label": "Group#5",
+		"backgroundColor": "#6082B6",
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#6495ED"
+			"#953553",
+			"#6082B6",
+			"#6082B6"
 		],
 		"data": [
 			{
 				"x": 0.6666666666666666,
 				"y": 0.6091631603553062,
 				"label": "features/repo-details"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.5114539504441328,
+				"label": "shared/components/org"
+			},
+			{
+				"x": 0.6666666666666666,
+				"y": 0.5114539504441328,
+				"label": "shared/components/user"
 			}
 		]
 	},
 	{
-		"label": "Group#7",
-		"backgroundColor": "#0096FF",
+		"label": "Group#6",
+		"backgroundColor": "#6495ED",
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#0096FF",
-			"#0096FF"
+			"#6495ED",
+			"#6495ED"
 		],
 		"data": [
 			{
@@ -247,13 +261,13 @@ var datasets = [
 		]
 	},
 	{
-		"label": "Group#8",
-		"backgroundColor": "#1434A4",
+		"label": "Group#7",
+		"backgroundColor": "#0096FF",
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#1434A4",
-			"#1434A4"
+			"#0096FF",
+			"#0096FF"
 		],
 		"data": [
 			{
@@ -269,12 +283,12 @@ var datasets = [
 		]
 	},
 	{
-		"label": "Group#9",
-		"backgroundColor": "#3F00FF",
+		"label": "Group#8",
+		"backgroundColor": "#1434A4",
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#3F00FF"
+			"#1434A4"
 		],
 		"data": [
 			{
@@ -285,12 +299,12 @@ var datasets = [
 		]
 	},
 	{
-		"label": "Group#10",
-		"backgroundColor": "#000080",
+		"label": "Group#9",
+		"backgroundColor": "#3F00FF",
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#000080"
+			"#3F00FF"
 		],
 		"data": [
 			{
@@ -301,34 +315,12 @@ var datasets = [
 		]
 	},
 	{
-		"label": "Group#11",
-		"backgroundColor": "#0437F2",
+		"label": "Group#10",
+		"backgroundColor": "#000080",
 		"pointRadius": 10,
 		"borderWidth": 2,
 		"pointBorderColor": [
-			"#0437F2",
-			"#0437F2"
-		],
-		"data": [
-			{
-				"x": 0.6666666666666666,
-				"y": 0.5114539504441328,
-				"label": "shared/components/org"
-			},
-			{
-				"x": 0.6666666666666666,
-				"y": 0.5114539504441328,
-				"label": "shared/components/user"
-			}
-		]
-	},
-	{
-		"label": "Group#12",
-		"backgroundColor": "#0818A8",
-		"pointRadius": 10,
-		"borderWidth": 2,
-		"pointBorderColor": [
-			"#0818A8"
+			"#000080"
 		],
 		"data": [
 			{

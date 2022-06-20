@@ -56,3 +56,34 @@ export function calcInstability(module: Module, project: TProject, __imports: __
 
     return outDeps.length / (inDeps.length + outDeps.length);
 }
+
+const FS_LIMIT = 4;
+
+export function calcFSCoords(module: Module, project: TProject): number {
+    const tokens = module.split("/");
+    const indices = _.fill(Array(FS_LIMIT), 0);
+    let cursor: Structure = project.structure;
+    let cursorIdx = 0;
+    let children: FSUnit[] = Object.keys(cursor);
+    
+    while (tokens.length && children.length && cursorIdx < FS_LIMIT) {
+        const token = tokens.shift()!;
+    
+        const idx = children.indexOf(token);
+        if (idx === -1) break;
+        indices[cursorIdx] = idx;
+        
+        cursor = cursor[token];
+        children = cursor ? Object.keys(cursor) : [];
+        cursorIdx++;
+    }
+    // features, auth, consts.ts
+    // models.ts
+    // shared, get-env
+
+    const coord = indices.reduce((acc, val, idx) => {
+        const exp = 10 ** (FS_LIMIT - idx);
+        return acc + exp * val;
+    }, 0)
+    return coord;
+}
