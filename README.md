@@ -54,7 +54,7 @@
 
     ```js
     "scripts": {
-        "archpolisher": "node archpolisher"
+        "archpolisher": "archpolisher"
     }
     ```
 
