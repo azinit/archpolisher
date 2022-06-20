@@ -95,7 +95,7 @@ export class Project {
             const totalDeps = [deps1, deps2, deps3, deps4, deps5];
             const deps = _.uniq(totalDeps.slice(0, depth).flat())
             __map[module] = deps;
-            return { ...acc, [module]: deps.length };
+            return { ...acc, [module]: deps1.length + deps.length };
         }, {});
         __map;
         return result;

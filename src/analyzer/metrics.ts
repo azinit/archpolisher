@@ -4,12 +4,35 @@ export function calcAbstractnessFile(file: TFile, project: TProject): number {
     return calcAbstractness(project.asModule(file), project);
 };
 export function calcAbstractness(module: Module, project: TProject): number {
+    const byIdx = calcAbstractnessIdx(module, project);
+    const byWeight = calcAbstractnessWeight(module, project);
+
+    return _.mean([
+        byIdx,
+        byIdx,
+        byWeight,
+    ])
+}
+
+function calcAbstractnessWeight(module: Module, project: TProject): number {
     const maxWeight = _.max(Object.values(project.modulesWeights)) as number;
     // NOTE: add eps? (+- 0.05 * idx);
     // NOTE: Учитывать двухсторонние связи для вычитания абстрактности? Или забить на цикличность? (app <=> features)
     const moduleWeight = project.modulesWeights[module];
     if (moduleWeight === undefined) return 0.5; // null/-1
     return 1 - (moduleWeight / maxWeight);
+}
+
+export function calcAbstractnessIdx(module: Module, project: TProject): number {
+    const pw = Object.values(project.modulesWeights)
+    const pwSorted = [...pw].sort((a, b) => a - b);
+    const maxIdx = pwSorted.length - 1;
+
+    const modWeight = project.modulesWeights[module];
+    if (modWeight === undefined) return 0.5; // null/-1
+
+    const modIdx = pwSorted.indexOf(modWeight);
+    return 1 - (modIdx / maxIdx);
 }
 
 export function calcInstabilityFile(file: TFile, project: TProject): number {

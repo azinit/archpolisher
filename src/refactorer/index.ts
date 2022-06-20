@@ -34,7 +34,8 @@ export function render(project: TProject, clustering: ClustersResult, dataset: D
         pointBorderColor: group.map(fIdx => {
             const unit = labels[fIdx];
             // console.log(unit, {issuesUnits});
-            if (issuesUnits.some(iu => iu.includes(unit))) return "#953553";
+            // if (issuesUnits.some(iu => iu.includes(unit))) return "#953553";
+            if (issuesUnits.some(iu => iu === unit)) return "#953553";
             return BLUE_COLORS[gIdx];
         }),
         data: group.map(fIdx => {
@@ -115,7 +116,7 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult,
         description: "Some modules should be transferred, according to Instability & Abstractness modules clustering",
         issues: clustering.clusters.map((cluster, _gidx) => {
             const units = cluster.map(idx => project[clustering.dataset.strategy][idx]);
-            return findClusterIssues(units, clustering.dataset, _gidx, _options);
+            return findClusterIssues(units, cluster, clustering.dataset, _gidx, _options);
         }).flat(),
         noise: clustering.noise.map(idx => project[clustering.dataset.strategy][idx]),
     }
@@ -130,7 +131,13 @@ const DEFAULT_OPTIONS: RefactorerOptions = {
     minDist: 6,
 }
 
-export function findClusterIssues(units: FSUnit[], dataset: Dataset, clusterIdx = 0, options: RefactorerOptions): FSIssue[] {
+export function findClusterIssues(
+    units: FSUnit[],
+    cluster: number[],
+    dataset: Dataset,
+    clusterIdx = 0,
+    options: RefactorerOptions,
+): FSIssue[] {
     if (units.length === 1) return [];
 
     // Считаем сумму расстояний до всех соседей в кластере
@@ -150,14 +157,20 @@ export function findClusterIssues(units: FSUnit[], dataset: Dataset, clusterIdx 
     const absDiff = maxDist - _.min(dists)!;
     if (absDiff < options.minDiff) return [];
 
+    const clData = _.at(dataset.data, cluster);
+    const clIMean = _.meanBy(clData, 0);
+    const clAMean = _.meanBy(clData, 1);
+
     return issuesUnits.map((iu) => ({
         module: iu,
         similar: neighUnits,
         _cluster: clusterIdx,
         // 1 - [feat / Mean[cl_feats]]
         similarity: [
-            1 - Math.abs(dataset.data[dataset.units.indexOf(iu)][0] - _.meanBy(dataset.data, 0)),
-            1 - Math.abs(dataset.data[dataset.units.indexOf(iu)][1] - _.meanBy(dataset.data, 1)),
+            1 - Math.abs(dataset.data[dataset.units.indexOf(iu)][0] - clIMean),
+            1 - Math.abs(dataset.data[dataset.units.indexOf(iu)][1] - clAMean),
+            // clIMean,
+            // clAMean,
         ],
         // units: dataset.units,
         // __absDiff: absDiff,
