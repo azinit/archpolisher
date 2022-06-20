@@ -3,6 +3,7 @@ import _ from "lodash";
 export type AnalyzerConfig = {
     extensions: string[];
     abstractnessDepth: number;
+    root: string;
 };
 
 type Options = Partial<AnalyzerConfig>;
