@@ -5,7 +5,7 @@ import _ from "lodash";
 import type { ClustersResult, Dataset } from "clusterizer";
 import * as analyzer from "analyzer";
 import { COLORS, BLUE_COLORS } from "shared/lib";
-import userConfig from "../config";
+import { userConfig } from "shared/config";
 
 export function render(project: TProject, clustering: ClustersResult, issues: FSResult) {
     const labels = clustering.dataset.strategy === "modules"

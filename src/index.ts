@@ -5,7 +5,7 @@ console.log("[ARCHPOLISHER] Hello World!");
 import * as analyzer from "analyzer";
 import * as clusterizer from "clusterizer";
 import * as refactorer from "refactorer";
-import config from "./config";
+import { userConfig } from "shared/config";
 
 const { Project } = analyzer.fs;
 
@@ -24,17 +24,16 @@ const { Project } = analyzer.fs;
 // NOTE: Project instance with DI? (without passing as param)
 
 // NOTE: specify/refine neigh options values
+// const userConfig = config as unknown as UserConfig;
 
-const userConfig = config as unknown as UserConfig;
-
-export function run(imports: ImportsGraph, config: UserConfig = userConfig) {
+export function run(imports: ImportsGraph) {
     console.log("> [ARCHPOLISHER] Analyzing modules...");
-    const project = new Project(imports, config.analyzer); //?
+    const project = new Project(imports, userConfig.analyzer); //?
     console.log("> [ARCHPOLISHER] Clustering by calculations...");
-    const dataset = clusterizer.prepareDataset(project, config.strategy, config.clustering); //?
-    const clustering = clusterizer.cluster(dataset, config.clustering); //?
+    const dataset = clusterizer.prepareDataset(project, userConfig.strategy, userConfig.clustering); //?
+    const clustering = clusterizer.cluster(dataset, userConfig.clustering); //?
     console.log("> [ARCHPOLISHER] Searching issues...");
-    const issues = refactorer.findProjectIssues(project, clustering, config.refactorer);
+    const issues = refactorer.findProjectIssues(project, clustering, userConfig.refactorer);
     console.log("> [ARCHPOLISHER] Rendering results...");
     refactorer.render(project, clustering, issues); //?
     console.log("> [ARCHPOLISHER] Finished!");
