@@ -134,11 +134,13 @@ export function findProjectIssues(project: TProject, clustering: ClustersResult)
 }
 
 export type RefactorerOptions = {
+    title: string;
     onlyIssues: boolean;
     minDiff: number;
     minDist: number;
 };
 const DEFAULT_OPTIONS: RefactorerOptions = {
+    title: "archpolisher",
     onlyIssues: true,
     minDiff: 3,
     minDist: 6,

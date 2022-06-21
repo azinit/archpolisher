@@ -18,6 +18,7 @@ module.exports = {
         "withFSDist": true,
     },
     "refactorer": {
+        "title": "archpolisher",
         "onlyIssues": false,
         "minDist": 1,
         "minDiff": 3, //3-4
