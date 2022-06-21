@@ -7,7 +7,7 @@ import { BLUE_COLORS } from "shared/lib";
 import { userConfig } from "shared/config";
 
 export function render(project: TProject, clustering: ClustersResult, issues: FSResult) {
-    const labels = clustering.dataset.strategy === "modules"
+    const labels = userConfig.strategy === "modules"
         ? project.modules
         : project.files.map((file) => file.split("/").slice(0, 3).join("/"));
 
@@ -21,11 +21,10 @@ export function render(project: TProject, clustering: ClustersResult, issues: FS
         ? clustering.clusters.filter((_, idx) => issuesClustersIndices.includes(idx))
         : clustering.clusters;
     const clusters = [clustering.noise, ...issuesClusters];
-    // FIXME: modules (clust: 10, 0.15)
-    // const clustersUnits = clusters.map(cluster => cluster.map(idx => project[clustering.strategy][idx]));
+    const clustersUnits = clusters.map(cluster => cluster.map(idx => project[userConfig.strategy][idx]));
     const datasets = clusters.map((group, gIdx) => ({
-        label: (gIdx === 0) ? "Noise" : `Group#${gIdx}`,
-        // label: (idx === 0) ? "Noise" : unifyGroup(clustersUnits[idx], 4),
+        // label: (gIdx === 0) ? "Noise" : `Group#${gIdx}`,
+        label: (gIdx === 0) ? "Noise" : unifyGroup(clustersUnits[gIdx], 4),
         // label: (idx === 0)
         //     ? "Noise"
         //     : clustersUnits[idx]
