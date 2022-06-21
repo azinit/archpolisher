@@ -14,15 +14,7 @@
 
 ## Get Started
 
-1. Install toolkit as dev-dependency
-
-    ```sh
-    $ npm install -D archpolisher
-    # or by yarn
-    $ yarn add -D archpolisher
-    ```
-
-2. Setup user config `.archpolisherrc`
+1. Setup user config `.archpolisherrc`
 
     ```js
     {
@@ -50,20 +42,10 @@
     }
     ```
 
-3. Setup script at `package.json`
-
-    ```js
-    "scripts": {
-        "archpolisher": "archpolisher"
-    }
-    ```
-
-4. Run toolkit
+2. Run toolkit
 
     ```sh
-    $ npm run archpolisher
-    # or by yarn
-    $ yarn archpolisher
+    $ npx archpolisher
     ```
 
 <!-- 
